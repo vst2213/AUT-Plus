@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Phone Layout</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="phone">
+        <div class="status-bar">
+            <div class="time">12:34</div>
+            <div class="status-icons">
+                <span>🔋</span>
+                <span>📶</span>
+                <span>WiFi</span>
+            </div>
+        </div>
+        <div class="screen">
+            <div class="home-screen">
+                <div class="app-row">
+                    <div class="app-icon" onclick="openApp('Phone')">📱</div>
+                    <div class="app-icon" onclick="openApp('Call')">📞</div>
+                    <div class="app-icon" onclick="openApp('Messages')">💬</div>
+                    <div class="app-icon" onclick="openApp('Camera')">📷</div>
+                </div>
+                <div class="app-row">
+                    <div class="app-icon" onclick="openApp('Browser')">🌐</div>
+                    <div class="app-icon" onclick="openApp('Music')">🎵</div>
+                    <div class="app-icon" onclick="openApp('Calendar')">📅</div>
+                    <div class="app-icon" onclick="openApp('Files')">📁</div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-bar">
+            <div class="nav-button" onclick="navigate('Back')">⬅️</div>
+            <div class="nav-button" onclick="navigate('Home')">🏠</div>
+            <div class="nav-button" onclick="navigate('Recents')">⬆️</div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
