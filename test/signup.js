@@ -32,6 +32,7 @@ document.getElementById('signupBtn').addEventListener('click', function() {
         });
 });
 
+<<<<<<< HEAD:test/signup.js
 
 
 // Initialize Firebase
@@ -71,4 +72,24 @@ document.getElementById('loginBtn').addEventListener('click', function() {
 // Redirect to Sign-up page
 document.getElementById('signup-link').addEventListener('click', function() {
     window.location.href = 'signup.html';
+=======
+document.getElementById('community').addEventListener('click', function() {
+    // Navigate to Community Page
+    window.location.href = 'community.html'; // This is the current page
+});
+
+document.getElementById('search').addEventListener('click', function() {
+    // Navigate to Search Page
+    window.location.href = 'search.html'; // Search page URL
+});
+
+document.getElementById('notifications').addEventListener('click', function() {
+    // Navigate to Notifications Page
+    window.location.href = 'notifications.html'; // Notifications page URL
+});
+
+document.getElementById('profile').addEventListener('click', function() {
+    // Navigate to Profile Page
+    window.location.href = 'profile.html'; // Profile page URL
+>>>>>>> parent of 49571f0 (Firebase authentication system):public/script.js
 });
