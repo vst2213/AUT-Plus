@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Firebase SDKs -->
+    <script type="module" src="script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+
+</head>
+<body>
+    <div class="phone">
+        <header class="header">
+            <div class="logo">AUT</div>
+            <div class="profile-icon">👤</div>
+        </header>   
+
+        <div class="content">
+            <div class="schedule">
+                <h2>What's on Next</h2>
+                <div class="schedule-card">
+                    <div class="time">Today: 8am-10am</div>
+                    <div class="subject">COMP602/W204A - Software Development Practice</div>
+                    <div class="location">WS221</div>
+                </div>
+            </div>
+
+            <div class="news">
+                <h2>News</h2>
+                <div class="news-card">
+                    <img src="groove-dogs.jpg" alt="Groove Dogs">
+                    <div class="news-content">
+                        <h3>$10 Nacho combo deal!</h3>
+                        <p>Come and try our new Tex-Mex Nachos!</p>
+                        <small>3 days ago</small>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <img src="learn-fern.jpg" alt="Learn the Fern">
+                    <div class="news-content">
+                        <h3>Learn the Fern</h3>
+                        <p>Get involved with AUT's latest sports campaign!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="nav-bar">
+            <div id="home" class="nav-item">🏠</div>
+            <div id="community" class="nav-item active">💬</div>
+            <div id="search" class="nav-item">🔍</div>
+            <div id="notifications" class="nav-item">🔔</div>
+            <div id="profile" class="nav-item">📋</div>
+        </nav>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
