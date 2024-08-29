@@ -1,7 +1,4 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -14,30 +11,22 @@ const firebaseConfig = {
   measurementId: "G-LHK7B8D43L"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const auth = getAuth(app);
+firebase.initializeApp(firebaseConfig);
 
-// Sign up function
+const auth = firebase.auth();
+
 function signUp() {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in 
-      const user = userCredential.user;
-      console.log("User created:", user);
-      // You can redirect or update the UI here
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.error("Error:", errorCode, errorMessage);
-      // Handle errors here (e.g., show an error message to the user)
-    });
+    auth.createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            console.log("User created:", user);
+        })
+        .catch((error) => {
+            console.error("Error:", error.code, error.message);
+        });
 }
 
-// Attach the signUp function to the button
 document.getElementById("signupButton").addEventListener("click", signUp);

@@ -7,19 +7,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="signup-container">
-        <h2>Sign Up</h2>
-        <!-- index.html -->
-        <input type="email" id="email" placeholder="Enter your email">
-        <input type="password" id="password" placeholder="Enter your password">
-        <button id="signupButton">Sign Up</button>
-        <script type="module" src="signup.js"></script>
-        
-        <p>Already have an account? <a href="index.html">Login here</a></p>
-    </div>
+    <h1>Sign Up</h1>
+    <input type="email" id="email" placeholder="Enter your email">
+    <input type="password" id="password" placeholder="Enter your password">
+    <button id="signupButton">Sign Up</button>
 
+    <!-- Include Firebase SDKs via CDN -->
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+
+    <!-- Your custom script -->
     <script src="signup.js"></script>
 </body>
 </html>
