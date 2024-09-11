@@ -7,7 +7,7 @@ function App() {
   return (
     <Router>
       <div>
-        <h1>My React App with Firebase Authentication</h1>
+        <h1>Welcome to The Aut Web App</h1>
         <Routes>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
