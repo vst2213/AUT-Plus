@@ -1,20 +1,24 @@
 import React, { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth"; // Import Firebase sign-in method
-import { auth } from "./firebase"; // Import the Firebase auth instance
+import { Link } from "react-router-dom"; // Import Link for navigation
+import {
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+} from "firebase/auth";
+import { auth } from "./firebase"; // Assuming firebase is configured correctly in firebase.js
+import "./Login.css"; // Import the CSS file
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(""); // State for error handling
-  const [success, setSuccess] = useState(""); // State for success messages
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(""); // Clear previous errors
-    setSuccess(""); // Clear previous success message
+    setError("");
+    setSuccess("");
 
     try {
-      // Use Firebase's signInWithEmailAndPassword method
       const userCredential = await signInWithEmailAndPassword(
         auth,
         email,
@@ -23,17 +27,29 @@ function Login() {
       console.log("User logged in:", userCredential.user);
       setSuccess("Login successful!");
     } catch (error) {
-      setError(error.message); // Display error message if login fails
+      setError(error.message);
+    }
+  };
+
+  const handleForgotPassword = async () => {
+    if (!email) {
+      setError("Please enter your email address to reset the password.");
+      return;
+    }
+
+    try {
+      await sendPasswordResetEmail(auth, email);
+      setSuccess("Password reset link sent! Check your email.");
+    } catch (error) {
+      setError(error.message);
     }
   };
 
   return (
     <div>
       <h2>Login</h2>
-      {error && <p style={{ color: "red" }}>{error}</p>}{" "}
-      {/* Show error message */}
-      {success && <p style={{ color: "green" }}>{success}</p>}{" "}
-      {/* Show success message */}
+      {error && <p style={{ color: "red" }}>{error}</p>}
+      {success && <p style={{ color: "green" }}>{success}</p>}
       <form onSubmit={handleSubmit}>
         <input
           type="email"
@@ -51,6 +67,15 @@ function Login() {
         />
         <button type="submit">Login</button>
       </form>
+      <p>
+        Forgot your password?{" "}
+        <button onClick={handleForgotPassword} className="forgot-password-link">
+          Reset Password
+        </button>
+      </p>
+      <p>
+        Don't have an account? <Link to="/signup">Register</Link>
+      </p>
     </div>
   );
 }

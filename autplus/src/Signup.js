@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth"; // Import Firebase auth method
-import { auth } from "./firebase"; // Import the Firebase auth instance
+import { Link } from "react-router-dom"; // Import Link for navigation
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "./firebase"; // Assuming firebase is correctly configured in firebase.js
 
 function Signup() {
   const [email, setEmail] = useState("");
@@ -10,20 +11,19 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(""); // Clear previous errors
-    setSuccess(""); // Clear previous success message
+    setError("");
+    setSuccess("");
 
     try {
-      // Use Firebase's createUserWithEmailAndPassword method
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
       console.log("User signed up:", userCredential.user);
-      setSuccess("Sign-up successful!"); // Show success message
+      setSuccess("Signup successful!");
     } catch (error) {
-      setError(error.message); // Set error message if something goes wrong
+      setError(error.message);
     }
   };
 
@@ -49,6 +49,10 @@ function Signup() {
         />
         <button type="submit">Sign Up</button>
       </form>
+      <p>
+        Already have an account? <Link to="/login">Login</Link>
+      </p>{" "}
+      {/* Add this link to redirect to login */}
     </div>
   );
 }
