@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom"; // Import Link for navigation
+import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
 import {
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
 } from "firebase/auth";
-import { auth } from "./firebase"; // Assuming firebase is configured correctly in firebase.js
-import "./Login.css"; // Import the CSS file
+import { auth } from "./firebase"; // Assuming firebase is configured correctly
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,6 +26,9 @@ function Login() {
       );
       console.log("User logged in:", userCredential.user);
       setSuccess("Login successful!");
+
+      // Redirect to HomePage.js after successful login
+      navigate("/home"); // Change "/home" to the path of your HomePage.js
     } catch (error) {
       setError(error.message);
     }
