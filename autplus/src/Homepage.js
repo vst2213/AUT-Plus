@@ -1,5 +1,6 @@
 import React from "react";
 import "./Homepage.css";
+import { Link } from 'react-router-dom'; /* this is for linking the navigation bar */
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 
 const HomePage = () => {
@@ -22,7 +23,12 @@ const HomePage = () => {
       {/* Navigation Bar as Top Headers */}
       <div className="top-nav">
         <FaHome className="nav-icon" />
-        <FaCommentDots className="nav-icon" />
+
+      {/* Added the link to switch pages here */}
+        <Link to="/Community">
+          <FaCommentDots className="nav-icon" />
+        </Link>
+        
         <FaCalendarAlt className="nav-icon" />
         <FaBars className="nav-icon" />
       </div>
