@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Signup from "./Signup";
 import Login from "./Login";
-import Homepage from "./Homepage"; // Ensure the name is 'HomePage' with exact casing
+import Homepage from "./Homepage"; // Ensure the name is 'Homepage' with exact casing
+import NotificationPage from "./NotificationPage"; // 추가된 NotificationPage
+import SettingsPage from "./SettingsPage"; // 추가된 SettingsPage
 
 import "./App.css"; // Import custom CSS for styling
 
@@ -32,7 +34,9 @@ function App() {
         <Routes>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/Home" element={<Homepage />} />
+          <Route path="/home" element={<Homepage />} />
+          <Route path="/notifications" element={<NotificationPage />} /> {/* Notification 페이지 추가 */}
+          <Route path="/settings" element={<SettingsPage />} /> {/* Settings 페이지 추가 */}
         </Routes>
       </div>
     </Router>
