@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./CommunityPage.css";
 import { Link } from 'react-router-dom';
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
+import "./CommunityPage.css";
 
 const CommunityPage = () => {
   const [post, setPost] = useState("");
@@ -12,7 +12,6 @@ const CommunityPage = () => {
 
   const handlePostSubmit = (e) => {
     e.preventDefault();
-    // Handle the submission of the post here
     console.log("Post submitted:", post);
     setPost(""); // Clear the input after submission
   };
@@ -50,7 +49,9 @@ const CommunityPage = () => {
       {/* Community Actions and Input */}
       <div className="actions">
         <button className="round-button AUT">AUT</button>
-        <button className="round-button clubs">Clubs</button>
+        <Link to="/clubs">
+          <button className="round-button clubs">Clubs</button>
+        </Link>
       </div>
 
       <form className="post-form" onSubmit={handlePostSubmit}>

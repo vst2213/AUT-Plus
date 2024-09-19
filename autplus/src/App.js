@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Signup from "./Signup";
 import Login from "./Login";
-import Homepage from "./Homepage"; // Ensure the name is 'HomePage' with exact casing
+import Homepage from "./Homepage";
 import CommunityPage from "./CommunityPage";
+import ClubsPage from "./ClubsPage"; // Import ClubsPage
 
 import "./App.css"; // Import custom CSS for styling
 
@@ -34,7 +35,8 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/Home" element={<Homepage />} />
-          <Route path="/community" element={<CommunityPage />} /> {/* Add route for CommunityPage */}
+          <Route path="/community" element={<CommunityPage />} />
+          <Route path="/clubs" element={<ClubsPage />} /> {/* Add route for ClubsPage */}
         </Routes>
       </div>
     </Router>
