@@ -1,5 +1,5 @@
 import React from "react";
-import "./Morepage.css"; // 경로 확인
+import "./Morepage.css";
 import { signOut } from "firebase/auth";
 import { auth } from "./firebase"; 
 import { useNavigate, Link } from "react-router-dom";
@@ -45,11 +45,14 @@ const MorePage = () => {
           <FaCalendarAlt className="nav-icon" />
         </Link>
         <FaBars className="nav-icon" />
+        
       </div>
 
       <h2>More Options</h2>
       <div className="options">
         <button onClick={() => navigate("/my-details")}>My AUT</button>
+        <button onClick={() => navigate("/contacts")}>Contacts</button> {/* Contacts 버튼 추가 */}
+        <button onClick={() => navigate("/notifications")}>Notifications</button> {/* Notifications 버튼 추가 */}
         <button onClick={() => navigate("/make-booking")}>Make a Booking</button>
       </div>
       <button onClick={handleLogout}>Logout</button>
