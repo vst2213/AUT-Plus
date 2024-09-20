@@ -240,6 +240,24 @@
     text-align: left; /* Ensure response text is aligned to the left */
 }
 
+/* Report Button */
+.report-button {
+    background-color: rgb(252, 104, 104);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.report-button:disabled {
+    background-color: grey;
+    cursor: not-allowed;
+}
+
 /* Making sure the app stretches to fill the entire screen */
 body, html {
     margin: 0;
