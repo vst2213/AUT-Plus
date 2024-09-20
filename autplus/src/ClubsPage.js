@@ -47,7 +47,7 @@ const ClubsPage = () => {
   };
 
   return (
-    <div className={`clubs-container ${darkMode ? "dark-mode" : ""}`}> {/* Updated class name for styling */}
+    <div className={`clubs-container ${darkMode ? "dark-mode" : ""}`}>
       {/* Header */}
       <div className="header">
         <div className="left-header">
@@ -83,7 +83,7 @@ const ClubsPage = () => {
         <button className="round-button AUT" onClick={handleFormVisibility}>
           Create Club Post
         </button>
-        <Link to="/clubs">
+        <Link to="/joined-clubs">
           <button className="round-button clubs">
             Joined Clubs
           </button>

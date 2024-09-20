@@ -5,6 +5,7 @@ import Login from "./Login";
 import Homepage from "./Homepage";
 import CommunityPage from "./CommunityPage";
 import ClubsPage from "./ClubsPage"; // Import ClubsPage
+import JoinedClubsPage from "./JoinedClubsPage"; // Import JoinedClubsPage
 import MorePage from "./MorePage"; // Import MorePage
 import MyDetails from "./MyDetails";
 import MakeBooking from "./MakeBooking";
@@ -40,6 +41,7 @@ function App() {
           <Route path="/Home" element={<Homepage />} />
           <Route path="/community" element={<CommunityPage />} />
           <Route path="/clubs" element={<ClubsPage />} /> {/* Add route for ClubsPage */}
+          <Route path="/joined-clubs" element={<JoinedClubsPage />} /> {/* Add route for JoinedClubsPage */}
           <Route path="/more" element={<MorePage />} /> {/* Add route for MorePage */}
           <Route path="/my-details" element={<MyDetails />} /> 
           <Route path="/make-booking" element={<MakeBooking />} /> 
