@@ -33,7 +33,7 @@ const MakeBooking = ({ setBookingDetails }) => {
       const bookingInfo = `Your booking has been confirmed: ${selectedRoom} at ${selectedTime}`;
       setConfirmation(bookingInfo);
       setBookingDetails({ room: selectedRoom, time: selectedTime });
-      setShowReminderPrompt(true); 
+      setShowReminderPrompt(true);
     } else {
       setConfirmation("Select Room and Time");
     }
@@ -47,7 +47,9 @@ const MakeBooking = ({ setBookingDetails }) => {
   };
 
   const setReminder = () => {
-    alert(`Reminder set for your booking at ${selectedTime} in ${selectedRoom}`);
+    alert(
+      `Reminder set for your booking at ${selectedTime} in ${selectedRoom}`
+    );
     setShowReminderPrompt(false);
   };
 

@@ -9,7 +9,7 @@ const Notifications = ({ bookingDetails }) => {
       {/* Header */}
       <div className="header">
         <div className="left-header">
-          <img src="path/to/aut-logo.png" alt="AUT Logo" className="logo" />
+          <img src="/pictures/aut.jpeg" alt="AUT Logo" className="logo" />
         </div>
         <div className="right-header">
           <img
