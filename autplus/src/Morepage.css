@@ -1,0 +1,84 @@
+/* General styling for the more container */
+.more-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full height of the viewport */
+    width: 100vw; /* Full width of the viewport */
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f3; /* Set a background color */
+}
+  
+/* Header styling */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #4b0082; /* AUT purple color */
+    color: white;
+}
+  
+.left-header .logo {
+    height: 50px;
+    width: auto; /* Adjust logo size */
+}
+  
+.right-header .profile-pic {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%; /* Circular profile picture */
+}
+  
+/* Top navigation bar */
+.top-nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0;
+    background-color: #4b0082; /* AUT purple color */
+}
+  
+.nav-icon {
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+  
+/* Section styling */
+.section {
+    padding: 20px;
+    flex-grow: 1;
+}
+
+/* Options buttons */
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Button spacing */
+    margin: 20px; /* Margin around options */
+}
+
+/* Style for buttons */
+button {
+    background-color: transparent; /* Remove background color */
+    color: #4b0082; /* Use the AUT purple color */
+    border: 2px solid #4b0082; /* Add border in the same color */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px; /* Padding for the buttons */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+/* Remove hover effect for buttons */
+button:hover {
+    background-color: transparent; /* No change on hover */
+    color: #4b0082; /* Maintain text color */
+}
+
+/* Making sure the app stretches to fill the entire screen */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}

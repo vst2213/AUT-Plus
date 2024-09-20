@@ -43,12 +43,18 @@ const HomePage = () => {
 
       {/* Navigation Bar as Top Headers */}
       <div className="top-nav">
-        <FaHome className="nav-icon" />
+        <Link to="/Home">
+          <FaHome className="nav-icon" />
+        </Link>
         <Link to="/Community">
           <FaCommentDots className="nav-icon" />
         </Link>
-        <FaCalendarAlt className="nav-icon" />
-        <FaBars className="nav-icon" />
+        <Link to="/Calendar">
+          <FaCalendarAlt className="nav-icon" />
+        </Link>
+        <Link to="/More"> {/* More page link */}
+          <FaBars className="nav-icon" />
+        </Link>
       </div>
 
       {/* What's On Next Section */}
