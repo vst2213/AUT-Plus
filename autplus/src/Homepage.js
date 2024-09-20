@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Homepage.css";
-import { Link } from 'react-router-dom'; 
+import { Link } from "react-router-dom";
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 
 const HomePage = () => {
@@ -24,7 +24,7 @@ const HomePage = () => {
       {/* Header */}
       <div className="header">
         <div className="left-header">
-          <img src="path/to/aut-logo.png" alt="AUT Logo" className="logo" />
+          <img src="/pictures/aut.jpeg" alt="AUT Logo" className="logo" />
         </div>
         <div className="right-header">
           <img
@@ -52,7 +52,9 @@ const HomePage = () => {
         <Link to="/Calendar">
           <FaCalendarAlt className="nav-icon" />
         </Link>
-        <Link to="/More"> {/* More page link */}
+        <Link to="/More">
+          {" "}
+          {/* More page link */}
           <FaBars className="nav-icon" />
         </Link>
       </div>

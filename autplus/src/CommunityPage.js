@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
-import "./CommunityPage.css"; 
+import "./CommunityPage.css";
 
 const CommunityPage = () => {
   const [post, setPost] = useState("");
@@ -35,7 +35,7 @@ const CommunityPage = () => {
       {/* Header */}
       <div className="header">
         <div className="left-header">
-          <img src="path/to/aut-logo.png" alt="AUT Logo" className="logo" />
+          <img src="/pictures/aut.jpeg" alt="AUT Logo" className="logo" />
         </div>
         <div className="right-header">
           <img
@@ -63,7 +63,9 @@ const CommunityPage = () => {
         <Link to="/calendar">
           <FaCalendarAlt className="nav-icon" />
         </Link>
-        <Link to="/more"> {/* "More" 페이지로 링크 추가 */}
+        <Link to="/more">
+          {" "}
+          {/* "More" 페이지로 링크 추가 */}
           <FaBars className="nav-icon" />
         </Link>
       </div>
@@ -84,7 +86,9 @@ const CommunityPage = () => {
           value={post}
           onChange={handlePostChange}
         />
-        <button type="submit" className="post-submit">Post</button>
+        <button type="submit" className="post-submit">
+          Post
+        </button>
       </form>
 
       {/* Example User Posts */}
