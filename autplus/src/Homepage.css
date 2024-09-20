@@ -8,6 +8,12 @@
   background-color: #f3f3f3; /* Set a background color */
 }
 
+/* Dark mode styling for the home container */
+.dark-mode .home-container {
+  background-color: #121212; /* Dark background color */
+  color: #e0e0e0; /* Light text color */
+}
+
 /* Header styling */
 .header {
   display: flex;
@@ -18,15 +24,48 @@
   color: white;
 }
 
+/* Dark mode header styling */
+.dark-mode .header {
+  background-color: #3c006e; /* Slightly darker purple for dark mode */
+}
+
+/* Logo and profile picture styling */
 .left-header .logo {
   height: 50px;
   width: auto; /* Adjust logo size */
+}
+
+.right-header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .right-header .profile-pic {
   height: 50px;
   width: 50px;
   border-radius: 50%; /* Circular profile picture */
+}
+
+/* Dark Mode Toggle Button Styling */
+.dark-mode-toggle {
+  margin-top: 10px; /* Space between the profile picture and the button */
+}
+
+.dark-mode-toggle button {
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  background-color: #4b0082; /* AUT purple color for the button */
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.dark-mode-toggle button:hover {
+  background-color: #3c006e; /* Slightly darker purple on hover */
 }
 
 /* Top navigation bar */
@@ -43,10 +82,21 @@
   cursor: pointer;
 }
 
+/* Dark mode navigation bar */
+.dark-mode .top-nav {
+  background-color: #3c006e; /* Darker purple for dark mode */
+}
+
 /* Section styling */
 .section {
   padding: 20px;
   flex-grow: 1;
+}
+
+/* Dark mode section styling */
+.dark-mode .section {
+  background-color: #1e1e1e; /* Dark background for sections */
+  color: #e0e0e0; /* Light text color */
 }
 
 /* Cards in "What's On Next" section */
@@ -63,10 +113,22 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* Dark mode card styling */
+.dark-mode .card {
+  background-color: #2c2c2c; /* Dark background for cards */
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1); /* Light shadow */
+}
+
 /* Event card specific styling */
 .event-card {
   background-color: #e0ffe0;
   border-left: 5px solid #4CAF50; /* Green indicator for events */
+}
+
+/* Dark mode event card styling */
+.dark-mode .event-card {
+  background-color: #3e4e3e; /* Darker green background */
+  border-left: 5px solid #76c976; /* Slightly darker green border */
 }
 
 .location {
@@ -76,12 +138,23 @@
   margin-top: 5px;
 }
 
+/* Dark mode location styling */
+.dark-mode .location {
+  color: #b0b0b0; /* Light text color for locations */
+}
+
 /* News card */
 .news-card {
   background-color: #f0f0f0;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode news card styling */
+.dark-mode .news-card {
+  background-color: #2c2c2c; /* Dark background for news card */
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1); /* Light shadow */
 }
 
 /* Making sure the app stretches to fill the entire screen */

@@ -8,6 +8,12 @@
     background-color: #f3f3f3; /* Set a background color */
 }
 
+/* Dark mode styling for the community container */
+.dark-mode .community-container {
+    background-color: #121212; /* Dark background color */
+    color: #e0e0e0; /* Light text color */
+}
+
 /* Header styling */
 .header {
     display: flex;
@@ -18,15 +24,47 @@
     color: white;
 }
 
+/* Dark mode header styling */
+.dark-mode .header {
+    background-color: #3c006e; /* Slightly darker purple for dark mode */
+}
+
 .left-header .logo {
     height: 50px;
     width: auto; /* Adjust logo size */
+}
+
+.right-header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 .right-header .profile-pic {
     height: 50px;
     width: 50px;
     border-radius: 50%; /* Circular profile picture */
+}
+
+/* Dark Mode Toggle Button Styling */
+.dark-mode-toggle {
+    margin-top: 10px; /* Space between the profile picture and the button */
+}
+
+.dark-mode-toggle button {
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    background-color: #4b0082; /* AUT purple color for the button */
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.dark-mode-toggle button:hover {
+    background-color: #3c006e; /* Slightly darker purple on hover */
 }
 
 /* Top navigation bar */
@@ -41,6 +79,11 @@
     color: white;
     font-size: 24px;
     cursor: pointer;
+}
+
+/* Dark mode navigation bar */
+.dark-mode .top-nav {
+    background-color: #3c006e; /* Darker purple for dark mode */
 }
 
 /* Actions and Buttons */
@@ -61,41 +104,95 @@
     transition: background-color 0.3s;
 }
 
-/* Create Club Post Button */
 .round-button.AUT {
     background-color: black;
 }
 
-/* Joined Clubs Button */
 .round-button.clubs {
     background-color: white;
     color: black; /* Set text color to black for contrast */
 }
 
+/* Dark mode for round buttons */
+.dark-mode .round-button.AUT {
+    background-color: #333;
+    color: white;
+}
+
+.dark-mode .round-button.clubs {
+    background-color: #444;
+    color: white;
+}
+
 /* Post Form */
 .post-form {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     margin: 20px 0;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.post-input {
-    width: 80%;
+.dark-mode .post-form {
+    background-color: #2c2c2c; /* Dark background for post form */
+    color: #e0e0e0;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1); /* Light shadow */
+}
+
+.post-form label {
+    margin-bottom: 10px;
+}
+
+.post-form input, 
+.post-form textarea {
+    width: 100%;
     padding: 10px;
+    margin-top: 5px;
     border: 1px solid #ddd;
     border-radius: 8px;
+}
+
+.dark-mode .post-form input, 
+.dark-mode .post-form textarea {
+    background-color: #3e3e3e; /* Dark background for input fields */
+    border-color: #555; /* Darker border */
+    color: white; /* Light text color */
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.form-buttons button {
+    padding: 10px 20px;
     font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
 .post-submit {
     background-color: #4b0082; /* AUT purple color */
     color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    margin-left: 10px;
-    font-size: 16px;
-    cursor: pointer;
+}
+
+.post-cancel {
+    background-color: #f3f3f3;
+    color: black;
+}
+
+/* Dark mode for post buttons */
+.dark-mode .post-submit {
+    background-color: #3c006e;
+}
+
+.dark-mode .post-cancel {
+    background-color: #444;
+    color: white;
 }
 
 /* Posts Section */
@@ -109,6 +206,12 @@
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
+}
+
+/* Dark mode for posts */
+.dark-mode .post {
+    background-color: #2c2c2c;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
 }
 
 .post-header {
@@ -128,57 +231,19 @@
     border-left: 2px solid #ddd;
 }
 
+.dark-mode .post-response {
+    border-left-color: #555; /* Darker border in dark mode */
+}
+
 .response-content {
     margin-top: 5px;
     text-align: left; /* Ensure response text is aligned to the left */
 }
 
-
-/* Form styling */
-.post-form {
-    display: flex;
-    flex-direction: column;
-    margin: 20px 0;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .post-form label {
-    margin-bottom: 10px;
-  }
-  
-  .post-form input, 
-  .post-form textarea {
+/* Making sure the app stretches to fill the entire screen */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
     width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-  }
-  
-  .form-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  
-  .form-buttons button {
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  
-  .post-submit {
-    background-color: #4b0082; /* AUT purple color */
-    color: white;
-  }
-  
-  .post-cancel {
-    background-color: #f3f3f3;
-    color: black;
-  }
-  
+}

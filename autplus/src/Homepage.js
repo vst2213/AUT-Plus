@@ -1,11 +1,26 @@
-import React from "react";
-import "./Homepage.css"; // CSS 파일
+import React, { useState, useEffect } from "react";
+import "./Homepage.css";
 import { Link } from 'react-router-dom'; 
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 
 const HomePage = () => {
+  const [darkMode, setDarkMode] = useState(false);
+
+  // Load dark mode state from localStorage when the component mounts
+  useEffect(() => {
+    const savedDarkMode = localStorage.getItem("darkMode") === "true";
+    setDarkMode(savedDarkMode);
+  }, []);
+
+  // Save dark mode state to localStorage when it changes
+  const toggleDarkMode = () => {
+    const newDarkModeState = !darkMode;
+    setDarkMode(newDarkModeState);
+    localStorage.setItem("darkMode", newDarkModeState);
+  };
+
   return (
-    <div className="home-container">
+    <div className={`home-container ${darkMode ? "dark-mode" : ""}`}>
       {/* Header */}
       <div className="header">
         <div className="left-header">
@@ -17,6 +32,12 @@ const HomePage = () => {
             alt="Profile"
             className="profile-pic"
           />
+          {/* Dark Mode Toggle Button */}
+          <div className="dark-mode-toggle">
+            <button onClick={toggleDarkMode}>
+              {darkMode ? "Light Mode" : "Dark Mode"}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -25,13 +46,13 @@ const HomePage = () => {
         <Link to="/Home">
           <FaHome className="nav-icon" />
         </Link>
-        <Link to="/community">
+        <Link to="/Community">
           <FaCommentDots className="nav-icon" />
         </Link>
-        <Link to="/calendar">
+        <Link to="/Calendar">
           <FaCalendarAlt className="nav-icon" />
         </Link>
-        <Link to="/more"> {/* More 페이지로 이동하는 링크 추가 */}
+        <Link to="/More"> {/* More page link */}
           <FaBars className="nav-icon" />
         </Link>
       </div>
