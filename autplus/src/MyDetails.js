@@ -1,9 +1,17 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./MyDetails.css";
 import { Link } from "react-router-dom";
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 
 const MyDetails = () => {
+  const navigate = useNavigate(); // Initialize useNavigate hook
+
+  // Function to handle back button click
+  const handleBackClick = () => {
+    navigate("/more"); // Navigate to MorePage
+  };
+
   return (
     <div className="details-container">
       {/* Header */}
@@ -13,7 +21,7 @@ const MyDetails = () => {
         </div>
         <div className="right-header">
           <img
-            src="path/to/profile-pic.png"
+            src="/pictures/profile-pic.png"
             alt="Profile"
             className="profile-pic"
           />
@@ -34,6 +42,11 @@ const MyDetails = () => {
         <FaBars className="nav-icon" />
       </div>
 
+      {/* Back Button */}
+      <button className="back-button" onClick={handleBackClick}>
+        Back
+      </button>
+
       <h2>My Details</h2>
       <div className="details-form">
         <label>Title:</label>
@@ -43,7 +56,7 @@ const MyDetails = () => {
         <label>Last Name:</label>
         <input type="text" placeholder="Enter your last name" />
         <label>Points:</label>
-        <span>100</span> {/* Points 글자 추가 */}
+        <span>100</span> {/* Points text */}
       </div>
     </div>
   );

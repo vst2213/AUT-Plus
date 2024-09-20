@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./MakeBooking.css"; // 스타일 파일을 추가하세요
+import "./MakeBooking.css";
 import { Link } from "react-router-dom";
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 
@@ -107,6 +107,13 @@ const MakeBooking = () => {
         <button onClick={handleCancel}>Cancel</button>
 
         {confirmation && <p>{confirmation}</p>}
+      </div>
+
+      {/* Back button to return to MorePage.js */}
+      <div className="back-button-container">
+        <Link to="/more">
+          <button className="back-button">Back</button>
+        </Link>
       </div>
     </div>
   );
