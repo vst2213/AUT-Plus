@@ -1,11 +1,17 @@
-/* General styling for the booking container */
-.booking-container {
+/* General styling for the make booking container */
+.make-booking-container {
     display: flex;
     flex-direction: column;
     min-height: 100vh; /* Full height of the viewport */
     width: 100vw; /* Full width of the viewport */
     font-family: Arial, sans-serif;
     background-color: #f3f3f3; /* Set a background color */
+}
+
+/* Dark mode styling for the make booking container */
+.dark-mode .make-booking-container {
+    background-color: #121212; /* Dark background color */
+    color: #e0e0e0; /* Light text color */
 }
 
 /* Header styling */
@@ -18,15 +24,47 @@
     color: white;
 }
 
+/* Dark mode header styling */
+.dark-mode .header {
+    background-color: #3c006e; /* Slightly darker purple for dark mode */
+}
+
 .left-header .logo {
     height: 50px;
     width: auto; /* Adjust logo size */
+}
+
+.right-header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 .right-header .profile-pic {
     height: 50px;
     width: 50px;
     border-radius: 50%; /* Circular profile picture */
+}
+
+/* Dark Mode Toggle Button Styling */
+.dark-mode-toggle {
+    margin-top: 10px; /* Space between the profile picture and the button */
+}
+
+.dark-mode-toggle button {
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    background-color: #4b0082; /* AUT purple color for the button */
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.dark-mode-toggle button:hover {
+    background-color: #3c006e; /* Slightly darker purple on hover */
 }
 
 /* Top navigation bar */
@@ -43,37 +81,94 @@
     cursor: pointer;
 }
 
-/* Booking form styling */
-.booking-form {
+/* Dark mode navigation bar */
+.dark-mode .top-nav {
+    background-color: #3c006e; /* Darker purple for dark mode */
+}
+
+/* Booking Section */
+.booking-section {
     padding: 20px;
     flex-grow: 1;
 }
 
-.booking-form label {
+/* Dark mode booking section styling */
+.dark-mode .booking-section {
+    background-color: #1e1e1e; /* Dark background for sections */
+    color: #e0e0e0; /* Light text color */
+}
+
+.booking-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode booking form styling */
+.dark-mode .booking-form {
+    background-color: #2c2c2c; /* Dark background for form */
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1); /* Light shadow */
+    color: #e0e0e0;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
     display: block;
-    margin: 10px 0 5px;
+    margin-bottom: 5px;
 }
 
-.booking-form select {
-    width: 100%; /* Full width for select inputs */
+.form-group input,
+.form-group textarea {
+    width: 100%;
     padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
 }
 
-.booking-form button {
-    padding: 10px 15px;
-    margin-right: 10px;
-    background-color: #4b0082; /* AUT purple color */
+/* Dark mode input/textarea styling */
+.dark-mode .form-group input,
+.dark-mode .form-group textarea {
+    background-color: #3e3e3e; /* Dark background for input fields */
+    border-color: #555; /* Darker border */
+    color: white; /* Light text color */
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.submit-button {
+    background-color: #4b0082;
     color: white;
+    padding: 10px 20px;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
 }
 
-.booking-form button:hover {
-    background-color: #6a0dad; /* Lighter purple on hover */
+.reset-button {
+    background-color: #f3f3f3;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Dark mode button styling */
+.dark-mode .submit-button {
+    background-color: #3c006e;
+}
+
+.dark-mode .reset-button {
+    background-color: #444;
+    color: white;
 }
 
 /* Making sure the app stretches to fill the entire screen */

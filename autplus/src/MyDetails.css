@@ -2,10 +2,16 @@
 .details-container {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    width: 100vw;
+    min-height: 100vh; /* Full height of the viewport */
+    width: 100vw; /* Full width of the viewport */
     font-family: Arial, sans-serif;
-    background-color: #f3f3f3;
+    background-color: #f3f3f3; /* Set a background color */
+}
+
+/* Dark mode styling for the details container */
+.dark-mode .details-container {
+    background-color: #121212; /* Dark background color */
+    color: #e0e0e0; /* Light text color */
 }
 
 /* Header styling */
@@ -14,19 +20,51 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #4b0082;
+    background-color: #4b0082; /* AUT purple color */
     color: white;
+}
+
+/* Dark mode header styling */
+.dark-mode .header {
+    background-color: #3c006e; /* Slightly darker purple for dark mode */
 }
 
 .left-header .logo {
     height: 50px;
-    width: auto;
+    width: auto; /* Adjust logo size */
+}
+
+.right-header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 .right-header .profile-pic {
     height: 50px;
     width: 50px;
-    border-radius: 50%;
+    border-radius: 50%; /* Circular profile picture */
+}
+
+/* Dark Mode Toggle Button Styling */
+.dark-mode-toggle {
+    margin-top: 10px; /* Space between the profile picture and the button */
+}
+
+.dark-mode-toggle button {
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    background-color: #4b0082; /* AUT purple color for the button */
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.dark-mode-toggle button:hover {
+    background-color: #3c006e; /* Slightly darker purple on hover */
 }
 
 /* Top navigation bar */
@@ -34,7 +72,7 @@
     display: flex;
     justify-content: space-around;
     padding: 15px 0;
-    background-color: #4b0082;
+    background-color: #4b0082; /* AUT purple color */
 }
 
 .nav-icon {
@@ -43,20 +81,46 @@
     cursor: pointer;
 }
 
-/* Details form styling */
+/* Dark mode navigation bar */
+.dark-mode .top-nav {
+    background-color: #3c006e; /* Darker purple for dark mode */
+}
+
+/* Details Form */
 .details-form {
-    padding: 20px;
+    margin: 20px;
 }
 
 .details-form label {
     display: block;
-    margin: 10px 0 5px;
+    margin-top: 10px;
 }
 
 .details-form input {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+/* Dark mode input styling */
+.dark-mode .details-form input {
+    background-color: #3e3e3e; /* Dark background for input fields */
+    border-color: #555; /* Darker border */
+    color: white; /* Light text color */
+}
+
+.details-form span {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Making sure the app stretches to fill the entire screen */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
 }

@@ -1,11 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./MyDetails.css"; 
 import { Link } from "react-router-dom";
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 
 const MyDetails = () => {
+  const [darkMode, setDarkMode] = useState(false);
+
+  // Load dark mode state from localStorage when the component mounts
+  useEffect(() => {
+    const savedDarkMode = localStorage.getItem("darkMode") === "true";
+    setDarkMode(savedDarkMode);
+  }, []);
+
+  // Save dark mode state to localStorage when it changes
+  const toggleDarkMode = () => {
+    const newDarkModeState = !darkMode;
+    setDarkMode(newDarkModeState);
+    localStorage.setItem("darkMode", newDarkModeState);
+  };
+
   return (
-    <div className="details-container">
+    <div className={`details-container ${darkMode ? "dark-mode" : ""}`}>
       {/* Header */}
       <div className="header">
         <div className="left-header">
@@ -17,6 +32,12 @@ const MyDetails = () => {
             alt="Profile"
             className="profile-pic"
           />
+          {/* Dark Mode Toggle Button */}
+          <div className="dark-mode-toggle">
+            <button onClick={toggleDarkMode}>
+              {darkMode ? "Light Mode" : "Dark Mode"}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -46,7 +67,7 @@ const MyDetails = () => {
         <input type="text" placeholder="Enter your last name" />
 
         <label>Points:</label>
-        <span>100</span> {/* Points 글자 추가 */}
+        <span>100</span> {/* Display Points */}
       </div>
     </div>
   );
