@@ -4,7 +4,8 @@ import Signup from "./Signup";
 import Login from "./Login";
 import Homepage from "./Homepage";
 import CommunityPage from "./CommunityPage";
-import ClubsPage from "./ClubsPage"; // Import ClubsPage
+import ClubsPage from "./ClubsPage";
+import ProfilePage from "./ProfilePage"; // Update to match the correct file name
 
 import "./App.css"; // Import custom CSS for styling
 
@@ -12,16 +13,15 @@ function App() {
   const [isButtonClicked, setIsButtonClicked] = useState(false);
 
   const handleButtonClick = () => {
-    setIsButtonClicked(true); // Set the state to true when the button is clicked
+    setIsButtonClicked(true);
   };
 
   return (
     <Router>
       <div className="container">
-        {/* Conditionally render the welcome message and button if the button hasn't been clicked */}
         {!isButtonClicked && (
           <>
-            <h1 className="welcome-text">Welcome to The Aut Web App</h1>
+            <h1 className="welcome-text">Welcome to The AUT Web App</h1>
             <Link to="/login">
               <button className="enter-button" onClick={handleButtonClick}>
                 Enter
@@ -30,13 +30,14 @@ function App() {
           </>
         )}
 
-        {/* Routes for navigation */}
         <Routes>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/Home" element={<Homepage />} />
           <Route path="/community" element={<CommunityPage />} />
-          <Route path="/clubs" element={<ClubsPage />} /> {/* Add route for ClubsPage */}
+          <Route path="/clubs" element={<ClubsPage />} />
+          <Route path="/profile" element={<ProfilePage />} />{" "}
+          {/* Ensure it matches */}
         </Routes>
       </div>
     </Router>
