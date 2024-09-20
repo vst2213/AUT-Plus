@@ -1,0 +1,30 @@
+/* App.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  text-align: center;
+}
+
+.welcome-text {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.enter-button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: #4CAF50; /* Green background */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.enter-button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
