@@ -76,7 +76,29 @@
     background-color: #6a0dad; /* Lighter purple on hover */
 }
 
-/* Making sure the app stretches to fill the entire screen */
+/* Back button styling */
+.back-button-container {
+    margin: 10px 0; /* Moved the button higher */
+    display: flex;
+    justify-content: center; /* Center the back button */
+}
+
+.back-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #4b0082; /* AUT purple color */
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #3c006e; /* Darker purple on hover */
+}
+
+/* Ensure the app stretches to fill the entire screen */
 body, html {
     margin: 0;
     padding: 0;

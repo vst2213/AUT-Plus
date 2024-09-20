@@ -121,6 +121,13 @@ const MakeBooking = ({ setBookingDetails }) => {
           </div>
         )}
       </div>
+
+      {/* Back button to return to MorePage.js */}
+      <div className="back-button-container">
+        <Link to="/more">
+          <button className="back-button">Back</button>
+        </Link>
+      </div>
     </div>
   );
 };

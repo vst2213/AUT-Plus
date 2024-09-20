@@ -14,7 +14,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #4b0082;
+    background-color: #4b0082; /* AUT purple color */
     color: white;
 }
 
@@ -34,13 +34,30 @@
     display: flex;
     justify-content: space-around;
     padding: 15px 0;
-    background-color: #4b0082;
+    background-color: #4b0082; /* AUT purple color */
 }
 
 .nav-icon {
     color: white;
     font-size: 24px;
     cursor: pointer;
+}
+
+/* Back button styling */
+.back-button {
+    margin: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #4b0082; /* AUT purple color */
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #3c006e; /* Slightly darker purple on hover */
 }
 
 /* Details form styling */
@@ -59,4 +76,10 @@
     margin-bottom: 20px;
     border-radius: 5px;
     border: 1px solid #ccc;
+}
+
+.details-form span {
+    display: block;
+    font-size: 16px;
+    margin-top: 10px;
 }
