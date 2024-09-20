@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
-import "./CommunityPage.css"; // Reuse styling from CommunityPage.css
+import "./ClubPage.css"; // Make sure the styles are in ClubPage.css
 
 const ClubsPage = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -9,6 +9,7 @@ const ClubsPage = () => {
   const [clubDescription, setClubDescription] = useState("");
   const [clubLocation, setClubLocation] = useState("");
   const [clubSchedule, setClubSchedule] = useState("");
+  const [advertisements, setAdvertisements] = useState([]);
 
   const handleFormVisibility = () => {
     setIsFormVisible(!isFormVisible);
@@ -16,23 +17,23 @@ const ClubsPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log("Club Advertisement Submitted:", {
-      clubName,
-      clubDescription,
-      clubLocation,
-      clubSchedule
-    });
-    setIsFormVisible(false); // Hide form after submission
-    // Optionally, redirect or update state to display new advertisement
+    setAdvertisements([
+      ...advertisements,
+      { clubName, clubDescription, clubLocation, clubSchedule }
+    ]);
+    setClubName("");
+    setClubDescription("");
+    setClubLocation("");
+    setClubSchedule("");
+    setIsFormVisible(false);
   };
 
   const handleCancel = () => {
-    setIsFormVisible(false); // Hide form and stay on the page
+    setIsFormVisible(false);
   };
 
   return (
-    <div className="community-container">
+    <div className="clubs-container"> {/* Updated class name for styling */}
       {/* Header */}
       <div className="header">
         <div className="left-header">
@@ -43,7 +44,7 @@ const ClubsPage = () => {
         </div>
       </div>
 
-      {/* Navigation Bar as Top Headers */}
+      {/* Navigation Bar */}
       <div className="top-nav">
         <Link to="/Home">
           <FaHome className="nav-icon" />
@@ -122,15 +123,28 @@ const ClubsPage = () => {
         </form>
       )}
 
-      {/* Example Advertisement */}
-      <div className="section posts-section">
-        <h2>Advertisements</h2>
-        <div className="post">
-          <div className="post-header">
-            <strong>Club123</strong>
+      {/* Advertisements Section */}
+      <div className="posts-section">
+        <h2>Club Advertisements</h2>
+        {advertisements.length > 0 ? (
+          advertisements.map((ad, index) => (
+            <div key={index} className="post">
+              <div className="post-header">
+                <strong>{ad.clubName}</strong>
+              </div>
+              <p>{ad.clubDescription}</p>
+              <p><strong>Location:</strong> {ad.clubLocation}</p>
+              <p><strong>Schedule:</strong> {ad.clubSchedule}</p>
+            </div>
+          ))
+        ) : (
+          <div className="post">
+            <div className="post-header">
+              <strong>No Advertisements Available</strong>
+            </div>
+            <p>Create a new club post to get started!</p>
           </div>
-          <p>We are the 123 Club.</p>
-        </div>
+        )}
       </div>
     </div>
   );
