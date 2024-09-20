@@ -1,15 +1,16 @@
-/* General styling for the club container */
-.club-container {
+/* General styling for the clubs container */
+.clubs-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* Full height of the viewport */
   width: 100vw; /* Full width of the viewport */
   font-family: Arial, sans-serif;
   background-color: #f3f3f3; /* Set a background color */
+  box-sizing: border-box; /* Ensure padding/margin don't affect the overall width/height */
 }
 
-/* Dark mode styling for the club container */
-.dark-mode .club-container {
+/* Dark mode styling for the clubs container */
+.dark-mode .clubs-container {
   background-color: #121212; /* Dark background color */
   color: #e0e0e0; /* Light text color */
 }
@@ -75,15 +76,42 @@
   background-color: #4b0082; /* AUT purple color */
 }
 
+/* Dark mode navigation bar */
+.dark-mode .top-nav {
+  background-color: #3c006e; /* Darker purple for dark mode */
+}
+
 .nav-icon {
   color: white;
   font-size: 24px;
   cursor: pointer;
 }
 
-/* Dark mode navigation bar */
-.dark-mode .top-nav {
-  background-color: #3c006e; /* Darker purple for dark mode */
+/* Actions and Buttons */
+.actions {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.round-button {
+  border: none;
+  border-radius: 50px;
+  padding: 15px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.round-button.AUT {
+  background-color: black;
+}
+
+.round-button.clubs {
+  background-color: white;
+  color: black;
 }
 
 /* Clubs Section */
@@ -121,6 +149,9 @@
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Adjust form width */
+  max-width: 800px; /* Optional: max width for large screens */
+  align-self: center;
 }
 
 /* Dark mode form styling */
@@ -192,4 +223,3 @@ body, html {
   height: 100%;
   width: 100%;
 }
-
