@@ -6,6 +6,7 @@ import "./CommunityPage.css";
 const CommunityPage = () => {
   const [post, setPost] = useState("");
   const [darkMode, setDarkMode] = useState(false);
+  const [isReported, setIsReported] = useState(false);
 
   // Load dark mode state from localStorage when the component mounts
   useEffect(() => {
@@ -30,6 +31,15 @@ const CommunityPage = () => {
     setPost(""); // Clear the input after submission
   };
 
+  // Handle reporting a user
+  const handleReport = (user) => {
+    setIsReported(true);
+    setTimeout(() => {
+      alert(`${user} has been reported for unwanted behavior.`);
+      setIsReported(false); // Reset the state for further reports
+    }, 500);
+  };
+
   return (
     <div className={`community-container ${darkMode ? "dark-mode" : ""}`}>
       {/* Header */}
@@ -52,7 +62,7 @@ const CommunityPage = () => {
         </div>
       </div>
 
-      {/* Navigation Bar as Top Headers */}
+      {/* Navigation Bar */}
       <div className="top-nav">
         <Link to="/Home">
           <FaHome className="nav-icon" />
@@ -64,13 +74,11 @@ const CommunityPage = () => {
           <FaCalendarAlt className="nav-icon" />
         </Link>
         <Link to="/more">
-          {" "}
-          {/* "More" 페이지로 링크 추가 */}
           <FaBars className="nav-icon" />
         </Link>
       </div>
 
-      {/* Community Actions and Input */}
+      {/* Community Actions */}
       <div className="actions">
         <button className="round-button AUT">AUT</button>
         <Link to="/clubs">
@@ -91,22 +99,40 @@ const CommunityPage = () => {
         </button>
       </form>
 
-      {/* Example User Posts */}
+      {/* Community Posts Section with Report Buttons */}
       <div className="section posts-section">
         <h2>Community Posts</h2>
+
+        {/* Post from Alice */}
         <div className="post">
           <div className="post-header">
             <strong>Alice</strong>
             <small>2 hours ago</small>
           </div>
           <p>Hello, where can I join clubs?</p>
+          <button
+            className="report-button"
+            onClick={() => handleReport("Alice")}
+            disabled={isReported}
+          >
+            {isReported ? "Reported" : "Report"}
+          </button>
         </div>
+
+        {/* Post from Bob */}
         <div className="post">
           <div className="post-header">
             <strong>Bob</strong>
             <small>1 hour ago</small>
           </div>
           <p>Welcome Alice! You can find clubs within the "Clubs" button.</p>
+          <button
+            className="report-button"
+            onClick={() => handleReport("Bob")}
+            disabled={isReported}
+          >
+            {isReported ? "Reported" : "Report"}
+          </button>
         </div>
       </div>
     </div>
