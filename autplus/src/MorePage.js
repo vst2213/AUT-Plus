@@ -1,7 +1,7 @@
 import React from "react";
 import "./Morepage.css";
 import { signOut } from "firebase/auth";
-import { auth } from "./firebase"; 
+import { auth } from "./firebase";
 import { useNavigate, Link } from "react-router-dom";
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 
@@ -11,7 +11,7 @@ const MorePage = () => {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      navigate("/login"); 
+      navigate("/login");
     } catch (error) {
       console.error("Logout Error:", error);
     }
@@ -22,7 +22,7 @@ const MorePage = () => {
       {/* Header */}
       <div className="header">
         <div className="left-header">
-          <img src="path/to/aut-logo.png" alt="AUT Logo" className="logo" />
+          <img src="/pictures/aut.jpeg" alt="AUT Logo" className="logo" />
         </div>
         <div className="right-header">
           <img
@@ -45,7 +45,6 @@ const MorePage = () => {
           <FaCalendarAlt className="nav-icon" />
         </Link>
         <FaBars className="nav-icon" />
-        
       </div>
 
       <h2>More Options</h2>
