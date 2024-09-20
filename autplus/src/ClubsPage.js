@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 import "./ClubPage.css"; // Make sure the styles are in ClubPage.css
 
@@ -33,7 +33,7 @@ const ClubsPage = () => {
     e.preventDefault();
     setAdvertisements([
       ...advertisements,
-      { clubName, clubDescription, clubLocation, clubSchedule }
+      { clubName, clubDescription, clubLocation, clubSchedule },
     ]);
     setClubName("");
     setClubDescription("");
@@ -51,10 +51,14 @@ const ClubsPage = () => {
       {/* Header */}
       <div className="header">
         <div className="left-header">
-          <img src="path/to/aut-logo.png" alt="AUT Logo" className="logo" />
+          <img src="/pictures/aut.jpeg" alt="AUT Logo" className="logo" />
         </div>
         <div className="right-header">
-          <img src="path/to/profile-pic.png" alt="Profile" className="profile-pic" />
+          <img
+            src="path/to/profile-pic.png"
+            alt="Profile"
+            className="profile-pic"
+          />
           {/* Dark Mode Toggle Button */}
           <div className="dark-mode-toggle">
             <button onClick={toggleDarkMode}>
@@ -84,9 +88,7 @@ const ClubsPage = () => {
           Create Club Post
         </button>
         <Link to="/joined-clubs">
-          <button className="round-button clubs">
-            Joined Clubs
-          </button>
+          <button className="round-button clubs">Joined Clubs</button>
         </Link>
       </div>
 
@@ -137,8 +139,16 @@ const ClubsPage = () => {
             </label>
           </div>
           <div className="form-buttons">
-            <button type="submit" className="post-submit">Submit</button>
-            <button type="button" className="post-cancel" onClick={handleCancel}>Cancel</button>
+            <button type="submit" className="post-submit">
+              Submit
+            </button>
+            <button
+              type="button"
+              className="post-cancel"
+              onClick={handleCancel}
+            >
+              Cancel
+            </button>
           </div>
         </form>
       )}
@@ -153,8 +163,12 @@ const ClubsPage = () => {
                 <strong>{ad.clubName}</strong>
               </div>
               <p>{ad.clubDescription}</p>
-              <p><strong>Location:</strong> {ad.clubLocation}</p>
-              <p><strong>Schedule:</strong> {ad.clubSchedule}</p>
+              <p>
+                <strong>Location:</strong> {ad.clubLocation}
+              </p>
+              <p>
+                <strong>Schedule:</strong> {ad.clubSchedule}
+              </p>
             </div>
           ))
         ) : (
