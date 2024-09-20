@@ -11,6 +11,7 @@ import MyDetails from "./MyDetails";
 import MakeBooking from "./MakeBooking";
 import Notifications from "./Notifications";
 import Contacts from "./Contacts"; // Import Contacts
+import SubmitFeedback from "./SubmitFeedback"; // Import the new SubmitFeedback component
 
 import "./App.css"; // Import custom CSS for styling
 
@@ -56,6 +57,7 @@ function App() {
             path="/notifications" 
             element={<Notifications bookingDetails={bookingDetails} />} 
           />
+          <Route path="/submit-feedback" element={<SubmitFeedback />} /> {/* Add route for SubmitFeedback */}
         </Routes>
       </div>
     </Router>
