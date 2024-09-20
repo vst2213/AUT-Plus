@@ -29,7 +29,9 @@ const MakeBooking = () => {
 
   const handleBooking = () => {
     if (selectedRoom && selectedTime) {
-      setConfirmation(`Your booking has been confirmed: ${selectedRoom} at ${selectedTime}`);
+      setConfirmation(
+        `Your booking has been confirmed: ${selectedRoom} at ${selectedTime}`
+      );
     } else {
       setConfirmation("Select Room and Time");
     }
@@ -46,7 +48,7 @@ const MakeBooking = () => {
       {/* Header */}
       <div className="header">
         <div className="left-header">
-          <img src="path/to/aut-logo.png" alt="AUT Logo" className="logo" />
+          <img src="/pictures/aut.jpeg" alt="AUT Logo" className="logo" />
         </div>
         <div className="right-header">
           <img

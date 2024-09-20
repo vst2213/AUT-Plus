@@ -1,13 +1,23 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 import "./ClubPage.css"; // Ensure this includes your styles
 
 const JoinedClubsPage = () => {
   // Replace this array with the actual list of joined clubs
   const joinedClubs = [
-    { name: "Art Club", description: "A club for art lovers.", location: "Room 101", schedule: "Mondays at 4 PM" },
-    { name: "Science Society", description: "Explore scientific wonders.", location: "WZ514", schedule: "Wednesdays at 5 PM" },
+    {
+      name: "Art Club",
+      description: "A club for art lovers.",
+      location: "Room 101",
+      schedule: "Mondays at 4 PM",
+    },
+    {
+      name: "Science Society",
+      description: "Explore scientific wonders.",
+      location: "WZ514",
+      schedule: "Wednesdays at 5 PM",
+    },
   ];
 
   return (
@@ -15,10 +25,14 @@ const JoinedClubsPage = () => {
       {/* Header */}
       <div className="header">
         <div className="left-header">
-          <img src="path/to/aut-logo.png" alt="AUT Logo" className="logo" />
+          <img src="/pictures/aut.jpeg" alt="AUT Logo" className="logo" />
         </div>
         <div className="right-header">
-          <img src="path/to/profile-pic.png" alt="Profile" className="profile-pic" />
+          <img
+            src="path/to/profile-pic.png"
+            alt="Profile"
+            className="profile-pic"
+          />
         </div>
       </div>
 
@@ -46,8 +60,12 @@ const JoinedClubsPage = () => {
                 <strong>{club.name}</strong>
               </div>
               <p>{club.description}</p>
-              <p><strong>Location:</strong> {club.location}</p>
-              <p><strong>Schedule:</strong> {club.schedule}</p>
+              <p>
+                <strong>Location:</strong> {club.location}
+              </p>
+              <p>
+                <strong>Schedule:</strong> {club.schedule}
+              </p>
             </div>
           ))
         ) : (

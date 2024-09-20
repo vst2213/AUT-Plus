@@ -1,5 +1,5 @@
 import React from "react";
-import "./MyDetails.css"; 
+import "./MyDetails.css";
 import { Link } from "react-router-dom";
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 
@@ -9,7 +9,7 @@ const MyDetails = () => {
       {/* Header */}
       <div className="header">
         <div className="left-header">
-          <img src="path/to/aut-logo.png" alt="AUT Logo" className="logo" />
+          <img src="/pictures/aut.jpeg" alt="AUT Logo" className="logo" />
         </div>
         <div className="right-header">
           <img
@@ -38,13 +38,10 @@ const MyDetails = () => {
       <div className="details-form">
         <label>Title:</label>
         <input type="text" placeholder="Enter your title" />
-        
         <label>First Name:</label>
         <input type="text" placeholder="Enter your first name" />
-        
         <label>Last Name:</label>
         <input type="text" placeholder="Enter your last name" />
-
         <label>Points:</label>
         <span>100</span> {/* Points 글자 추가 */}
       </div>
