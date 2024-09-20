@@ -1,13 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Homepage.css";
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'; 
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 
 const HomePage = () => {
   const [darkMode, setDarkMode] = useState(false);
 
+  // Load dark mode state from localStorage when the component mounts
+  useEffect(() => {
+    const savedDarkMode = localStorage.getItem("darkMode") === "true";
+    setDarkMode(savedDarkMode);
+  }, []);
+
+  // Save dark mode state to localStorage when it changes
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
+    const newDarkModeState = !darkMode;
+    setDarkMode(newDarkModeState);
+    localStorage.setItem("darkMode", newDarkModeState);
   };
 
   return (
