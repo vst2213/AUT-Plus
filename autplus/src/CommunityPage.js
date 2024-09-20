@@ -1,10 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
-import "./CommunityPage.css";
+import "./CommunityPage.css"; 
 
 const CommunityPage = () => {
   const [post, setPost] = useState("");
+  const [darkMode, setDarkMode] = useState(false);
+
+  // Load dark mode state from localStorage when the component mounts
+  useEffect(() => {
+    const savedDarkMode = localStorage.getItem("darkMode") === "true";
+    setDarkMode(savedDarkMode);
+  }, []);
+
+  // Save dark mode state to localStorage when it changes
+  const toggleDarkMode = () => {
+    const newDarkModeState = !darkMode;
+    setDarkMode(newDarkModeState);
+    localStorage.setItem("darkMode", newDarkModeState);
+  };
 
   const handlePostChange = (e) => {
     setPost(e.target.value);
@@ -17,7 +31,7 @@ const CommunityPage = () => {
   };
 
   return (
-    <div className="community-container">
+    <div className={`community-container ${darkMode ? "dark-mode" : ""}`}>
       {/* Header */}
       <div className="header">
         <div className="left-header">
@@ -29,6 +43,12 @@ const CommunityPage = () => {
             alt="Profile"
             className="profile-pic"
           />
+          {/* Dark Mode Toggle Button */}
+          <div className="dark-mode-toggle">
+            <button onClick={toggleDarkMode}>
+              {darkMode ? "Light Mode" : "Dark Mode"}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -43,7 +63,9 @@ const CommunityPage = () => {
         <Link to="/calendar">
           <FaCalendarAlt className="nav-icon" />
         </Link>
-        <FaBars className="nav-icon" />
+        <Link to="/more"> {/* "More" 페이지로 링크 추가 */}
+          <FaBars className="nav-icon" />
+        </Link>
       </div>
 
       {/* Community Actions and Input */}

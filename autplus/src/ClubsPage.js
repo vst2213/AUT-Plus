@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 import "./ClubPage.css"; // Make sure the styles are in ClubPage.css
@@ -10,6 +10,20 @@ const ClubsPage = () => {
   const [clubLocation, setClubLocation] = useState("");
   const [clubSchedule, setClubSchedule] = useState("");
   const [advertisements, setAdvertisements] = useState([]);
+  const [darkMode, setDarkMode] = useState(false);
+
+  // Load dark mode state from localStorage when the component mounts
+  useEffect(() => {
+    const savedDarkMode = localStorage.getItem("darkMode") === "true";
+    setDarkMode(savedDarkMode);
+  }, []);
+
+  // Save dark mode state to localStorage when it changes
+  const toggleDarkMode = () => {
+    const newDarkModeState = !darkMode;
+    setDarkMode(newDarkModeState);
+    localStorage.setItem("darkMode", newDarkModeState);
+  };
 
   const handleFormVisibility = () => {
     setIsFormVisible(!isFormVisible);
@@ -33,7 +47,7 @@ const ClubsPage = () => {
   };
 
   return (
-    <div className="clubs-container"> {/* Updated class name for styling */}
+    <div className={`clubs-container ${darkMode ? "dark-mode" : ""}`}> {/* Updated class name for styling */}
       {/* Header */}
       <div className="header">
         <div className="left-header">
@@ -41,6 +55,12 @@ const ClubsPage = () => {
         </div>
         <div className="right-header">
           <img src="path/to/profile-pic.png" alt="Profile" className="profile-pic" />
+          {/* Dark Mode Toggle Button */}
+          <div className="dark-mode-toggle">
+            <button onClick={toggleDarkMode}>
+              {darkMode ? "Light Mode" : "Dark Mode"}
+            </button>
+          </div>
         </div>
       </div>
 

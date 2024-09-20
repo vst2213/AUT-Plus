@@ -1,11 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Homepage.css";
-import { Link } from 'react-router-dom'; /* this is for linking the navigation bar */
+import { Link } from 'react-router-dom'; 
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 
 const HomePage = () => {
+  const [darkMode, setDarkMode] = useState(false);
+
+  // Load dark mode state from localStorage when the component mounts
+  useEffect(() => {
+    const savedDarkMode = localStorage.getItem("darkMode") === "true";
+    setDarkMode(savedDarkMode);
+  }, []);
+
+  // Save dark mode state to localStorage when it changes
+  const toggleDarkMode = () => {
+    const newDarkModeState = !darkMode;
+    setDarkMode(newDarkModeState);
+    localStorage.setItem("darkMode", newDarkModeState);
+  };
+
   return (
-    <div className="home-container">
+    <div className={`home-container ${darkMode ? "dark-mode" : ""}`}>
       {/* Header */}
       <div className="header">
         <div className="left-header">
@@ -17,20 +32,29 @@ const HomePage = () => {
             alt="Profile"
             className="profile-pic"
           />
+          {/* Dark Mode Toggle Button */}
+          <div className="dark-mode-toggle">
+            <button onClick={toggleDarkMode}>
+              {darkMode ? "Light Mode" : "Dark Mode"}
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Navigation Bar as Top Headers */}
       <div className="top-nav">
-        <FaHome className="nav-icon" />
-
-      {/* Added the link to switch pages here */}
+        <Link to="/Home">
+          <FaHome className="nav-icon" />
+        </Link>
         <Link to="/Community">
           <FaCommentDots className="nav-icon" />
         </Link>
-        
-        <FaCalendarAlt className="nav-icon" />
-        <FaBars className="nav-icon" />
+        <Link to="/Calendar">
+          <FaCalendarAlt className="nav-icon" />
+        </Link>
+        <Link to="/More"> {/* More page link */}
+          <FaBars className="nav-icon" />
+        </Link>
       </div>
 
       {/* What's On Next Section */}

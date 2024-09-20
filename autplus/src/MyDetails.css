@@ -1,0 +1,62 @@
+/* General styling for the details container */
+.details-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100vw;
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f3;
+}
+
+/* Header styling */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #4b0082;
+    color: white;
+}
+
+.left-header .logo {
+    height: 50px;
+    width: auto;
+}
+
+.right-header .profile-pic {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+/* Top navigation bar */
+.top-nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0;
+    background-color: #4b0082;
+}
+
+.nav-icon {
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Details form styling */
+.details-form {
+    padding: 20px;
+}
+
+.details-form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.details-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
