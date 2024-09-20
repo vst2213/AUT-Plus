@@ -9,11 +9,14 @@ import JoinedClubsPage from "./JoinedClubsPage"; // Import JoinedClubsPage
 import MorePage from "./MorePage"; // Import MorePage
 import MyDetails from "./MyDetails";
 import MakeBooking from "./MakeBooking";
+import Notifications from "./Notifications";
+import Contacts from "./Contacts"; // Import Contacts
 
 import "./App.css"; // Import custom CSS for styling
 
 function App() {
   const [isButtonClicked, setIsButtonClicked] = useState(false);
+  const [bookingDetails, setBookingDetails] = useState(null);
 
   const handleButtonClick = () => {
     setIsButtonClicked(true); // Set the state to true when the button is clicked
@@ -44,7 +47,15 @@ function App() {
           <Route path="/joined-clubs" element={<JoinedClubsPage />} /> {/* Add route for JoinedClubsPage */}
           <Route path="/more" element={<MorePage />} /> {/* Add route for MorePage */}
           <Route path="/my-details" element={<MyDetails />} /> 
-          <Route path="/make-booking" element={<MakeBooking />} /> 
+          <Route path="/contacts" element={<Contacts />} /> {/* Add route for Contacts */}
+          <Route 
+            path="/make-booking" 
+            element={<MakeBooking setBookingDetails={setBookingDetails} />} 
+          />
+          <Route 
+            path="/notifications" 
+            element={<Notifications bookingDetails={bookingDetails} />} 
+          />
         </Routes>
       </div>
     </Router>
