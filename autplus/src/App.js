@@ -6,6 +6,8 @@ import Homepage from "./Homepage";
 import CommunityPage from "./CommunityPage";
 import ClubsPage from "./ClubsPage"; // Import ClubsPage
 import MorePage from "./MorePage"; // Import MorePage
+import MyDetails from "./MyDetails";
+import MakeBooking from "./MakeBooking";
 
 import "./App.css"; // Import custom CSS for styling
 
@@ -39,6 +41,8 @@ function App() {
           <Route path="/community" element={<CommunityPage />} />
           <Route path="/clubs" element={<ClubsPage />} /> {/* Add route for ClubsPage */}
           <Route path="/more" element={<MorePage />} /> {/* Add route for MorePage */}
+          <Route path="/my-details" element={<MyDetails />} /> 
+          <Route path="/make-booking" element={<MakeBooking />} /> 
         </Routes>
       </div>
     </Router>

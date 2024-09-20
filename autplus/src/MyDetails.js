@@ -1,24 +1,11 @@
 import React from "react";
-import "./Morepage.css"; // 경로 확인
-import { signOut } from "firebase/auth";
-import { auth } from "./firebase"; 
-import { useNavigate, Link } from "react-router-dom";
+import "./MyDetails.css"; 
+import { Link } from "react-router-dom";
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 
-const MorePage = () => {
-  const navigate = useNavigate();
-
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      navigate("/login"); 
-    } catch (error) {
-      console.error("Logout Error:", error);
-    }
-  };
-
+const MyDetails = () => {
   return (
-    <div className="more-container">
+    <div className="details-container">
       {/* Header */}
       <div className="header">
         <div className="left-header">
@@ -47,14 +34,22 @@ const MorePage = () => {
         <FaBars className="nav-icon" />
       </div>
 
-      <h2>More Options</h2>
-      <div className="options">
-        <button onClick={() => navigate("/my-details")}>My AUT</button>
-        <button onClick={() => navigate("/make-booking")}>Make a Booking</button>
+      <h2>My Details</h2>
+      <div className="details-form">
+        <label>Title:</label>
+        <input type="text" placeholder="Enter your title" />
+        
+        <label>First Name:</label>
+        <input type="text" placeholder="Enter your first name" />
+        
+        <label>Last Name:</label>
+        <input type="text" placeholder="Enter your last name" />
+
+        <label>Points:</label>
+        <span>100</span> {/* Points 글자 추가 */}
       </div>
-      <button onClick={handleLogout}>Logout</button>
     </div>
   );
 };
 
-export default MorePage;
+export default MyDetails;

@@ -1,6 +1,6 @@
 import React from "react";
-import "./Homepage.css";
-import { Link } from 'react-router-dom'; // this is for linking the navigation bar
+import "./Homepage.css"; // CSS 파일
+import { Link } from 'react-router-dom'; 
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 
 const HomePage = () => {
@@ -25,14 +25,13 @@ const HomePage = () => {
         <Link to="/Home">
           <FaHome className="nav-icon" />
         </Link>
-        {/* Added the link to switch pages here */}
         <Link to="/community">
           <FaCommentDots className="nav-icon" />
         </Link>
-        <Link to="/calendar"> {/* Link to Calendar */}
+        <Link to="/calendar">
           <FaCalendarAlt className="nav-icon" />
         </Link>
-        <Link to="/more"> {/* Link to More Page */}
+        <Link to="/more"> {/* More 페이지로 이동하는 링크 추가 */}
           <FaBars className="nav-icon" />
         </Link>
       </div>
