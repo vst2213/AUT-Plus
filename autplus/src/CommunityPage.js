@@ -43,7 +43,9 @@ const CommunityPage = () => {
         <Link to="/calendar">
           <FaCalendarAlt className="nav-icon" />
         </Link>
-        <FaBars className="nav-icon" />
+        <Link to="/more"> {/* "More" 페이지로 링크 추가 */}
+          <FaBars className="nav-icon" />
+        </Link>
       </div>
 
       {/* Community Actions and Input */}

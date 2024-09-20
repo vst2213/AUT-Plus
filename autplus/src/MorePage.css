@@ -1,0 +1,63 @@
+.more-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f3f4f6; /* 배경색 */
+    color: #333; /* 기본 글자 색 */
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #fff; /* 헤더 배경색 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  }
+  
+  .left-header .logo {
+    height: 40px; /* 로고 크기 */
+  }
+  
+  .right-header .profile-pic {
+    height: 40px; /* 프로필 사진 크기 */
+    border-radius: 50%; /* 동그란 모양 */
+  }
+  
+  .top-nav {
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff; /* 네비게이션 배경색 */
+  }
+  
+  .nav-icon {
+    margin: 0 15px;
+    font-size: 24px; /* 아이콘 크기 */
+    cursor: pointer; /* 커서 모양 */
+  }
+  
+  .section {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 600px; /* 최대 너비 */
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+  }
+  
+  button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff; /* 버튼 색 */
+    color: white;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3; /* 버튼 호버 색 */
+  }
+  

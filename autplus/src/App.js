@@ -5,6 +5,7 @@ import Login from "./Login";
 import Homepage from "./Homepage";
 import CommunityPage from "./CommunityPage";
 import ClubsPage from "./ClubsPage"; // Import ClubsPage
+import MorePage from "./MorePage"; // Import MorePage
 
 import "./App.css"; // Import custom CSS for styling
 
@@ -37,6 +38,7 @@ function App() {
           <Route path="/Home" element={<Homepage />} />
           <Route path="/community" element={<CommunityPage />} />
           <Route path="/clubs" element={<ClubsPage />} /> {/* Add route for ClubsPage */}
+          <Route path="/more" element={<MorePage />} /> {/* Add route for MorePage */}
         </Routes>
       </div>
     </Router>
