@@ -1,39 +1,52 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 import "./Homepage.css";
-import { Link } from 'react-router-dom'; /* this is for linking the navigation bar */
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 
 const HomePage = () => {
+  const [profilePic, setProfilePic] = useState(
+    "path/to/default-profile-pic.png"
+  ); // Default profile picture
+  const auth = getAuth();
+  const user = auth.currentUser;
+
+  useEffect(() => {
+    const fetchProfilePic = async () => {
+      if (user) {
+        const db = getFirestore();
+        const userDocRef = doc(db, "users", user.uid);
+        const userDoc = await getDoc(userDocRef);
+        if (userDoc.exists()) {
+          setProfilePic(
+            userDoc.data().profilePicture || "path/to/default-profile-pic.png"
+          );
+        }
+      }
+    };
+
+    fetchProfilePic();
+  }, [user]);
+
   return (
     <div className="home-container">
-      {/* Header */}
       <div className="header">
         <div className="left-header">
           <img src="path/to/aut-logo.png" alt="AUT Logo" className="logo" />
         </div>
         <div className="right-header">
-          <img
-            src="path/to/profile-pic.png"
-            alt="Profile"
-            className="profile-pic"
-          />
+          <Link to="/profile">
+            <img src={profilePic} alt="Profile" className="profile-pic" />
+          </Link>
         </div>
       </div>
-
-      {/* Navigation Bar as Top Headers */}
       <div className="top-nav">
         <FaHome className="nav-icon" />
-
-      {/* Added the link to switch pages here */}
-        <Link to="/Community">
-          <FaCommentDots className="nav-icon" />
-        </Link>
-        
+        <FaCommentDots className="nav-icon" />
         <FaCalendarAlt className="nav-icon" />
         <FaBars className="nav-icon" />
       </div>
-
-      {/* What's On Next Section */}
       <div className="section">
         <h2>What's On Next</h2>
         <div className="cards">
@@ -49,8 +62,6 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-
-      {/* News Section */}
       <div className="section news-section">
         <h2>News</h2>
         <div className="news-card">

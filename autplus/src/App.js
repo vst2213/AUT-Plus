@@ -5,8 +5,7 @@ import Login from "./Login";
 import Homepage from "./Homepage";
 import CommunityPage from "./CommunityPage";
 import ClubsPage from "./ClubsPage";
-import ProfilePage from "./ProfilePage"; // Update to match the correct file name
-
+import ProfilePage from "./ProfilePage"; // Make sure this import is correct
 import "./App.css"; // Import custom CSS for styling
 
 function App() {
@@ -33,11 +32,11 @@ function App() {
         <Routes>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/Home" element={<Homepage />} />
+          <Route path="/home" element={<Homepage />} />
           <Route path="/community" element={<CommunityPage />} />
           <Route path="/clubs" element={<ClubsPage />} />
           <Route path="/profile" element={<ProfilePage />} />{" "}
-          {/* Ensure it matches */}
+          {/* Correct ProfilePage route */}
         </Routes>
       </div>
     </Router>

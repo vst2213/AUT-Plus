@@ -1,6 +1,8 @@
-// Import the functions you need from the SDKs you need
+// Import the functions you need from the Firebase SDKs
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth"; // Import the Firebase auth module
+import { getAuth } from "firebase/auth";
+import { getFirestore, enableIndexedDbPersistence } from "firebase/firestore";
+import { getStorage } from "firebase/storage"; // Import Firebase Storage
 import { getAnalytics } from "firebase/analytics";
 
 // Your web app's Firebase configuration
@@ -20,5 +22,19 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firebase Analytics (optional)
 const analytics = getAnalytics(app);
 
-// Initialize Firebase Authentication and export it
-export const auth = getAuth(app); // Exporting the 'auth' object for use in your app
+// Initialize Firebase Authentication and Firestore
+const auth = getAuth(app);
+const db = getFirestore(app);
+const storage = getStorage(app); // Initialize Firebase Storage
+
+// Enable offline persistence for Firestore
+enableIndexedDbPersistence(db).catch((err) => {
+  if (err.code === "failed-precondition") {
+    console.error("Offline persistence failed: Multiple tabs open");
+  } else if (err.code === "unimplemented") {
+    console.error("Offline persistence is not available");
+  }
+});
+
+// Export the Firebase services
+export { auth, db, storage, analytics };
