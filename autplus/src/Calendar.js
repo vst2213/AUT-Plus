@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Calendar.css";
 import { Link } from "react-router-dom";
-import { FaHome, FaCommentDots, FaBars, FaBook } from "react-icons/fa";
+import { FaHome, FaCommentDots, FaBars, FaBook, FaCalendarAlt } from "react-icons/fa"; // FaCalendarAlt 추가
 
 const Calendar = ({ setNotificationDetails }) => {
   // Sample data for upcoming classes
@@ -98,6 +98,9 @@ const Calendar = ({ setNotificationDetails }) => {
         </Link>
         <Link to="/community">
           <FaCommentDots className="nav-icon" />
+        </Link>
+        <Link to="/calendar">
+          <FaCalendarAlt className="nav-icon" />
         </Link>
         <FaBars className="nav-icon" />
       </div>
