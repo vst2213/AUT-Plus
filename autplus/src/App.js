@@ -4,29 +4,39 @@ import Signup from "./Signup";
 import Login from "./Login";
 import Homepage from "./Homepage";
 import CommunityPage from "./CommunityPage";
-import ClubsPage from "./ClubsPage"; // Import ClubsPage
-import JoinedClubsPage from "./JoinedClubsPage"; // Import JoinedClubsPage
-import MorePage from "./MorePage"; // Import MorePage
+import ClubsPage from "./ClubsPage";
+import JoinedClubsPage from "./JoinedClubsPage";
+import MorePage from "./MorePage";
 import MyDetails from "./MyDetails";
 import MakeBooking from "./MakeBooking";
 import Notifications from "./Notifications";
 import Contacts from "./Contacts"; // Import Contacts
+import Calendar from "./Calendar"; // Import Calendar
 import SubmitFeedback from "./SubmitFeedback"; // Import the new SubmitFeedback component
 
-import "./App.css"; // Import custom CSS for styling
+import "./App.css";
 
 function App() {
   const [isButtonClicked, setIsButtonClicked] = useState(false);
-  const [bookingDetails, setBookingDetails] = useState(null);
+  const [bookingDetails, setBookingDetails] = useState([]); 
+  const [notificationDetails, setNotificationDetails] = useState([]);
 
   const handleButtonClick = () => {
-    setIsButtonClicked(true); // Set the state to true when the button is clicked
+    setIsButtonClicked(true);
+  };
+
+  const handleSetBookingDetails = (newBooking) => {
+    setBookingDetails((prevDetails) => [...prevDetails, newBooking]);
+  };
+
+
+  const handleSetNotificationDetails = (newNotification) => {
+    setNotificationDetails((prevNotifications) => [...prevNotifications, newNotification]);
   };
 
   return (
     <Router>
       <div className="container">
-        {/* Conditionally render the welcome message and button if the button hasn't been clicked */}
         {!isButtonClicked && (
           <>
             <h1 className="welcome-text">Welcome to The Aut Web App</h1>
@@ -38,24 +48,25 @@ function App() {
           </>
         )}
 
-        {/* Routes for navigation */}
         <Routes>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/Home" element={<Homepage />} />
           <Route path="/community" element={<CommunityPage />} />
-          <Route path="/clubs" element={<ClubsPage />} /> {/* Add route for ClubsPage */}
-          <Route path="/joined-clubs" element={<JoinedClubsPage />} /> {/* Add route for JoinedClubsPage */}
-          <Route path="/more" element={<MorePage />} /> {/* Add route for MorePage */}
-          <Route path="/my-details" element={<MyDetails />} /> 
-          <Route path="/contacts" element={<Contacts />} /> {/* Add route for Contacts */}
+          <Route path="/clubs" element={<ClubsPage />} />
+          <Route path="/joined-clubs" element={<JoinedClubsPage />} />
+          <Route path="/more" element={<MorePage />} />
+          <Route path="/my-details" element={<MyDetails />} />
+          <Route path="/contacts" element={<Contacts />} />
+          <Route path="/calendar" element={<Calendar setNotificationDetails={handleSetNotificationDetails} />} />
+          
           <Route 
             path="/make-booking" 
-            element={<MakeBooking setBookingDetails={setBookingDetails} />} 
+            element={<MakeBooking setBookingDetails={handleSetBookingDetails} />} 
           />
           <Route 
             path="/notifications" 
-            element={<Notifications bookingDetails={bookingDetails} />} 
+            element={<Notifications bookingDetails={bookingDetails} notificationDetails={notificationDetails} />} 
           />
           <Route path="/submit-feedback" element={<SubmitFeedback />} /> {/* Add route for SubmitFeedback */}
         </Routes>

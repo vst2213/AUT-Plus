@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
 import "./MakeBooking.css";
-import { Link } from "react-router-dom";
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 
 const rooms = [
@@ -23,6 +23,7 @@ const timeSlots = [
 ];
 
 const MakeBooking = ({ setBookingDetails }) => {
+  const navigate = useNavigate(); // Initialize useNavigate
   const [selectedRoom, setSelectedRoom] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
   const [confirmation, setConfirmation] = useState("");
@@ -34,6 +35,9 @@ const MakeBooking = ({ setBookingDetails }) => {
       setConfirmation(bookingInfo);
       setBookingDetails({ room: selectedRoom, time: selectedTime });
       setShowReminderPrompt(true);
+
+      // Navigate to Notifications page after setting booking details
+      navigate("/notifications");
     } else {
       setConfirmation("Select Room and Time");
     }

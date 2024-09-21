@@ -3,7 +3,7 @@ import "./Notifications.css"; // 스타일 파일 추가
 import { Link } from "react-router-dom";
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 
-const Notifications = ({ bookingDetails }) => {
+const Notifications = ({ bookingDetails, notificationDetails }) => {
   return (
     <div className="notifications-container">
       {/* Header */}
@@ -36,12 +36,26 @@ const Notifications = ({ bookingDetails }) => {
 
       <h2>Notifications</h2>
 
-      {/* Booking Notification */}
+      {/* Booking Notifications */}
       <div className="booking-notification">
-        {bookingDetails ? (
-          <p>{`Your booking has been confirmed: ${bookingDetails.room} at ${bookingDetails.time}`}</p>
+        {bookingDetails.length > 0 ? (
+          bookingDetails.map((booking, index) => (
+            <p key={index}>{`Your booking has been confirmed: ${booking.room} at ${booking.time}`}</p>
+          ))
         ) : (
           <p>No bookings found.</p>
+        )}
+      </div>
+
+      {/* Class Notifications */}
+      <h3>Class Notifications</h3>
+      <div className="class-notification">
+        {notificationDetails.length > 0 ? (
+          notificationDetails.map((notification, index) => (
+            <p key={index}>{`Upcoming Class: ${notification.name} on ${notification.date}`}</p>
+          ))
+        ) : (
+          <p>No class notifications found.</p>
         )}
       </div>
     </div>
