@@ -12,12 +12,18 @@ import MakeBooking from "./MakeBooking";
 import Notifications from "./Notifications";
 import Contacts from "./Contacts"; // Import Contacts
 import SubmitFeedback from "./SubmitFeedback"; // Import the new SubmitFeedback component
+import Calendar from "./Calendar"; // Import Calendar
 
 import "./App.css"; // Import custom CSS for styling
 
 function App() {
   const [isButtonClicked, setIsButtonClicked] = useState(false);
   const [bookingDetails, setBookingDetails] = useState(null);
+  const [notificationDetails, setNotificationDetails] = useState([]); 
+
+  const handleSetNotificationDetails = (newNotification) => {
+    setNotificationDetails((prevNotifications) => [...prevNotifications, newNotification]);
+  };
 
   const handleButtonClick = () => {
     setIsButtonClicked(true); // Set the state to true when the button is clicked
@@ -57,6 +63,8 @@ function App() {
             path="/notifications" 
             element={<Notifications bookingDetails={bookingDetails} />} 
           />
+          <Route path="/calendar" element={<Calendar setNotificationDetails={handleSetNotificationDetails} />} />
+          
           <Route path="/submit-feedback" element={<SubmitFeedback />} /> {/* Add route for SubmitFeedback */}
         </Routes>
       </div>
