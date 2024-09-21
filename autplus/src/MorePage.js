@@ -50,9 +50,11 @@ const MorePage = () => {
       <h2>More Options</h2>
       <div className="options">
         <button onClick={() => navigate("/my-details")}>My AUT</button>
-        <button onClick={() => navigate("/contacts")}>Contacts</button> {/* Contacts 버튼 추가 */}
-        <button onClick={() => navigate("/notifications")}>Notifications</button> {/* Notifications 버튼 추가 */}
+        <button onClick={() => navigate("/contacts")}>Contacts</button>
+        <button onClick={() => navigate("/notifications")}>Notifications</button>
         <button onClick={() => navigate("/make-booking")}>Make a Booking</button>
+        {/* New Submit Feedback Button */}
+        <button onClick={() => navigate("/submit-feedback")}>Submit Feedback</button>
       </div>
       <button onClick={handleLogout}>Logout</button>
     </div>

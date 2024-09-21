@@ -10,26 +10,26 @@ import MorePage from "./MorePage";
 import MyDetails from "./MyDetails";
 import MakeBooking from "./MakeBooking";
 import Notifications from "./Notifications";
-import Contacts from "./Contacts";
-import Calendar from "./Calendar";
+import Contacts from "./Contacts"; // Import Contacts
+import Calendar from "./Calendar"; // Import Calendar
+import SubmitFeedback from "./SubmitFeedback"; // Import the new SubmitFeedback component
 
 import "./App.css";
 
 function App() {
   const [isButtonClicked, setIsButtonClicked] = useState(false);
-  const [bookingDetails, setBookingDetails] = useState([]); // 예약 정보 상태
-  const [notificationDetails, setNotificationDetails] = useState([]); // 알림 정보 상태
+  const [bookingDetails, setBookingDetails] = useState([]); 
+  const [notificationDetails, setNotificationDetails] = useState([]);
 
   const handleButtonClick = () => {
     setIsButtonClicked(true);
   };
 
-  // 예약 정보를 추가하는 함수
   const handleSetBookingDetails = (newBooking) => {
     setBookingDetails((prevDetails) => [...prevDetails, newBooking]);
   };
 
-  // 알림 정보를 추가하는 함수
+
   const handleSetNotificationDetails = (newNotification) => {
     setNotificationDetails((prevNotifications) => [...prevNotifications, newNotification]);
   };
@@ -68,6 +68,7 @@ function App() {
             path="/notifications" 
             element={<Notifications bookingDetails={bookingDetails} notificationDetails={notificationDetails} />} 
           />
+          <Route path="/submit-feedback" element={<SubmitFeedback />} /> {/* Add route for SubmitFeedback */}
         </Routes>
       </div>
     </Router>

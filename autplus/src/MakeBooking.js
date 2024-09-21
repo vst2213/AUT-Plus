@@ -51,7 +51,9 @@ const MakeBooking = ({ setBookingDetails }) => {
   };
 
   const setReminder = () => {
-    alert(`Reminder set for your booking at ${selectedTime} in ${selectedRoom}`);
+    alert(
+      `Reminder set for your booking at ${selectedTime} in ${selectedRoom}`
+    );
     setShowReminderPrompt(false);
   };
 
@@ -126,6 +128,7 @@ const MakeBooking = ({ setBookingDetails }) => {
         )}
       </div>
 
+      {/* Back button to return to MorePage.js */}
       <div className="back-button-container">
         <Link to="/more">
           <button className="back-button">Back</button>

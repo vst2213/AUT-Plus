@@ -5,9 +5,17 @@ import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 
 const Contacts = () => {
   const classes = [
-    { name: "COMP602", lecturer: "Matthew kuo", email: "matthew.kuo@autuni.ac.nz" },
+    {
+      name: "COMP602",
+      lecturer: "Matthew kuo",
+      email: "matthew.kuo@autuni.ac.nz",
+    },
     { name: "COMP602", lecturer: "Jane Jung", email: "ssr1891@autuni.ac.nz" },
-    { name: "COMP 9999", lecturer: "Albert Einstein", email: "vst2213@autuni.ac.nz" },
+    {
+      name: "COMP 9999",
+      lecturer: "Albert Einstein",
+      email: "vst2213@autuni.ac.nz",
+    },
   ];
 
   const handleContact = (email) => {
@@ -19,7 +27,7 @@ const Contacts = () => {
       {/* Header */}
       <div className="header">
         <div className="left-header">
-          <img src="path/to/aut-logo.png" alt="AUT Logo" className="logo" />
+          <img src="/pictures/aut.jpeg" alt="AUT Logo" className="logo" />
         </div>
         <div className="right-header">
           <img
@@ -48,8 +56,12 @@ const Contacts = () => {
       <div className="contacts-list">
         {classes.map((classItem, index) => (
           <div key={index} className="contact-item">
-            <span>{classItem.name} - {classItem.lecturer}</span>
-            <button onClick={() => handleContact(classItem.email)}>Contact</button>
+            <span>
+              {classItem.name} - {classItem.lecturer}
+            </span>
+            <button onClick={() => handleContact(classItem.email)}>
+              Contact
+            </button>
           </div>
         ))}
       </div>
