@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 import "./CommunityPage.css";
+import { useReports } from "./ReportContext"; // Import the context
 
 const CommunityPage = () => {
   const [post, setPost] = useState("");
   const [darkMode, setDarkMode] = useState(false);
   const [isReported, setIsReported] = useState(false);
+  const { addReport } = useReports(); // Get addReport from context
 
   // Load dark mode state from localStorage when the component mounts
   useEffect(() => {
@@ -32,7 +34,8 @@ const CommunityPage = () => {
   };
 
   // Handle reporting a user
-  const handleReport = (user) => {
+  const handleReport = (user, comment) => {
+    addReport(user, comment); // Pass both user and comment
     setIsReported(true);
     setTimeout(() => {
       alert(`${user} has been reported for unwanted behavior.`);
@@ -64,7 +67,7 @@ const CommunityPage = () => {
 
       {/* Navigation Bar */}
       <div className="top-nav">
-        <Link to="/Home">
+        <Link to="/home">
           <FaHome className="nav-icon" />
         </Link>
         <Link to="/community">
@@ -112,7 +115,9 @@ const CommunityPage = () => {
           <p>Hello, where can I join clubs?</p>
           <button
             className="report-button"
-            onClick={() => handleReport("Alice")}
+            onClick={() =>
+              handleReport("Alice", "Hello, where can I join clubs?")
+            }
             disabled={isReported}
           >
             {isReported ? "Reported" : "Report"}
@@ -128,7 +133,12 @@ const CommunityPage = () => {
           <p>Welcome Alice! You can find clubs within the "Clubs" button.</p>
           <button
             className="report-button"
-            onClick={() => handleReport("Bob")}
+            onClick={() =>
+              handleReport(
+                "Bob",
+                "Welcome Alice! You can find clubs within the 'Clubs' button."
+              )
+            }
             disabled={isReported}
           >
             {isReported ? "Reported" : "Report"}

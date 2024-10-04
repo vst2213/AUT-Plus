@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
+import { Link, useNavigate } from "react-router-dom";
 import {
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
 } from "firebase/auth";
-import { auth } from "./firebase"; // Assuming firebase is configured correctly
+import { auth } from "./firebase";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,8 +27,7 @@ function Login() {
       console.log("User logged in:", userCredential.user);
       setSuccess("Login successful!");
 
-      // Redirect to HomePage.js after successful login
-      navigate("/home"); // Change "/home" to the path of your HomePage.js
+      navigate("/home");
     } catch (error) {
       setError(error.message);
     }
@@ -46,6 +45,11 @@ function Login() {
     } catch (error) {
       setError(error.message);
     }
+  };
+
+  // Redirect to admin login
+  const handleAdminLogin = () => {
+    navigate("/admin-login"); // Navigate to Admin Login page
   };
 
   return (
@@ -79,6 +83,9 @@ function Login() {
       <p>
         Don't have an account? <Link to="/signup">Register</Link>
       </p>
+      <button onClick={handleAdminLogin} className="admin-login-button">
+        Admin Login
+      </button>
     </div>
   );
 }
