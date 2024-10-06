@@ -6,8 +6,7 @@ export const ReportProvider = ({ children }) => {
   const [reports, setReports] = useState([]);
 
   const addReport = (user, comment) => {
-    const newReport = { user, comment };
-    setReports((prevReports) => [...prevReports, newReport]);
+    setReports((prevReports) => [...prevReports, { user, comment }]);
   };
 
   return (
@@ -17,6 +16,4 @@ export const ReportProvider = ({ children }) => {
   );
 };
 
-export const useReports = () => {
-  return useContext(ReportContext);
-};
+export const useReports = () => useContext(ReportContext);

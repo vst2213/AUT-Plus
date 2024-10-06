@@ -1,24 +1,25 @@
 import React from "react";
-import { useReports } from "./ReportContext";
+import { useReports } from "./ReportContext"; // Use the hook
 
 const Reports = () => {
-  const { reports } = useReports(); // Access the reports array
+  const { reports } = useReports(); // Access reports via the hook
 
   return (
-    <div className="reports-container">
+    <div>
       <h2>Reported Comments</h2>
-      <div className="reports-list">
-        {reports.length === 0 ? (
-          <p>No reports available.</p>
-        ) : (
+      <ul>
+        {reports.length > 0 ? (
           reports.map((report, index) => (
-            <div key={index} className="report-item">
+            <li key={index}>
+              {/* Display the user and comment */}
               <strong>User:</strong> {report.user} <br />
               <strong>Comment:</strong> "{report.comment}"
-            </div>
+            </li>
           ))
+        ) : (
+          <p>No reported comments yet.</p>
         )}
-      </div>
+      </ul>
     </div>
   );
 };

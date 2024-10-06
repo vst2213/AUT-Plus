@@ -8,7 +8,7 @@ const CommunityPage = () => {
   const [post, setPost] = useState("");
   const [darkMode, setDarkMode] = useState(false);
   const [isReported, setIsReported] = useState(false);
-  const { addReport } = useReports(); // Get addReport from context
+  const { addReport, reports } = useReports(); // Get addReport and reports from context
 
   // Load dark mode state from localStorage when the component mounts
   useEffect(() => {
@@ -36,6 +36,7 @@ const CommunityPage = () => {
   // Handle reporting a user
   const handleReport = (user, comment) => {
     addReport(user, comment); // Pass both user and comment
+    console.log("Current reports:", reports); // Debug log to show current reports
     setIsReported(true);
     setTimeout(() => {
       alert(`${user} has been reported for unwanted behavior.`);
