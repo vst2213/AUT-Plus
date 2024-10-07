@@ -57,13 +57,6 @@ const ClubsPage = () => {
     localStorage.setItem("joinedClubs", JSON.stringify(updatedJoinedClubs));
   };
 
-  // Handle deletion of an advertisement
-  const handleDeleteAd = (index) => {
-    const updatedAds = advertisements.filter((_, i) => i !== index);
-    setAdvertisements(updatedAds);
-    localStorage.setItem("advertisements", JSON.stringify(updatedAds));
-  };
-
   return (
     <div className={`clubs-container ${darkMode ? "dark-mode" : ""}`}>
       {/* Header */}
@@ -193,23 +186,15 @@ const ClubsPage = () => {
                   <strong>Schedule:</strong> {ad.clubSchedule}
                 </p>
               </div>
-              <div className="post-actions">
-                <button
-                  className="join-button"
-                  onClick={() => handleJoinClub(ad)}
-                  disabled={joinedClubs.some((club) => club.clubName === ad.clubName)}
-                >
-                  {joinedClubs.some((club) => club.clubName === ad.clubName)
-                    ? "Joined"
-                    : "Join Club"}
-                </button>
-                <button
-                  className="delete-button"
-                  onClick={() => handleDeleteAd(index)}
-                >
-                  Delete Club
-                </button>
-              </div>
+              <button
+                className="join-button"
+                onClick={() => handleJoinClub(ad)}
+                disabled={joinedClubs.some((club) => club.clubName === ad.clubName)}
+              >
+                {joinedClubs.some((club) => club.clubName === ad.clubName)
+                  ? "Joined"
+                  : "Join Club"}
+              </button>
             </div>
           ))
         ) : (

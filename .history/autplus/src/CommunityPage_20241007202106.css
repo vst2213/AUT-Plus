@@ -164,7 +164,7 @@
 .form-buttons {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .form-buttons button {
@@ -215,7 +215,7 @@
 }
 
 .post-header {
-    /*display: flex;*/
+    display: flex;
     justify-content: space-between;
     font-weight: bold;
 }

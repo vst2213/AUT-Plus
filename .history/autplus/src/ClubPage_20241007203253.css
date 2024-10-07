@@ -5,7 +5,7 @@
   min-height: 100vh; /* Full height of the viewport */
   width: 100vw; /* Full width of the viewport */
   font-family: Arial, sans-serif;
-  background-color: #f3f3f3; /* Light background color */
+  background-color: #f3f3f3; /* Set a light background color */
   color: black; /* Default text color */
   box-sizing: border-box; /* Ensure padding/margin don't affect the overall width/height */
 }
@@ -31,7 +31,6 @@
   background-color: #3c006e; /* Slightly darker purple for dark mode */
 }
 
-/* Logo and Profile Picture Styling */
 .left-header .logo {
   height: 50px;
   width: auto; /* Adjust logo size */
@@ -50,7 +49,7 @@
   border-radius: 50%; /* Circular profile picture */
 }
 
-/* Navigation Bar */
+/* Top navigation bar */
 .top-nav {
   display: flex;
   justify-content: space-around;
@@ -69,13 +68,20 @@
   cursor: pointer;
 }
 
-/* Back Button Styling */
+/* Joined Clubs Section */
+.posts-section {
+  padding: 20px;
+  flex-grow: 1; /* This allows the section to take up available space */
+}
+
+/* Back Button Container at the Bottom */
 .back-button-container {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
+  padding: 20px; /* Add some padding around the button */
 }
 
+/* Back Button Styling */
 .back-button {
   padding: 10px 20px;
   font-size: 16px;
@@ -91,12 +97,6 @@
   background-color: #3c006e; /* Slightly darker purple on hover */
 }
 
-/* Joined Clubs Section */
-.posts-section {
-  padding: 20px;
-  flex-grow: 1;
-}
-
 /* Club Styling */
 .club {
   background-color: #fff;
@@ -110,100 +110,6 @@
 .dark-mode .club {
   background-color: #2c2c2c; /* Dark background for clubs */
   box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1); /* Light shadow */
-}
-
-/* Leave Club Button Styling */
-.leave-club-button {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  background-color: #d9534f; /* Bootstrap danger color */
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.leave-club-button:hover {
-  background-color: #c9302c; /* Darker shade on hover */
-}
-
-/* Dark mode Leave Club Button */
-.dark-mode .leave-club-button {
-  background-color: #ff6b6b; /* Lighter red for dark mode */
-}
-
-/* Form styling */
-.post-form {
-  display: flex;
-  flex-direction: column;
-  margin: 20px 0;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  width: 100%; /* Adjust form width */
-  max-width: 800px; /* Optional: max width for large screens */
-  align-self: center;
-}
-
-/* Dark mode form styling */
-.dark-mode .post-form {
-  background-color: #2c2c2c;
-  color: #e0e0e0;
-}
-
-/* Input/textarea styling */
-.post-form input, 
-.post-form textarea {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-}
-
-/* Dark mode input/textarea styling */
-.dark-mode .post-form input, 
-.dark-mode .post-form textarea {
-  background-color: #3e3e3e; /* Dark background for input fields */
-  border-color: #555; /* Darker border */
-  color: white; /* Light text color */
-}
-
-/* Form buttons styling */
-.form-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-.form-buttons button {
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-/* Submit and Cancel Button Styling */
-.post-submit {
-  background-color: #4b0082; /* AUT purple color */
-  color: white;
-}
-
-.post-cancel {
-  background-color: #f3f3f3;
-  color: black;
-}
-
-/* Dark mode for form buttons */
-.dark-mode .post-submit {
-  background-color: #3c006e;
-}
-
-.dark-mode .post-cancel {
-  background-color: #444;
-  color: white;
 }
 
 /* Ensures the app stretches to fill the entire screen */

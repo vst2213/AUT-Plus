@@ -13,7 +13,6 @@ const ClubsPage = () => {
   const [joinedClubs, setJoinedClubs] = useState([]);
   const [darkMode, setDarkMode] = useState(false);
 
-  // Load dark mode and ads from localStorage when the component mounts
   useEffect(() => {
     const savedDarkMode = localStorage.getItem("darkMode") === "true";
     setDarkMode(savedDarkMode);
@@ -25,14 +24,12 @@ const ClubsPage = () => {
     setJoinedClubs(savedJoinedClubs);
   }, []);
 
-  // Save dark mode to localStorage
   const toggleDarkMode = () => {
     const newDarkModeState = !darkMode;
     setDarkMode(newDarkModeState);
     localStorage.setItem("darkMode", newDarkModeState);
   };
 
-  // Save new advertisement
   const handleSubmit = (e) => {
     e.preventDefault();
     const newAd = { clubName, clubDescription, clubLocation, clubSchedule };
@@ -50,18 +47,10 @@ const ClubsPage = () => {
     setIsFormVisible(false);
   };
 
-  // Handle club joining
   const handleJoinClub = (club) => {
     const updatedJoinedClubs = [...joinedClubs, club];
     setJoinedClubs(updatedJoinedClubs);
     localStorage.setItem("joinedClubs", JSON.stringify(updatedJoinedClubs));
-  };
-
-  // Handle deletion of an advertisement
-  const handleDeleteAd = (index) => {
-    const updatedAds = advertisements.filter((_, i) => i !== index);
-    setAdvertisements(updatedAds);
-    localStorage.setItem("advertisements", JSON.stringify(updatedAds));
   };
 
   return (
@@ -72,12 +61,7 @@ const ClubsPage = () => {
           <img src="/pictures/aut.jpeg" alt="AUT Logo" className="logo" />
         </div>
         <div className="right-header">
-          <img
-            src="path/to/profile-pic.png"
-            alt="Profile"
-            className="profile-pic"
-          />
-          {/* Dark Mode Toggle Button */}
+          <img src="path/to/profile-pic.png" alt="Profile" className="profile-pic" />
           <div className="dark-mode-toggle">
             <button onClick={toggleDarkMode}>
               {darkMode ? "Light Mode" : "Dark Mode"}
@@ -88,15 +72,9 @@ const ClubsPage = () => {
 
       {/* Navigation Bar */}
       <div className="top-nav">
-        <Link to="/Home">
-          <FaHome className="nav-icon" />
-        </Link>
-        <Link to="/community">
-          <FaCommentDots className="nav-icon" />
-        </Link>
-        <Link to="/calendar">
-          <FaCalendarAlt className="nav-icon" />
-        </Link>
+        <Link to="/Home"><FaHome className="nav-icon" /></Link>
+        <Link to="/community"><FaCommentDots className="nav-icon" /></Link>
+        <Link to="/calendar"><FaCalendarAlt className="nav-icon" /></Link>
         <FaBars className="nav-icon" />
       </div>
 
@@ -114,59 +92,24 @@ const ClubsPage = () => {
       {isFormVisible && (
         <form className="post-form" onSubmit={handleSubmit}>
           <div>
-            <label>
-              Club Name:
-              <input
-                type="text"
-                value={clubName}
-                onChange={(e) => setClubName(e.target.value)}
-                required
-              />
-            </label>
+            <label>Club Name:</label>
+            <input type="text" value={clubName} onChange={(e) => setClubName(e.target.value)} required />
           </div>
           <div>
-            <label>
-              Club Description:
-              <textarea
-                value={clubDescription}
-                onChange={(e) => setClubDescription(e.target.value)}
-                required
-              />
-            </label>
+            <label>Club Description:</label>
+            <textarea value={clubDescription} onChange={(e) => setClubDescription(e.target.value)} required />
           </div>
           <div>
-            <label>
-              Club Location:
-              <input
-                type="text"
-                value={clubLocation}
-                onChange={(e) => setClubLocation(e.target.value)}
-                required
-              />
-            </label>
+            <label>Club Location:</label>
+            <input type="text" value={clubLocation} onChange={(e) => setClubLocation(e.target.value)} required />
           </div>
           <div>
-            <label>
-              Club Schedule:
-              <input
-                type="text"
-                value={clubSchedule}
-                onChange={(e) => setClubSchedule(e.target.value)}
-                required
-              />
-            </label>
+            <label>Club Schedule:</label>
+            <input type="text" value={clubSchedule} onChange={(e) => setClubSchedule(e.target.value)} required />
           </div>
           <div className="form-buttons">
-            <button type="submit" className="post-submit">
-              Submit
-            </button>
-            <button
-              type="button"
-              className="post-cancel"
-              onClick={handleCancel}
-            >
-              Cancel
-            </button>
+            <button type="submit" className="post-submit">Submit</button>
+            <button type="button" className="post-cancel" onClick={handleCancel}>Cancel</button>
           </div>
         </form>
       )}
@@ -177,46 +120,20 @@ const ClubsPage = () => {
         {advertisements.length > 0 ? (
           advertisements.map((ad, index) => (
             <div key={index} className="post">
-              <div className="post-header">
-                <strong>Club Name: </strong>
-                <span>{ad.clubName}</span>
-              </div>
-              <div className="post-description">
-                <strong>Club Description: </strong>
-                <p>{ad.clubDescription}</p>
-              </div>
+              <div className="post-header"><strong>{ad.clubName}</strong></div>
+              <p>{ad.clubDescription}</p>
               <div className="club-details">
-                <p>
-                  <strong>Location:</strong> {ad.clubLocation}
-                </p>
-                <p>
-                  <strong>Schedule:</strong> {ad.clubSchedule}
-                </p>
+                <p><strong>Location:</strong> {ad.clubLocation}</p>
+                <p><strong>Schedule:</strong> {ad.clubSchedule}</p>
               </div>
-              <div className="post-actions">
-                <button
-                  className="join-button"
-                  onClick={() => handleJoinClub(ad)}
-                  disabled={joinedClubs.some((club) => club.clubName === ad.clubName)}
-                >
-                  {joinedClubs.some((club) => club.clubName === ad.clubName)
-                    ? "Joined"
-                    : "Join Club"}
-                </button>
-                <button
-                  className="delete-button"
-                  onClick={() => handleDeleteAd(index)}
-                >
-                  Delete Club
-                </button>
-              </div>
+              <button className="join-button" onClick={() => handleJoinClub(ad)} disabled={joinedClubs.some((club) => club.clubName === ad.clubName)}>
+                {joinedClubs.some((club) => club.clubName === ad.clubName) ? "Joined" : "Join Club"}
+              </button>
             </div>
           ))
         ) : (
           <div className="post">
-            <div className="post-header">
-              <strong>No Advertisements Available</strong>
-            </div>
+            <div className="post-header"><strong>No Advertisements Available</strong></div>
             <p>Create a new club post to get started!</p>
           </div>
         )}

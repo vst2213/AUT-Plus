@@ -69,7 +69,7 @@
 
 /* Top navigation bar */
 .top-nav {
-    display: flex;
+    /*display: flex;*/
     justify-content: space-around;
     padding: 15px 0;
     background-color: #4b0082; /* AUT purple color */
@@ -215,7 +215,7 @@
 }
 
 .post-header {
-    /*display: flex;*/
+    display: flex;
     justify-content: space-between;
     font-weight: bold;
 }

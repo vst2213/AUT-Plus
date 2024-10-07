@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
-import "./ClubPage.css";
+import "./ClubPage.css"; // Ensure this includes your styles
 
 const JoinedClubsPage = () => {
   const [joinedClubs, setJoinedClubs] = useState([]);
@@ -80,13 +80,6 @@ const JoinedClubsPage = () => {
             <p>Join a club to see your joined clubs here!</p>
           </div>
         )}
-      </div>
-
-      {/* Back Button Container */}
-      <div className="back-button-container">
-        <Link to="/community">
-          <button className="back-button">Back to Community</button>
-        </Link>
       </div>
     </div>
   );

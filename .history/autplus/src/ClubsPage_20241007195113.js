@@ -57,13 +57,6 @@ const ClubsPage = () => {
     localStorage.setItem("joinedClubs", JSON.stringify(updatedJoinedClubs));
   };
 
-  // Handle deletion of an advertisement
-  const handleDeleteAd = (index) => {
-    const updatedAds = advertisements.filter((_, i) => i !== index);
-    setAdvertisements(updatedAds);
-    localStorage.setItem("advertisements", JSON.stringify(updatedAds));
-  };
-
   return (
     <div className={`clubs-container ${darkMode ? "dark-mode" : ""}`}>
       {/* Header */}
@@ -178,13 +171,9 @@ const ClubsPage = () => {
           advertisements.map((ad, index) => (
             <div key={index} className="post">
               <div className="post-header">
-                <strong>Club Name: </strong>
-                <span>{ad.clubName}</span>
+                <strong>{ad.clubName}</strong>
               </div>
-              <div className="post-description">
-                <strong>Club Description: </strong>
-                <p>{ad.clubDescription}</p>
-              </div>
+              <p>{ad.clubDescription}</p>
               <div className="club-details">
                 <p>
                   <strong>Location:</strong> {ad.clubLocation}
@@ -193,23 +182,15 @@ const ClubsPage = () => {
                   <strong>Schedule:</strong> {ad.clubSchedule}
                 </p>
               </div>
-              <div className="post-actions">
-                <button
-                  className="join-button"
-                  onClick={() => handleJoinClub(ad)}
-                  disabled={joinedClubs.some((club) => club.clubName === ad.clubName)}
-                >
-                  {joinedClubs.some((club) => club.clubName === ad.clubName)
-                    ? "Joined"
-                    : "Join Club"}
-                </button>
-                <button
-                  className="delete-button"
-                  onClick={() => handleDeleteAd(index)}
-                >
-                  Delete Club
-                </button>
-              </div>
+              <button
+                className="join-button"
+                onClick={() => handleJoinClub(ad)}
+                disabled={joinedClubs.some((club) => club.clubName === ad.clubName)}
+              >
+                {joinedClubs.some((club) => club.clubName === ad.clubName)
+                  ? "Joined"
+                  : "Join Club"}
+              </button>
             </div>
           ))
         ) : (

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
-import "./ClubPage.css";
+import "./ClubPage.css"; // Ensure this includes your styles
 
 const JoinedClubsPage = () => {
   const [joinedClubs, setJoinedClubs] = useState([]);
