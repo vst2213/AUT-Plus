@@ -1,4 +1,3 @@
-// App.js
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Signup from "./Signup";
@@ -16,8 +15,10 @@ import Calendar from "./Calendar";
 import SubmitFeedback from "./SubmitFeedback";
 import AdminLogin from "./AdminLogin";
 import AdminPage from "./AdminPage";
-import Reports from "./Reports"; // Import the Reports page
-import { ReportProvider } from "./ReportContext"; // Import ReportProvider
+import Reports from "./Reports";
+import { ReportProvider } from "./ReportContext";
+import ProfilePage from "./ProfilePage"; // Import ProfilePage component
+import { ProfileProvider } from "./ProfileContext"; // Import ProfileProvider for profile picture management
 
 import "./App.css";
 
@@ -43,62 +44,67 @@ function App() {
 
   return (
     <ReportProvider>
-      <Router>
-        <div className="container">
-          {/* Regular user login section */}
-          {!isButtonClicked && (
-            <>
-              <h1 className="welcome-text">Welcome to The AUT Web App</h1>
-              <Link to="/login">
-                <button className="enter-button" onClick={handleButtonClick}>
-                  Enter
-                </button>
-              </Link>
-            </>
-          )}
+      <ProfileProvider>
+        {" "}
+        {/* Wrap app in ProfileProvider to manage global profile state */}
+        <Router>
+          <div className="container">
+            {/* Regular user login section */}
+            {!isButtonClicked && (
+              <>
+                <h1 className="welcome-text">Welcome to The AUT Web App</h1>
+                <Link to="/login">
+                  <button className="enter-button" onClick={handleButtonClick}>
+                    Enter
+                  </button>
+                </Link>
+              </>
+            )}
 
-          <Routes>
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/home" element={<Homepage />} />
-            <Route path="/community" element={<CommunityPage />} />
-            <Route path="/clubs" element={<ClubsPage />} />
-            <Route path="/joined-clubs" element={<JoinedClubsPage />} />
-            <Route path="/more" element={<MorePage />} />
-            <Route path="/my-details" element={<MyDetails />} />
-            <Route path="/contacts" element={<Contacts />} />
-            <Route
-              path="/calendar"
-              element={
-                <Calendar
-                  setNotificationDetails={handleSetNotificationDetails}
-                />
-              }
-            />
-            <Route
-              path="/make-booking"
-              element={
-                <MakeBooking setBookingDetails={handleSetBookingDetails} />
-              }
-            />
-            <Route
-              path="/notifications"
-              element={
-                <Notifications
-                  bookingDetails={bookingDetails}
-                  notificationDetails={notificationDetails}
-                />
-              }
-            />
-            <Route path="/submit-feedback" element={<SubmitFeedback />} />
-            {/* Admin routes accessible via direct URL only */}
-            <Route path="/admin-login" element={<AdminLogin />} />
-            <Route path="/admin" element={<AdminPage />} />
-            <Route path="/reports" element={<Reports />} />{" "}
-            {/* Add Reports route */}
-          </Routes>
-        </div>
-      </Router>
+            <Routes>
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/home" element={<Homepage />} />
+              <Route path="/community" element={<CommunityPage />} />
+              <Route path="/clubs" element={<ClubsPage />} />
+              <Route path="/joined-clubs" element={<JoinedClubsPage />} />
+              <Route path="/more" element={<MorePage />} />
+              <Route path="/my-details" element={<MyDetails />} />
+              <Route path="/contacts" element={<Contacts />} />
+              <Route
+                path="/calendar"
+                element={
+                  <Calendar
+                    setNotificationDetails={handleSetNotificationDetails}
+                  />
+                }
+              />
+              <Route
+                path="/make-booking"
+                element={
+                  <MakeBooking setBookingDetails={handleSetBookingDetails} />
+                }
+              />
+              <Route
+                path="/notifications"
+                element={
+                  <Notifications
+                    bookingDetails={bookingDetails}
+                    notificationDetails={notificationDetails}
+                  />
+                }
+              />
+              <Route path="/submit-feedback" element={<SubmitFeedback />} />
+              {/* Admin routes accessible via direct URL only */}
+              <Route path="/admin-login" element={<AdminLogin />} />
+              <Route path="/admin" element={<AdminPage />} />
+              <Route path="/reports" element={<Reports />} />{" "}
+              <Route path="/ProfilePage" element={<ProfilePage />} />{" "}
+              {/* Add ProfilePage route */}
+            </Routes>
+          </div>
+        </Router>
+      </ProfileProvider>
     </ReportProvider>
   );
 }

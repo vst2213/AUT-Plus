@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./Homepage.css";
 import { Link } from "react-router-dom";
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
+import { ProfileContext } from "./ProfileContext"; // Import ProfileContext for profile picture
 
 const HomePage = () => {
+  const { profileImage } = useContext(ProfileContext); // Access profile image from context
   const [darkMode, setDarkMode] = useState(false);
 
   // Load dark mode state from localStorage when the component mounts
@@ -27,11 +29,14 @@ const HomePage = () => {
           <img src="/pictures/aut.jpeg" alt="AUT Logo" className="logo" />
         </div>
         <div className="right-header">
-          <img
-            src="path/to/profile-pic.png"
-            alt="Profile"
-            className="profile-pic"
-          />
+          {/* Make Profile Picture Clickable */}
+          <Link to="/ProfilePage">
+            <img
+              src={profileImage || "/default-profile.png"} // Fallback to default profile image if none is set
+              alt="Profile"
+              className="profile-pic clickable" // Added class to make it clear the image is clickable
+            />
+          </Link>
           {/* Dark Mode Toggle Button */}
           <div className="dark-mode-toggle">
             <button onClick={toggleDarkMode}>
@@ -43,18 +48,16 @@ const HomePage = () => {
 
       {/* Navigation Bar as Top Headers */}
       <div className="top-nav">
-        <Link to="/Home">
+        <Link to="/home">
           <FaHome className="nav-icon" />
         </Link>
-        <Link to="/Community">
+        <Link to="/community">
           <FaCommentDots className="nav-icon" />
         </Link>
-        <Link to="/Calendar">
+        <Link to="/calendar">
           <FaCalendarAlt className="nav-icon" />
         </Link>
-        <Link to="/More">
-          {" "}
-          {/* More page link */}
+        <Link to="/more">
           <FaBars className="nav-icon" />
         </Link>
       </div>
@@ -66,7 +69,7 @@ const HomePage = () => {
           <div className="card event-card">
             <span>September 17th: 8am-2pm</span>
             <p>COMP703/W201A - Research and Development Project Part 2</p>
-            <span className="location">offsite</span>
+            <span className="location">Offsite</span>
           </div>
           <div className="card event-card">
             <span>September 20th: 8am-2pm</span>
