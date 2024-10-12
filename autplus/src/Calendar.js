@@ -1,7 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Calendar.css";
 import { Link } from "react-router-dom";
-import { FaHome, FaCommentDots, FaBars, FaBook, FaCalendarAlt } from "react-icons/fa"; // FaCalendarAlt 추가
+import {
+  FaHome,
+  FaCommentDots,
+  FaBars,
+  FaBook,
+  FaCalendarAlt,
+} from "react-icons/fa"; // FaCalendarAlt 추가
 
 const Calendar = ({ setNotificationDetails }) => {
   // Sample data for upcoming classes
@@ -14,7 +20,8 @@ const Calendar = ({ setNotificationDetails }) => {
       date: "22",
       month: "September",
       year: "2024",
-      details: "This course focuses on advanced algorithms and their applications."
+      details:
+        "This course focuses on advanced algorithms and their applications.",
     },
     {
       name: "French",
@@ -24,7 +31,7 @@ const Calendar = ({ setNotificationDetails }) => {
       date: "23",
       month: "September",
       year: "2024",
-      details: "Learn basic French communication skills in this course."
+      details: "Learn basic French communication skills in this course.",
     },
     {
       name: "Computer Science",
@@ -34,7 +41,7 @@ const Calendar = ({ setNotificationDetails }) => {
       date: "24",
       month: "September",
       year: "2024",
-      details: "Introduction to computer science concepts and programming."
+      details: "Introduction to computer science concepts and programming.",
     },
   ]);
 
@@ -84,11 +91,9 @@ const Calendar = ({ setNotificationDetails }) => {
       {/* Header */}
       <div className="header">
         <div className="left-header">
-          <img src="path/to/aut-logo.png" alt="AUT Logo" className="logo" />
+          <img src="/pictures/aut.jpeg" alt="AUT Logo" className="logo" />
         </div>
-        <div className="right-header">
-          <img src="path/to/profile-pic.png" alt="Profile" className="profile-pic" />
-        </div>
+        <div className="right-header"></div>
       </div>
 
       {/* Top Navigation Bar */}
@@ -111,7 +116,10 @@ const Calendar = ({ setNotificationDetails }) => {
           <div key={index} className="class-item">
             <div className="class-details">
               <h3>{classItem.name}</h3>
-              <p>{classItem.day}, {classItem.date} {classItem.month} {classItem.year}</p>
+              <p>
+                {classItem.day}, {classItem.date} {classItem.month}{" "}
+                {classItem.year}
+              </p>
               <p>Room: {classItem.room}</p>
               <p>Time: {classItem.time}</p>
             </div>
@@ -123,8 +131,12 @@ const Calendar = ({ setNotificationDetails }) => {
                     <h4>Options</h4>
                     <ul>
                       <li>Navigate</li>
-                      <li onClick={() => handleEnhancedInfo(classItem)}>Enhanced Information</li>
-                      <li onClick={() => handleSetNotification(classItem)}>Set Notification</li>
+                      <li onClick={() => handleEnhancedInfo(classItem)}>
+                        Enhanced Information
+                      </li>
+                      <li onClick={() => handleSetNotification(classItem)}>
+                        Set Notification
+                      </li>
                     </ul>
                   </>
                 ) : (

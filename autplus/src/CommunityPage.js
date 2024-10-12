@@ -52,11 +52,6 @@ const CommunityPage = () => {
           <img src="/pictures/aut.jpeg" alt="AUT Logo" className="logo" />
         </div>
         <div className="right-header">
-          <img
-            src="path/to/profile-pic.png"
-            alt="Profile"
-            className="profile-pic"
-          />
           {/* Dark Mode Toggle Button */}
           <div className="dark-mode-toggle">
             <button onClick={toggleDarkMode}>

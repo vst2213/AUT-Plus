@@ -1,29 +1,36 @@
-// ProfilePage.js
 import React, { useContext } from "react";
-import "./ProfilePage.css";
-import { ProfileContext } from "./ProfileContext"; // Import ProfileContext
+import { ProfileContext } from "./ProfileContext";
+import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
+import "./ProfilePage.css"; // Ensure you have the appropriate CSS styles
 
 const ProfilePage = () => {
-  const { profileImage, setProfileImage } = useContext(ProfileContext); // Access and set profile image
+  const { profileImage, setProfileImage } = useContext(ProfileContext);
+  const navigate = useNavigate(); // Initialize navigate function
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     if (file) {
       const imageUrl = URL.createObjectURL(file);
-      setProfileImage(imageUrl); // Update profile image globally
+      setProfileImage(imageUrl); // Update the profile image globally
     }
+  };
+
+  const handleSave = () => {
+    // Navigate back to the homepage
+    navigate("/home");
   };
 
   return (
     <div className="profile-page-container">
-      <h1>My Profile</h1>
+      <h1>My Profile Picture</h1>
       <div className="profile-details">
-        {/* Profile picture and image change button */}
         <div className="profile-picture-section">
-          <img src={profileImage} alt="Profile" className="profile-picture" />
-          <label htmlFor="imageUpload" className="image-upload-button">
-            Change Image
-          </label>
+          <img
+            src={profileImage || "/pictures/pfp.jpeg"} // Fallback to default profile image
+            alt="Profile"
+            className="profile-picture"
+          />
+          {/* Change Image Button */}
           <input
             type="file"
             id="imageUpload"
@@ -31,17 +38,17 @@ const ProfilePage = () => {
             onChange={handleImageChange}
             className="file-input"
           />
+          <button
+            className="change-image-button"
+            onClick={() => document.getElementById("imageUpload").click()} // Trigger file input click
+          >
+            Change Image
+          </button>
         </div>
-
-        {/* Student Information */}
-        <div className="profile-info">
-          <p>
-            <strong>Name:</strong> John Doe
-          </p>
-          <p>
-            <strong>Student ID:</strong> 123456789
-          </p>
-        </div>
+        {/* Add the Save button */}
+        <button className="save-button" onClick={handleSave}>
+          Save
+        </button>
       </div>
     </div>
   );

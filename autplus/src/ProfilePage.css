@@ -1,56 +1,60 @@
 .profile-page-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .profile-details {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  .profile-picture-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .profile-picture {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 10px;
-  }
-  
-  .image-upload-button {
-    display: inline-block;
-    background-color: #007bff;
-    color: white;
-    padding: 8px 12px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 14px;
-  }
-  
-  .file-input {
-    display: none;
-  }
-  
-  .profile-info {
-    margin-left: 30px;
-    text-align: left;
-  }
-  
-  .profile-info p {
-    font-size: 18px;
-    margin: 10px 0;
-  }
-  
-  .profile-info strong {
-    font-weight: bold;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-picture-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%; /* Make the profile picture circular */
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.file-input {
+  display: none; /* Hide the file input */
+}
+
+.change-image-button {
+  margin-top: 10px; /* Add some space above the button */
+  padding: 10px 20px; /* Button padding */
+  background-color: #007bff; /* Blue background */
+  color: white; /* White text */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 16px; /* Font size */
+}
+
+.change-image-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.save-button {
+  margin-top: 20px; /* Add some space above the button */
+  padding: 10px 20px; /* Button padding */
+  background-color: #007bff; /* Green background */
+  color: white; /* White text */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 16px; /* Font size */
+}
+
+.save-button:hover {
+  background-color: #007bff; /* Darker green on hover */
+}

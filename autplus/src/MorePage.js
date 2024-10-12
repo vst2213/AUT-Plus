@@ -25,11 +25,7 @@ const MorePage = () => {
           <img src="/pictures/aut.jpeg" alt="AUT Logo" className="logo" />
         </div>
         <div className="right-header">
-          <img
-            src="path/to/profile-pic.png"
-            alt="Profile"
-            className="profile-pic"
-          />
+          <img />
         </div>
       </div>
 
@@ -51,10 +47,16 @@ const MorePage = () => {
       <div className="options">
         <button onClick={() => navigate("/my-details")}>My AUT</button>
         <button onClick={() => navigate("/contacts")}>Contacts</button>
-        <button onClick={() => navigate("/notifications")}>Notifications</button>
-        <button onClick={() => navigate("/make-booking")}>Make a Booking</button>
+        <button onClick={() => navigate("/notifications")}>
+          Notifications
+        </button>
+        <button onClick={() => navigate("/make-booking")}>
+          Make a Booking
+        </button>
         {/* New Submit Feedback Button */}
-        <button onClick={() => navigate("/submit-feedback")}>Submit Feedback</button>
+        <button onClick={() => navigate("/submit-feedback")}>
+          Submit Feedback
+        </button>
       </div>
       <button onClick={handleLogout}>Logout</button>
     </div>

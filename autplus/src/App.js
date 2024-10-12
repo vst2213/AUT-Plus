@@ -45,8 +45,6 @@ function App() {
   return (
     <ReportProvider>
       <ProfileProvider>
-        {" "}
-        {/* Wrap app in ProfileProvider to manage global profile state */}
         <Router>
           <div className="container">
             {/* Regular user login section */}
@@ -98,9 +96,9 @@ function App() {
               {/* Admin routes accessible via direct URL only */}
               <Route path="/admin-login" element={<AdminLogin />} />
               <Route path="/admin" element={<AdminPage />} />
-              <Route path="/reports" element={<Reports />} />{" "}
+              <Route path="/reports" element={<Reports />} />
               <Route path="/ProfilePage" element={<ProfilePage />} />{" "}
-              {/* Add ProfilePage route */}
+              {/* ProfilePage route */}
             </Routes>
           </div>
         </Router>

@@ -32,7 +32,7 @@ const HomePage = () => {
           {/* Make Profile Picture Clickable */}
           <Link to="/ProfilePage">
             <img
-              src={profileImage || "/default-profile.png"} // Fallback to default profile image if none is set
+              src={profileImage} // Always start with default until changed
               alt="Profile"
               className="profile-pic clickable" // Added class to make it clear the image is clickable
             />
