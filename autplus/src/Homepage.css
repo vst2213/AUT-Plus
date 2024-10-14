@@ -4,10 +4,12 @@
   flex-direction: column;
   min-height: 100vh;
   width: 100vw;
-  font-family: "Poppins", sans-serif; /* Modern Google Font */
-  background: linear-gradient(135deg, #f3f3f3, #dcdcdc); /* Gradient background */
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #f3f3f3, #dcdcdc);
   color: #333;
   transition: background 0.3s, color 0.3s;
+  margin: 0;
+  padding: 0;
 }
 
 /* Dark mode styling */
@@ -16,17 +18,25 @@
   color: #e0e0e0;
 }
 
-/* Header styling */
-.header {
+/* Header and Navigation combined */
+.header-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 25px;
-  background: linear-gradient(45deg, #4b0082, #800080); /* Gradient effect */
+  background: linear-gradient(45deg, #4b0082, #800080);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 125px; /* Combined height of header and nav */
+  margin: 0;
 }
 
-.dark-mode .header {
+/* Dark mode header-nav */
+.dark-mode .header-nav {
   background: linear-gradient(45deg, #3c006e, #4a004a);
 }
 
@@ -36,14 +46,8 @@
   width: auto;
 }
 
-/* Profile picture and toggle button */
-.right-header {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.right-header .profile-pic {
+/* Profile picture */
+.profile-pic {
   height: 55px;
   width: 55px;
   border-radius: 50%;
@@ -52,34 +56,15 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.right-header .profile-pic:hover {
+.profile-pic:hover {
   transform: scale(1.15);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.dark-mode-toggle button {
-  padding: 8px 12px;
-  font-size: 14px;
-  background: linear-gradient(45deg, #4b0082, #6a0dad);
-  color: white;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
-}
-
-.dark-mode-toggle button:hover {
-  background: linear-gradient(45deg, #3c006e, #4a004a);
-  transform: scale(1.05);
-}
-
-/* Navigation Bar */
-.top-nav {
+/* Navigation Links */
+.nav-links {
   display: flex;
-  justify-content: space-around;
-  padding: 15px 0;
-  background: linear-gradient(45deg, #6a0dad, #4b0082);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  gap: 20px;
 }
 
 .nav-icon {
@@ -93,8 +78,10 @@
   color: #ffd700;
 }
 
-.dark-mode .top-nav {
-  background: linear-gradient(45deg, #3c006e, #1e003e);
+/* Content Section */
+.content {
+  margin-top: 135px; /* Push content below header-nav */
+  padding: 20px;
 }
 
 /* Cards Section */
@@ -102,7 +89,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
-  margin-top: 15px;
 }
 
 .card {
@@ -118,57 +104,22 @@
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 }
 
+/* Dark mode cards */
 .dark-mode .card {
   background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
   box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
 }
 
-.event-card {
-  background: #e0ffe0;
-  border-left: 6px solid #4caf50;
-  transition: background 0.3s;
-}
-
-.dark-mode .event-card {
-  background: #3e4e3e;
-  border-left: 6px solid #76c976;
-}
-
-/* Location text */
-.location {
-  display: block;
-  color: #555;
-  font-size: 14px;
-  margin-top: 8px;
-}
-
-.dark-mode .location {
-  color: #aaa;
-}
-
-/* News Card Styling */
+/* News card styling */
 .news-card {
   background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
   padding: 25px;
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.dark-mode .news-card {
-  background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
-}
-
-.news-card h3 {
-  margin-top: 0;
-  font-weight: 600;
-}
-
-/* General Body and HTML Styling */
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-  overflow-x: hidden;
+.news-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 }
