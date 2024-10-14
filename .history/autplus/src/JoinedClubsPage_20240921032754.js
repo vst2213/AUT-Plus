@@ -1,22 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
-import "./ClubPage.css";
+import "./ClubPage.css"; // Ensure this includes your styles
 
 const JoinedClubsPage = () => {
-  const [joinedClubs, setJoinedClubs] = useState([]);
-
-  // Load joined clubs from localStorage when the component mounts
-  useEffect(() => {
-    const storedClubs = JSON.parse(localStorage.getItem("joinedClubs")) || [];
-    setJoinedClubs(storedClubs);
-  }, []);
-
-  const handleLeaveClub = (clubName) => {
-    const updatedClubs = joinedClubs.filter((club) => club.clubName !== clubName);
-    setJoinedClubs(updatedClubs);
-    localStorage.setItem("joinedClubs", JSON.stringify(updatedClubs));
-  };
+  // Replace this array with the actual list of joined clubs
+  const joinedClubs = [
+    {
+      name: "Art Club",
+      description: "A club for art lovers.",
+      location: "Room 101",
+      schedule: "Mondays at 4 PM",
+    },
+    {
+      name: "Science Society",
+      description: "Explore scientific wonders.",
+      location: "WZ514",
+      schedule: "Wednesdays at 5 PM",
+    },
+  ];
 
   return (
     <div className="clubs-container">
@@ -55,21 +57,15 @@ const JoinedClubsPage = () => {
           joinedClubs.map((club, index) => (
             <div key={index} className="post">
               <div className="post-header">
-                <strong>{club.clubName}</strong>
+                <strong>{club.name}</strong>
               </div>
-              <p>{club.clubDescription}</p>
+              <p>{club.description}</p>
               <p>
-                <strong>Location:</strong> {club.clubLocation}
+                <strong>Location:</strong> {club.location}
               </p>
               <p>
-                <strong>Schedule:</strong> {club.clubSchedule}
+                <strong>Schedule:</strong> {club.schedule}
               </p>
-              <button
-                className="leave-club-button"
-                onClick={() => handleLeaveClub(club.clubName)}
-              >
-                Leave Club
-              </button>
             </div>
           ))
         ) : (
@@ -80,13 +76,6 @@ const JoinedClubsPage = () => {
             <p>Join a club to see your joined clubs here!</p>
           </div>
         )}
-      </div>
-
-      {/* Back Button Container */}
-      <div className="back-button-container">
-        <Link to="/community">
-          <button className="back-button">Back to Community</button>
-        </Link>
       </div>
     </div>
   );

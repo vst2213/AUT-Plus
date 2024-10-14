@@ -1,22 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
-import "./ClubPage.css";
+import "./ClubPage.css"; // Ensure this includes your styles
 
 const JoinedClubsPage = () => {
   const [joinedClubs, setJoinedClubs] = useState([]);
 
   // Load joined clubs from localStorage when the component mounts
   useEffect(() => {
-    const storedClubs = JSON.parse(localStorage.getItem("joinedClubs")) || [];
-    setJoinedClubs(storedClubs);
+    const savedJoinedClubs = JSON.parse(localStorage.getItem("joinedClubs")) || [];
+    setJoinedClubs(savedJoinedClubs);
   }, []);
-
-  const handleLeaveClub = (clubName) => {
-    const updatedClubs = joinedClubs.filter((club) => club.clubName !== clubName);
-    setJoinedClubs(updatedClubs);
-    localStorage.setItem("joinedClubs", JSON.stringify(updatedClubs));
-  };
 
   return (
     <div className="clubs-container">
@@ -64,12 +58,6 @@ const JoinedClubsPage = () => {
               <p>
                 <strong>Schedule:</strong> {club.clubSchedule}
               </p>
-              <button
-                className="leave-club-button"
-                onClick={() => handleLeaveClub(club.clubName)}
-              >
-                Leave Club
-              </button>
             </div>
           ))
         ) : (
@@ -80,13 +68,6 @@ const JoinedClubsPage = () => {
             <p>Join a club to see your joined clubs here!</p>
           </div>
         )}
-      </div>
-
-      {/* Back Button Container */}
-      <div className="back-button-container">
-        <Link to="/community">
-          <button className="back-button">Back to Community</button>
-        </Link>
       </div>
     </div>
   );

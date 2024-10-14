@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
-import "./ClubPage.css";
+import "./ClubPage.css"; // Ensure the styles are in ClubPage.css
 
 const ClubsPage = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -10,35 +10,35 @@ const ClubsPage = () => {
   const [clubLocation, setClubLocation] = useState("");
   const [clubSchedule, setClubSchedule] = useState("");
   const [advertisements, setAdvertisements] = useState([]);
-  const [joinedClubs, setJoinedClubs] = useState([]);
   const [darkMode, setDarkMode] = useState(false);
+  const [joinedClubs, setJoinedClubs] = useState([]);
 
-  // Load dark mode and ads from localStorage when the component mounts
+  // Load dark mode and joined clubs from localStorage when component mounts
   useEffect(() => {
     const savedDarkMode = localStorage.getItem("darkMode") === "true";
     setDarkMode(savedDarkMode);
-
-    const savedAdvertisements = JSON.parse(localStorage.getItem("advertisements")) || [];
-    setAdvertisements(savedAdvertisements);
 
     const savedJoinedClubs = JSON.parse(localStorage.getItem("joinedClubs")) || [];
     setJoinedClubs(savedJoinedClubs);
   }, []);
 
-  // Save dark mode to localStorage
+  // Save dark mode state to localStorage when it changes
   const toggleDarkMode = () => {
     const newDarkModeState = !darkMode;
     setDarkMode(newDarkModeState);
     localStorage.setItem("darkMode", newDarkModeState);
   };
 
-  // Save new advertisement
+  const handleFormVisibility = () => {
+    setIsFormVisible(!isFormVisible);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newAd = { clubName, clubDescription, clubLocation, clubSchedule };
-    const updatedAds = [...advertisements, newAd];
-    setAdvertisements(updatedAds);
-    localStorage.setItem("advertisements", JSON.stringify(updatedAds));
+    setAdvertisements([
+      ...advertisements,
+      { clubName, clubDescription, clubLocation, clubSchedule },
+    ]);
     setClubName("");
     setClubDescription("");
     setClubLocation("");
@@ -50,18 +50,12 @@ const ClubsPage = () => {
     setIsFormVisible(false);
   };
 
-  // Handle club joining
   const handleJoinClub = (club) => {
-    const updatedJoinedClubs = [...joinedClubs, club];
-    setJoinedClubs(updatedJoinedClubs);
-    localStorage.setItem("joinedClubs", JSON.stringify(updatedJoinedClubs));
-  };
-
-  // Handle deletion of an advertisement
-  const handleDeleteAd = (index) => {
-    const updatedAds = advertisements.filter((_, i) => i !== index);
-    setAdvertisements(updatedAds);
-    localStorage.setItem("advertisements", JSON.stringify(updatedAds));
+    if (!joinedClubs.some((c) => c.clubName === club.clubName)) {
+      const updatedJoinedClubs = [...joinedClubs, club];
+      setJoinedClubs(updatedJoinedClubs);
+      localStorage.setItem("joinedClubs", JSON.stringify(updatedJoinedClubs));
+    }
   };
 
   return (
@@ -77,7 +71,6 @@ const ClubsPage = () => {
             alt="Profile"
             className="profile-pic"
           />
-          {/* Dark Mode Toggle Button */}
           <div className="dark-mode-toggle">
             <button onClick={toggleDarkMode}>
               {darkMode ? "Light Mode" : "Dark Mode"}
@@ -102,7 +95,7 @@ const ClubsPage = () => {
 
       {/* Clubs Actions */}
       <div className="actions">
-        <button className="round-button AUT" onClick={() => setIsFormVisible(!isFormVisible)}>
+        <button className="round-button AUT" onClick={handleFormVisibility}>
           Create Club Post
         </button>
         <Link to="/joined-clubs">
@@ -178,38 +171,18 @@ const ClubsPage = () => {
           advertisements.map((ad, index) => (
             <div key={index} className="post">
               <div className="post-header">
-                <strong>Club Name: </strong>
-                <span>{ad.clubName}</span>
+                <strong>{ad.clubName}</strong>
               </div>
-              <div className="post-description">
-                <strong>Club Description: </strong>
-                <p>{ad.clubDescription}</p>
-              </div>
-              <div className="club-details">
-                <p>
-                  <strong>Location:</strong> {ad.clubLocation}
-                </p>
-                <p>
-                  <strong>Schedule:</strong> {ad.clubSchedule}
-                </p>
-              </div>
-              <div className="post-actions">
-                <button
-                  className="join-button"
-                  onClick={() => handleJoinClub(ad)}
-                  disabled={joinedClubs.some((club) => club.clubName === ad.clubName)}
-                >
-                  {joinedClubs.some((club) => club.clubName === ad.clubName)
-                    ? "Joined"
-                    : "Join Club"}
-                </button>
-                <button
-                  className="delete-button"
-                  onClick={() => handleDeleteAd(index)}
-                >
-                  Delete Club
-                </button>
-              </div>
+              <p>{ad.clubDescription}</p>
+              <p>
+                <strong>Location:</strong> {ad.clubLocation}
+              </p>
+              <p>
+                <strong>Schedule:</strong> {ad.clubSchedule}
+              </p>
+              <button onClick={() => handleJoinClub(ad)}>
+                Join Club
+              </button>
             </div>
           ))
         ) : (

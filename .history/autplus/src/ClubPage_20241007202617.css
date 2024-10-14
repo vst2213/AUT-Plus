@@ -5,8 +5,7 @@
   min-height: 100vh; /* Full height of the viewport */
   width: 100vw; /* Full width of the viewport */
   font-family: Arial, sans-serif;
-  background-color: #f3f3f3; /* Light background color */
-  color: black; /* Default text color */
+  background-color: #f3f3f3; /* Set a background color */
   box-sizing: border-box; /* Ensure padding/margin don't affect the overall width/height */
 }
 
@@ -31,7 +30,6 @@
   background-color: #3c006e; /* Slightly darker purple for dark mode */
 }
 
-/* Logo and Profile Picture Styling */
 .left-header .logo {
   height: 50px;
   width: auto; /* Adjust logo size */
@@ -50,7 +48,27 @@
   border-radius: 50%; /* Circular profile picture */
 }
 
-/* Navigation Bar */
+/* Dark Mode Toggle Button Styling */
+.dark-mode-toggle {
+  margin-top: 10px; /* Space between the profile picture and the button */
+}
+
+.dark-mode-toggle button {
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  background-color: #4b0082; /* AUT purple color for the button */
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.dark-mode-toggle button:hover {
+  background-color: #3c006e; /* Slightly darker purple on hover */
+}
+
+/* Top navigation bar */
 .top-nav {
   display: flex;
   justify-content: space-around;
@@ -69,35 +87,45 @@
   cursor: pointer;
 }
 
-/* Back Button Styling */
-.back-button-container {
+/* Actions and Buttons */
+.actions {
   display: flex;
   justify-content: center;
   margin: 20px 0;
 }
 
-.back-button {
-  padding: 10px 20px;
-  font-size: 16px;
+.round-button {
   border: none;
-  border-radius: 8px;
-  background-color: #4b0082; /* AUT purple color */
-  color: white;
+  border-radius: 50px;
+  padding: 15px 30px;
+  font-size: 16px;
   cursor: pointer;
+  color: white;
+  font-weight: bold;
   transition: background-color 0.3s;
 }
 
-.back-button:hover {
-  background-color: #3c006e; /* Slightly darker purple on hover */
+.round-button.AUT {
+  background-color: black;
 }
 
-/* Joined Clubs Section */
-.posts-section {
+.round-button.clubs {
+  background-color: white;
+  color: black;
+}
+
+/* Clubs Section */
+.clubs-section {
   padding: 20px;
   flex-grow: 1;
 }
 
-/* Club Styling */
+/* Dark mode clubs section styling */
+.dark-mode .clubs-section {
+  background-color: #1e1e1e; /* Dark background for sections */
+  color: #e0e0e0; /* Light text color */
+}
+
 .club {
   background-color: #fff;
   padding: 20px;
@@ -110,26 +138,6 @@
 .dark-mode .club {
   background-color: #2c2c2c; /* Dark background for clubs */
   box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1); /* Light shadow */
-}
-
-/* Leave Club Button Styling */
-.leave-club-button {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  background-color: #d9534f; /* Bootstrap danger color */
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.leave-club-button:hover {
-  background-color: #c9302c; /* Darker shade on hover */
-}
-
-/* Dark mode Leave Club Button */
-.dark-mode .leave-club-button {
-  background-color: #ff6b6b; /* Lighter red for dark mode */
 }
 
 /* Form styling */
@@ -149,10 +157,14 @@
 /* Dark mode form styling */
 .dark-mode .post-form {
   background-color: #2c2c2c;
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
   color: #e0e0e0;
 }
 
-/* Input/textarea styling */
+.post-form label {
+  margin-bottom: 10px;
+}
+
 .post-form input, 
 .post-form textarea {
   width: 100%;
@@ -170,7 +182,6 @@
   color: white; /* Light text color */
 }
 
-/* Form buttons styling */
 .form-buttons {
   display: flex;
   justify-content: space-between;
@@ -185,7 +196,6 @@
   cursor: pointer;
 }
 
-/* Submit and Cancel Button Styling */
 .post-submit {
   background-color: #4b0082; /* AUT purple color */
   color: white;
@@ -206,7 +216,7 @@
   color: white;
 }
 
-/* Ensures the app stretches to fill the entire screen */
+/* Making sure the app stretches to fill the entire screen */
 body, html {
   margin: 0;
   padding: 0;
