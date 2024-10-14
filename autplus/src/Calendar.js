@@ -97,18 +97,20 @@ const Calendar = ({ setNotificationDetails }) => {
       </div>
 
       {/* Top Navigation Bar */}
-      <div className="top-nav">
-        <Link to="/Home">
-          <FaHome className="nav-icon" />
-        </Link>
-        <Link to="/community">
-          <FaCommentDots className="nav-icon" />
-        </Link>
-        <Link to="/calendar">
-          <FaCalendarAlt className="nav-icon" />
-        </Link>
-        <FaBars className="nav-icon" />
-      </div>
+<div className="top-nav">
+  <Link to="/Home">
+    <FaHome className="nav-icon" />
+  </Link>
+  <Link to="/community">
+    <FaCommentDots className="nav-icon" />
+  </Link>
+  <Link to="/calendar">
+    <FaCalendarAlt className="nav-icon" />
+  </Link>
+  <Link to="/more">
+    <FaBars className="nav-icon" />
+  </Link>
+</div>
 
       <h2>Upcoming Classes</h2>
       <div className="class-schedule">
