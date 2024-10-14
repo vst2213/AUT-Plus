@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import "./Homepage.css";
 import { Link } from "react-router-dom";
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
-import { ProfileContext } from "./ProfileContext"; // Import ProfileContext for profile picture
+import { ProfileContext } from "./ProfileContext";
 
 const HomePage = () => {
   const { profileImage } = useContext(ProfileContext);
@@ -21,14 +21,18 @@ const HomePage = () => {
 
   return (
     <div className={`home-container ${darkMode ? "dark-mode" : ""}`}>
-      {/* Header with Navigation */}
-      <div className="header-nav">
+      {/* Header */}
+      <div className="header">
         <div className="left-header">
           <img src="/pictures/aut.jpeg" alt="AUT Logo" className="logo" />
         </div>
         <div className="right-header">
           <Link to="/ProfilePage">
-            <img src={profileImage} alt="Profile" className="profile-pic" />
+            <img
+              src={profileImage}
+              alt="Profile"
+              className="profile-pic clickable"
+            />
           </Link>
           <div className="dark-mode-toggle">
             <button onClick={toggleDarkMode}>
@@ -36,42 +40,41 @@ const HomePage = () => {
             </button>
           </div>
         </div>
-
-        <div className="nav-links">
-          <Link to="/home">
-            <FaHome className="nav-icon" />
-          </Link>
-          <Link to="/community">
-            <FaCommentDots className="nav-icon" />
-          </Link>
-          <Link to="/calendar">
-            <FaCalendarAlt className="nav-icon" />
-          </Link>
-          <Link to="/more">
-            <FaBars className="nav-icon" />
-          </Link>
-        </div>
       </div>
 
-      {/* Main Content */}
+      {/* Navigation Bar */}
+      <div className="nav-bar">
+        <Link to="/home" className="nav-item">
+          <FaHome className="nav-icon" />
+        </Link>
+        <Link to="/community" className="nav-item">
+          <FaCommentDots className="nav-icon" />
+        </Link>
+        <Link to="/calendar" className="nav-item">
+          <FaCalendarAlt className="nav-icon" />
+        </Link>
+        <Link to="/more" className="nav-item">
+          <FaBars className="nav-icon" />
+        </Link>
+      </div>
+
+      {/* Content Section */}
       <div className="content">
-        <div className="section">
-          <h2>What's On Next</h2>
-          <div className="cards">
-            <div className="card event-card">
-              <span>September 17th: 8am-2pm</span>
-              <p>COMP703/W201A - Research and Development Project Part 2</p>
-              <span className="location">Offsite</span>
-            </div>
-            <div className="card event-card">
-              <span>September 20th: 8am-2pm</span>
-              <p>COMP703/W201A - Research and Development Project Part 2</p>
-              <span className="location">WA220</span>
-            </div>
+        <h2>What's On Next</h2>
+        <div className="cards">
+          <div className="card">
+            <span>September 17th: 8am-2pm</span>
+            <p>COMP703/W201A - Research and Development Project Part 2</p>
+            <span className="location">Offsite</span>
+          </div>
+          <div className="card">
+            <span>September 20th: 8am-2pm</span>
+            <p>COMP703/W201A - Research and Development Project Part 2</p>
+            <span className="location">WA220</span>
           </div>
         </div>
 
-        <div className="section news-section">
+        <div className="news-section">
           <h2>News</h2>
           <div className="news-card">
             <h3>Academic Integrity Important Notice</h3>

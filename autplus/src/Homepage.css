@@ -3,11 +3,10 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  width: 100vw;
+  width: 100%;
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #f3f3f3, #dcdcdc);
+  background-color: #f3f3f3;
   color: #333;
-  transition: background 0.3s, color 0.3s;
   margin: 0;
   padding: 0;
 }
@@ -18,58 +17,82 @@
   color: #e0e0e0;
 }
 
-/* Header and Navigation combined */
-.header-nav {
+/* Header styling */
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 25px;
   background: linear-gradient(45deg, #4b0082, #800080);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  height: 70px;
+  padding: 0 20px;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  height: 125px; /* Combined height of header and nav */
-  margin: 0;
-}
-
-/* Dark mode header-nav */
-.dark-mode .header-nav {
-  background: linear-gradient(45deg, #3c006e, #4a004a);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Logo styling */
 .left-header .logo {
-  height: 60px;
+  height: 50px;
   width: auto;
 }
 
-/* Profile picture */
+/* Profile and Dark Mode */
+.right-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
 .profile-pic {
-  height: 55px;
-  width: 55px;
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .profile-pic:hover {
-  transform: scale(1.15);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Navigation Links */
-.nav-links {
+.dark-mode-toggle button {
+  padding: 8px 12px;
+  font-size: 14px;
+  background-color: #6a0dad;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dark-mode-toggle button:hover {
+  background-color: #4b0082;
+}
+
+/* Navigation Bar */
+.nav-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 equal sections */
+  height: 55px;
+  background-color: #6a0dad;
+  margin-top: 70px; /* Push below header */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-item {
   display: flex;
-  gap: 20px;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-icon {
   color: white;
-  font-size: 28px;
+  font-size: 32px;
   transition: transform 0.3s, color 0.3s;
 }
 
@@ -80,8 +103,8 @@
 
 /* Content Section */
 .content {
-  margin-top: 135px; /* Push content below header-nav */
   padding: 20px;
+  margin-top: 55px; /* Push below navigation bar */
 }
 
 /* Cards Section */
@@ -91,35 +114,33 @@
   gap: 20px;
 }
 
+/* Card Styling */
 .card {
-  background: linear-gradient(135deg, #ffffff, #e6e6e6);
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Dark mode cards */
-.dark-mode .card {
-  background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
-}
-
-/* News card styling */
+/* News Section */
 .news-card {
-  background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.news-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+/* Global styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
 }
