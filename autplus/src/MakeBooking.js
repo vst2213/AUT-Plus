@@ -63,13 +63,7 @@ const MakeBooking = ({ setBookingDetails }) => {
         <div className="left-header">
           <img src="/pictures/aut.jpeg" alt="AUT Logo" className="logo" />
         </div>
-        <div className="right-header">
-          <img
-            src="path/to/profile-pic.png"
-            alt="Profile"
-            className="profile-pic"
-          />
-        </div>
+        <div className="right-header"></div>
       </div>
 
       <div className="top-nav">

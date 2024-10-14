@@ -11,13 +11,7 @@ const Notifications = ({ bookingDetails, notificationDetails }) => {
         <div className="left-header">
           <img src="/pictures/aut.jpeg" alt="AUT Logo" className="logo" />
         </div>
-        <div className="right-header">
-          <img
-            src="path/to/profile-pic.png"
-            alt="Profile"
-            className="profile-pic"
-          />
-        </div>
+        <div className="right-header"></div>
       </div>
 
       {/* Top Navigation Bar */}
@@ -40,7 +34,9 @@ const Notifications = ({ bookingDetails, notificationDetails }) => {
       <div className="booking-notification">
         {bookingDetails.length > 0 ? (
           bookingDetails.map((booking, index) => (
-            <p key={index}>{`Your booking has been confirmed: ${booking.room} at ${booking.time}`}</p>
+            <p
+              key={index}
+            >{`Your booking has been confirmed: ${booking.room} at ${booking.time}`}</p>
           ))
         ) : (
           <p>No bookings found.</p>
@@ -52,7 +48,9 @@ const Notifications = ({ bookingDetails, notificationDetails }) => {
       <div className="class-notification">
         {notificationDetails.length > 0 ? (
           notificationDetails.map((notification, index) => (
-            <p key={index}>{`Upcoming Class: ${notification.name} on ${notification.date}`}</p>
+            <p
+              key={index}
+            >{`Upcoming Class: ${notification.name} on ${notification.date}`}</p>
           ))
         ) : (
           <p>No class notifications found.</p>

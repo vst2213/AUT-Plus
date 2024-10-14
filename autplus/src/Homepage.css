@@ -6,10 +6,11 @@
   width: 100vw; /* Full width of the viewport */
   font-family: Arial, sans-serif;
   background-color: #f3f3f3; /* Set a background color */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for theme changes */
 }
 
 /* Dark mode styling for the home container */
-.dark-mode .home-container {
+.dark-mode {
   background-color: #121212; /* Dark background color */
   color: #e0e0e0; /* Light text color */
 }
@@ -29,15 +30,14 @@
   background-color: #3c006e; /* Slightly darker purple for dark mode */
 }
 
-/* Logo and profile picture styling */
+/* Logo styling */
 .left-header .logo {
   height: 50px;
   width: auto; /* Adjust logo size */
-  
 }
 
+/* Profile picture styling */
 .right-header {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -47,6 +47,12 @@
   height: 50px;
   width: 50px;
   border-radius: 50%; /* Circular profile picture */
+  cursor: pointer; /* Indicate the profile picture is clickable */
+  transition: transform 0.3s; /* Smooth hover effect */
+}
+
+.right-header .profile-pic:hover {
+  transform: scale(1.1); /* Enlarge on hover */
 }
 
 /* Dark Mode Toggle Button Styling */
@@ -81,6 +87,11 @@
   color: white;
   font-size: 24px;
   cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.nav-icon:hover {
+  transform: scale(1.2); /* Slight enlargement on hover */
 }
 
 /* Dark mode navigation bar */
@@ -112,6 +123,11 @@
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Slight shadow on hover */
 }
 
 /* Dark mode card styling */
@@ -120,10 +136,14 @@
   box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1); /* Light shadow */
 }
 
+.dark-mode .card:hover {
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2); /* Shadow effect on hover in dark mode */
+}
+
 /* Event card specific styling */
 .event-card {
   background-color: #e0ffe0;
-  border-left: 5px solid #4CAF50; /* Green indicator for events */
+  border-left: 5px solid #4caf50; /* Green indicator for events */
 }
 
 /* Dark mode event card styling */
