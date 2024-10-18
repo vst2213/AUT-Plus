@@ -1,101 +1,105 @@
 /* General styling for the calendar container */
 .calendar-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    width: 100vw;
-    font-family: Arial, sans-serif;
-    background-color: #f3f3f3;
-  }
-  
-  /* Class schedule section */
-  .class-schedule {
-    padding: 20px;
-  }
-  
-  .class-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    margin-bottom: 15px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: relative; /* For positioning the popup */
-  }
-  
-  .class-details h3 {
-    margin: 0;
-    font-size: 1.2rem;
-  }
-  
-  .class-details p {
-    margin: 5px 0;
-    color: #555;
-  }
-  
-  /* Style for the clickable icon */
-  .class-icon {
-    color: #4b0082; 
-    font-size: 24px;
-    cursor: pointer; /* Pointer cursor for clickable icon */
-  }
-  
-  /* Popup styling */
-  .popup {
-    position: absolute; /* Absolute positioning */
-    right: 10px; /* Align to the right of the class item */
-    top: 50%; /* Center vertically within the class item */
-    transform: translateY(-50%); /* Adjust position */
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    padding: 15px;
-    z-index: 100; /* High z-index to ensure it appears above other elements */
-    width: 220px; /* Set width for consistent layout */
-  }
-  
-  .popup h4 {
-    margin: 0;
-    font-size: 1rem;
-  }
-  
-  .popup ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .popup li {
-    margin: 8px 0;
-    cursor: pointer; /* Pointer cursor for list items */
-    color: #4b0082; /* Slight color change for options */
-  }
-  
-  /* Hover effect for popup items */
-  .popup li:hover {
-    text-decoration: underline;
-  }
-  
-  /* Enhanced information section within the popup */
-  .enhanced-info-popup {
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid #eee;
-    color: #333;
-    font-size: 0.9rem;
-  }
-  
-  /* Overall enhanced info styling */
-  .enhanced-info {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: #fafafa;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-size: 1rem;
-    color: #333;
-  }
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
+  font-family: Arial, sans-serif;
+  background-color: #f3f3f3;
+}
+
+/* Class schedule section */
+.class-schedule {
+  padding: 20px;
+}
+
+/* Select courses button */
+.select-courses-button {
+  margin: 20px 0;
+  padding: 10px 15px;
+  font-size: 1rem;
+  color: white;
+  background-color: #4b0082;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.select-courses-button:disabled {
+  background-color: #ccc;
+}
+
+/* Modal styling */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* High z-index to ensure it appears above other elements */
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 600px;
+  max-height: 80%; /* Set maximum height */
+  overflow-y: auto; /* Allow vertical scrolling */
+}
+
+/* Course grid styling */
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px; /* Add some margin below the grid */
+}
+
+.course-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.course-card.selected {
+  border: 2px solid #4b0082; /* Highlight selected course */
+}
+
+/* Header and Navigation styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #4b0082;
+}
+
+.left-header .logo {
+  width: 50px;
+}
+
+.top-nav {
+  display: flex;
+  justify-content: space-around;
+  background-color: #4b0082;
+  padding: 10px 0;
+}
+
+.nav-icon {
+  color: white;
+  font-size: 24px;
+}
+
+/* Additional styles can go here */
