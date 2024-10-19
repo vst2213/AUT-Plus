@@ -1,0 +1,138 @@
+/* General styling for the calendar container */
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
+  font-family: Arial, sans-serif;
+  background-color: #f3f3f3;
+}
+
+/* Header styling */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #4b0082;
+}
+
+.logo {
+  height: 40px; /* Adjust logo size */
+}
+
+/* Top Navigation Bar */
+.top-nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+}
+
+.nav-icon {
+  font-size: 24px;
+  color: #4b0082;
+}
+
+/* Class schedule section */
+.class-schedule {
+  padding: 20px;
+  flex-grow: 1; /* Allow this section to grow and take available space */
+  display: flex;
+  flex-direction: column;
+}
+
+.class-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative; /* For positioning the popup */
+}
+
+.class-details h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.class-details p {
+  margin: 5px 0;
+  color: #555;
+}
+
+/* Style for the clickable icon */
+.class-icon {
+  color: #4b0082;
+  font-size: 24px;
+  cursor: pointer; /* Pointer cursor for clickable icon */
+}
+
+/* Popup styling */
+.popup {
+  position: absolute; /* Absolute positioning */
+  right: 10px; /* Align to the right of the class item */
+  top: 50%; /* Center vertically within the class item */
+  transform: translateY(-50%); /* Adjust position */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  z-index: 100; /* High z-index to ensure it appears above other elements */
+  width: 220px; /* Set width for consistent layout */
+}
+
+.popup h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.popup ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.popup li {
+  margin: 8px 0;
+  cursor: pointer; /* Pointer cursor for list items */
+  color: #4b0082; /* Slight color change for options */
+}
+
+/* Hover effect for popup items */
+.popup li:hover {
+  text-decoration: underline;
+}
+
+/* Enhanced information section within the popup */
+.enhanced-info-popup {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+/* Overall enhanced info styling */
+.enhanced-info {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  color: #333;
+}
+
+/* File Upload Section */
+.upload-container {
+  margin: 20px 0; /* Add vertical margin */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center children horizontally */

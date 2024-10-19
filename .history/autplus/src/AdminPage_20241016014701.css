@@ -1,0 +1,187 @@
+/* Wrapper for the whole admin panel layout */
+.admin-wrapper {
+  display: flex; /* Use flexbox to align sidebar and content */
+  height: 100vh; /* Full screen height */
+  width: 100vw; /* Full screen width */
+}
+
+/* Sidebar styles */
+.sidebar {
+  background-color: #4b0082; /* Purple background */
+  color: white;
+  height: 100%; /* Full height */
+  padding: 20px;
+  transition: width 0.3s ease; /* Smooth open/close transition */
+  overflow: hidden; /* Hide content when closed */
+}
+
+.sidebar.open {
+  width: 250px; /* Full sidebar width */
+}
+
+.sidebar.closed {
+  width: 50px; /* Collapsed sidebar width */
+}
+
+/* Logo styles */
+.sidebar-logo {
+  display: block; /* Make it a block-level element */
+  margin: 10px auto; /* Center the logo horizontally */
+  width: 90px; /* Set a fixed width for the logo */
+  height: 70px; /* Set a fixed height for the logo */
+}
+
+/* Toggle button styles */
+.toggle-btn {
+  background-color: #36006a; /* Darker purple */
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  width: 100%; /* Full button width */
+  margin-bottom: 20px; /* Space below the button */
+  border-radius: 5px;
+}
+
+/* Sidebar buttons */
+.sidebar-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Space between buttons */
+}
+
+.sidebar-buttons button {
+  background-color: white;
+  color: #4b0082;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  text-align: left; /* Align button text to the left */
+  border-radius: 5px;
+  transition: background-color 0.2s; /* Smooth hover transition */
+}
+
+.sidebar-buttons button:hover {
+  background-color: #ddd; /* Light hover effect */
+}
+
+/* Admin container to take up the remaining space */
+.admin-container {
+  padding: 20px;
+  background-color: #f9f9f9; /* Light background */
+  flex-grow: 1; /* Make it take the remaining width */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
+  margin: 20px; /* Space around content */
+  overflow-y: auto; /* Enable scrolling if content overflows */
+}
+
+/* Title styling */
+.admin-title {
+  font-size: 2.5rem; /* Larger title */
+  color: #4b0082; /* Purple color for branding */
+  margin-bottom: 15px; /* Add space below */
+  text-align: center; /* Center the title */
+}
+
+/* Report title styling */
+.reports-title {
+  font-size: 1.8rem;
+  color: #4b0082;
+  margin-bottom: 20px;
+}
+
+/* Report list styling */
+.reports-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.report-item {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.report-item:hover {
+  transform: translateY(-3px); /* Lift on hover */
+}
+
+.report-header {
+  font-weight: 600;
+  color: #333;
+}
+
+.report-comment {
+  margin-top: 10px;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* Feedback form styles */
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between inputs */
+  margin-bottom: 20px; /* Space below the form */
+}
+
+/* Feedback input field styles */
+.feedback-input {
+  padding: 10px;
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 5px;
+}
+
+/* Feedback textarea styles */
+.feedback-textarea {
+  padding: 10px;
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 5px;
+  height: 100px; /* Fixed height for textarea */
+}
+
+/* Submit button styles */
+.submit-btn {
+  background-color: #4b0082; /* Purple button */
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.2s; /* Smooth transition */
+}
+
+.submit-btn:hover {
+  background-color: #36006a; /* Darker purple on hover */
+}
+
+/* Feedback item box styling */
+.feedback-item {
+  background-color: #ffffff; /* White background for feedback box */
+  border: 1px solid #ddd; /* Light gray border */
+  border-radius: 8px; /* Rounded corners */
+  padding: 15px; /* Space inside the box */
+  margin-bottom: 15px; /* Space below each feedback item */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: transform 0.2s; /* Lift effect on hover */
+}
+
+.feedback-item:hover {
+  transform: translateY(-3px); /* Lift on hover */
+}
+
+/* No reports message */
+.no-reports {
+  color: #777; /* Gray color for no reports message */
+  text-align: center; /* Center text */
+}
+
+/* No feedback message */
+.no-feedback {
+  color: #777; /* Gray color for no feedback message */
+  text-align: center; /* Center text */
+}
