@@ -16,26 +16,29 @@ const scrapeCourseData = async (url) => {
 
     const classData = [];
 
-    // Find the table rows containing the schedule data
-    $("table tr").each((i, el) => {
-      const day = $(el).find("td:contains('Day')").next().text().trim(); // Next sibling of the header cell
-      const time = $(el).find("td:contains('Time')").next().text().trim(); // Next sibling of the header cell
-      const room = $(el).find("td:contains('Room')").next().text().trim(); // Next sibling of the header cell
-
-      const className = $(el).find("td:contains('Class')").text().trim(); // Class name
+    // Select the first row that contains actual class data (ignore header row)
+    $("table tr.BackgroundLight").each((i, el) => {
+      // Extracting only the first row of class data
+      const className = $(el).find("td:nth-child(1)").text().trim(); // Class column
+      const day = $(el).find("td:nth-child(5)").text().trim(); // Day column
+      const time = $(el).find("td:nth-child(6)").text().trim(); // Time column
+      const room = $(el).find("td:nth-child(7)").text().trim(); // Room column
 
       // Debugging log to check extracted values
       console.log(
         `Class: ${className}, Day: ${day}, Time: ${time}, Room: ${room}`
       );
 
-      // Only add non-empty values
-      if (day && time && room) {
+      // Add the data to classData array only for the first found class
+      if (day && time && room && classData.length === 0) {
         classData.push({ className, day, time, room });
       }
     });
 
-    return classData;
+    // If no class data is found, return "N/A"
+    return classData.length > 0
+      ? classData
+      : [{ className: "N/A", day: "N/A", time: "N/A", room: "N/A" }];
   } catch (error) {
     console.error("Error scraping data:", error);
     throw error;
