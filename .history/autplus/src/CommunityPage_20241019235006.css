@@ -1,0 +1,87 @@
+/* General styling for the community container */
+.community-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full height of the viewport */
+    width: 100vw; /* Full width of the viewport */
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f3; /* Set a background color */
+    padding: 20px; /* Padding for spacing */
+}
+
+/* Header styling */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #4b0082; /* AUT purple color */
+    color: white;
+}
+
+.left-header .logo {
+    height: 50px;
+    width: auto; /* Adjust logo size */
+}
+
+.right-header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.right-header .profile-pic {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%; /* Circular profile picture */
+}
+
+/* Forum Container */
+.forum-container {
+    margin: 20px auto; /* Center the forum box */
+    width: 80%; /* Set width of the forum box */
+    background-color: white;
+    border: 1px solid grey; /* Grey border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow */
+}
+
+/* Forum Header */
+.forum-header {
+    display: flex;
+    justify-content: flex-start; /* Align to the left */
+    padding: 10px 20px;
+    background-color: #e0e0e0; /* Light grey background */
+    border-bottom: 1px solid grey; /* Border at the bottom */
+}
+
+.forum-title {
+    font-weight: bold;
+    flex: 1; /* Equal space distribution */
+    text-align: center; /* Center align titles */
+}
+
+/* Forum Buttons */
+.forum-buttons {
+    display: flex;
+    flex-direction: column;
+    padding: 20px; /* Padding inside the button area */
+}
+
+.forum-button {
+    margin: 100px 0; /* Spacing between buttons */
+    padding: 10px; /* Smaller padding for smaller button size */
+    font-size: 14px; /* Smaller font size */
+    background-color: white; /* White background */
+    color: black; /* Black text */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* Transition for hover effect */
+    border: none; /* No border for the buttons */
+    text-align: left; /* Align button text to the left */
+}
+
+.forum-button:hover {
+    background-color: #4b0082; /* Change to purple on hover */
+    color: white; /* Change text to white on hover */
+}
