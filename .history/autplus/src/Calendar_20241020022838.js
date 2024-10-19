@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom"; // Import Link for routing
-import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa"; // Import Font Awesome icons
 import "./Calendar.css";
 
 const courseOptions = [

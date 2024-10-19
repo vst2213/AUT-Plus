@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom"; // Import Link for routing
-import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa"; // Import Font Awesome icons
 import "./Calendar.css";
 
 const courseOptions = [
@@ -73,11 +71,6 @@ const Calendar = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [showCourseSelection, setShowCourseSelection] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
-
-  const toggleDarkMode = () => {
-    setDarkMode((prevMode) => !prevMode);
-  };
 
   const handleCourseSelect = (url) => {
     setSelectedCourses((prevSelected) =>
@@ -113,37 +106,22 @@ const Calendar = () => {
 
   const handleCloseModal = () => {
     setShowCourseSelection(false);
-    setSelectedCourses([]); // Reset selection
+    setSelectedCourses([]); // 선택 초기화
   };
 
   return (
-    <div className={`calendar-container ${darkMode ? 'dark-mode' : ''}`}>
+    <div className="calendar-container">
       <header className="header">
         <div className="left-header">
           <img src="aut-logo.png" alt="AUT Logo" className="logo" />
         </div>
-        <div className="right-header">
-          <div className="dark-mode-toggle">
-            <button onClick={toggleDarkMode}>
-              Toggle Dark Mode
-            </button>
-          </div>
-          <img src="profile-pic.png" alt="Profile" className="profile-pic" />
-        </div>
+        <nav className="top-nav">
+          <i className="nav-icon fa fa-home"></i>
+          <i className="nav-icon fa fa-calendar"></i>
+          <i className="nav-icon fa fa-comment-dots"></i>
+        </nav>
       </header>
-      {/* Navigation Bar */}
-      <div className="top-nav">
-        <Link to="/Home">
-          <FaHome className="nav-icon" />
-        </Link>
-        <Link to="/community">
-          <FaCommentDots className="nav-icon" />
-        </Link>
-        <Link to="/calendar">
-          <FaCalendarAlt className="nav-icon" />
-        </Link>
-        <FaBars className="nav-icon" />
-      </div>
+
       <div className="class-schedule">
         <h2>Class Schedules</h2>
 
@@ -181,7 +159,9 @@ const Calendar = () => {
                   >
                     <h4>{course.name}</h4>
                     <p>
-                      {selectedCourses.includes(course.url) ? "Deselect" : "Select"}
+                      {selectedCourses.includes(course.url)
+                        ? "Deselect"
+                        : "Select"}
                     </p>
                   </div>
                 ))}
