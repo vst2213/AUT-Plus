@@ -1,0 +1,63 @@
+/* General styling for the notifications container */
+.notifications-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full height of the viewport */
+    width: 100vw; /* Full width of the viewport */
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f3; /* Set a background color */
+}
+
+/* Header styling */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #4b0082; /* AUT purple color */
+    color: white;
+}
+
+.left-header .logo {
+    height: 50px;
+    width: auto; /* Adjust logo size */
+}
+
+.right-header .profile-pic {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%; /* Circular profile picture */
+}
+
+/* Top navigation bar */
+.top-nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0;
+    background-color: #4b0082; /* AUT purple color */
+}
+
+.nav-icon {
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Section styling */
+h2 {
+    padding: 20px;
+    text-align: center; /* Center title */
+}
+
+/* Notification list styling */
+.notifications-list {
+    padding: 20px;
+    background-color: white; /* Background for notifications */
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+}
+
+.notifications-list p {
+    margin: 0; /* Remove default margin */
+    padding: 10px 0; /* Padding for individual notifications */
+}

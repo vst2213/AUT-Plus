@@ -1,0 +1,78 @@
+/* General styling for the contacts container */
+.contacts-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100vw;
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f3;
+}
+
+/* Header styling */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #4b0082;
+    color: white;
+}
+
+.left-header .logo {
+    height: 50px;
+    width: auto;
+}
+
+.right-header .profile-pic {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+/* Top navigation bar */
+.top-nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0;
+    background-color: #4b0082;
+}
+
+.nav-icon {
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Contacts list styling */
+.contacts-list {
+    padding: 20px;
+}
+
+/* Individual contact item styling */
+.contact-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc; /* 구분선 추가 */
+}
+
+.contact-item span {
+    font-size: 16px;
+    color: #333; /* 텍스트 색상 */
+}
+
+/* Button styling */
+.contact-item button {
+    background-color: #4b0082; /* 버튼 배경색 */
+    color: white; /* 버튼 텍스트 색상 */
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* 호버 효과 추가 */
+}
+
+.contact-item button:hover {
+    background-color: #5a0099; /* 호버 시 배경색 변화 */
+}

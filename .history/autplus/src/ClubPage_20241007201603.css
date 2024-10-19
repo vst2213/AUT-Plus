@@ -1,0 +1,198 @@
+/* General styling for the clubs container */
+.clubs-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full height of the viewport */
+  width: 100vw; /* Full width of the viewport */
+  font-family: Arial, sans-serif;
+  background-color: #f3f3f3; /* Set a background color */
+  box-sizing: border-box; /* Ensure padding/margin don't affect the overall width/height */
+}
+
+/* Dark mode styling for the clubs container */
+.dark-mode {
+  background-color: #121212; /* Dark background color */
+  color: #e0e0e0; /* Light text color */
+}
+
+/* Header styling */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #4b0082; /* AUT purple color */
+  color: white;
+}
+
+/* Dark mode header styling */
+.dark-mode .header {
+  background-color: #3c006e; /* Slightly darker purple for dark mode */
+}
+
+.left-header .logo {
+  height: 50px;
+  width: auto; /* Adjust logo size */
+}
+
+.right-header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.right-header .profile-pic {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%; /* Circular profile picture */
+}
+
+/* Dark Mode Toggle Button Styling */
+.dark-mode-toggle {
+  margin-top: 10px; /* Space between the profile picture and the button */
+}
+
+.dark-mode-toggle button {
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  background-color: #4b0082; /* AUT purple color for the button */
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.dark-mode-toggle button:hover {
+  background-color: #3c006e; /* Slightly darker purple on hover */
+}
+
+/* Top navigation bar */
+.top-nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px 0;
+  background-color: #4b0082; /* AUT purple color */
+}
+
+/* Dark mode navigation bar */
+.dark-mode .top-nav {
+  background-color: #3c006e; /* Darker purple for dark mode */
+}
+
+.nav-icon {
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Actions and Buttons */
+.actions {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.round-button {
+  border: none;
+  border-radius: 50px;
+  padding: 15px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.round-button.AUT {
+  background-color: black;
+}
+
+.round-button.clubs {
+  background-color: white;
+  color: black;
+}
+
+/* Clubs Section */
+.posts-section {
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode for posts section */
+.dark-mode .posts-section {
+  background-color: #2a2a2a; /* Dark background for posts */
+  color: #e0e0e0; /* Light text color */
+}
+
+.post {
+  padding: 15px;
+  border-bottom: 1px solid #ccc; /* Light border between posts */
+}
+
+.post-header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Join Button Styling */
+.join-button {
+  background-color: #4b0082; /* AUT purple color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.join-button:disabled {
+  background-color: #b0b0b0; /* Gray when disabled */
+  cursor: not-allowed; /* Change cursor when disabled */
+}
+
+/* Form Styling */
+.post-form {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.post-form div {
+  margin-bottom: 10px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.post-submit,
+.post-cancel {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.post-submit {
+  background-color: #4b0082; /* AUT purple color */
+  color: white;
+}
+
+.post-cancel {
+  background-color: #ccc; /* Gray cancel button */
+}
+
+.post-submit:hover {
+  background-color: #3c006e; /* Darker purple on hover */
+}
