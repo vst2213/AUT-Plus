@@ -73,15 +73,13 @@ const Calendar = () => {
   const [showCourseSelection, setShowCourseSelection] = useState(false);
 
   const handleCourseSelect = (url) => {
-    if (selectedCourses.includes(url)) {
-      setSelectedCourses(selectedCourses.filter((course) => course !== url));
-    } else {
-      if (selectedCourses.length < 4) {
-        setSelectedCourses([...selectedCourses, url]);
-      } else {
-        alert("You can only select up to 4 courses.");
-      }
-    }
+    setSelectedCourses((prevSelected) =>
+      prevSelected.includes(url)
+        ? prevSelected.filter((course) => course !== url)
+        : prevSelected.length < 4
+        ? [...prevSelected, url]
+        : (alert("You can only select up to 4 courses."), prevSelected)
+    );
   };
 
   const handleSubmit = async () => {
@@ -108,7 +106,7 @@ const Calendar = () => {
 
   const handleCloseModal = () => {
     setShowCourseSelection(false);
-    setSelectedCourses([]); // Reset selected courses when closing the modal
+    setSelectedCourses([]); // 선택 초기화
   };
 
   return (
@@ -126,8 +124,16 @@ const Calendar = () => {
 
       <div className="class-schedule">
         <h2>Class Schedules</h2>
-        {loading && <p>Loading course schedules...</p>}
-        {error && <p>{error}</p>}
+
+        {loading && (
+          <div className="loading-overlay">
+            <div className="spinner"></div>
+            <p>Loading course schedules...</p>
+          </div>
+        )}
+
+        {error && <p className="error-message">{error}</p>}
+
         {!loading && !error && courses.length === 0 && !showCourseSelection && (
           <button
             className="select-courses-btn"
@@ -153,10 +159,9 @@ const Calendar = () => {
                   >
                     <h4>{course.name}</h4>
                     <p>
-                      Click to{" "}
                       {selectedCourses.includes(course.url)
-                        ? "deselect"
-                        : "select"}
+                        ? "Deselect"
+                        : "Select"}
                     </p>
                   </div>
                 ))}
@@ -173,9 +178,9 @@ const Calendar = () => {
 
         {courses.length > 0 && (
           <div className="scraped-results">
-            {courses.map((course, courseIndex) => (
-              <div key={courseIndex} className="course-card">
-                <h3>{`Course ${courseIndex + 1}`}</h3>
+            {courses.map((course, index) => (
+              <div key={index} className="course-card">
+                <h3>{`Course ${index + 1}`}</h3>
                 <p>Class: {course[0]?.className || "N/A"}</p>
                 <p>Day: {course[0]?.day || "N/A"}</p>
                 <p>Time: {course[0]?.time || "N/A"}</p>
