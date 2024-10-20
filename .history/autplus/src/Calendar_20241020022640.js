@@ -1,70 +1,26 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom"; // Import Link for routing
-import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa"; // Import Font Awesome icons
 import "./Calendar.css";
 
 const courseOptions = [
+  // Add your course options here
   {
     name: "COMP507",
-    url: "https://arion.aut.ac.nz/ArionMain/CourseInfo/Information/Qualifications/Details/PaperDetails.aspx?actiontype=2&id=42220&id2=5012",
+    url: "https://example.com/course1",
   },
   {
     name: "DIGD507",
-    url: "https://arion.aut.ac.nz/ArionMain/CourseInfo/Information/Qualifications/Details/PaperDetails.aspx?actiontype=2&id=41815&id2=5012",
+    url: "https://example.com/course2",
   },
   {
     name: "MATH503",
-    url: "https://arion.aut.ac.nz/ArionMain/CourseInfo/Information/Qualifications/Details/PaperDetails.aspx?actiontype=2&id=42198&id2=5012",
+    url: "https://example.com/course3",
   },
   {
     name: "COMP504",
-    url: "https://arion.aut.ac.nz/ArionMain/CourseInfo/Information/Qualifications/Details/PaperDetails.aspx?actiontype=2&id=42741&id2=5012",
+    url: "https://example.com/course4",
   },
-  {
-    name: "COMP503",
-    url: "https://arion.aut.ac.nz/ArionMain/CourseInfo/Information/Qualifications/Details/PaperDetails.aspx?actiontype=2&id=43600&id2=5012",
-  },
-  {
-    name: "COMP500",
-    url: "https://arion.aut.ac.nz/ArionMain/CourseInfo/Information/Qualifications/Details/PaperDetails.aspx?actiontype=2&id=42737&id2=5012",
-  },
-  {
-    name: "COMP610",
-    url: "https://arion.aut.ac.nz/ArionMain/CourseInfo/Information/Qualifications/Details/PaperDetails.aspx?actiontype=2&id=42749&id2=5012",
-  },
-  {
-    name: "COMP604",
-    url: "https://arion.aut.ac.nz/ArionMain/CourseInfo/Information/Qualifications/Details/PaperDetails.aspx?actiontype=2&id=42573&id2=5012",
-  },
-  {
-    name: "COMP602",
-    url: "https://arion.aut.ac.nz/ArionMain/CourseInfo/Information/Qualifications/Details/PaperDetails.aspx?actiontype=2&id=42744&id2=5012",
-  },
-  {
-    name: "COMP603",
-    url: "https://arion.aut.ac.nz/ArionMain/CourseInfo/Information/Qualifications/Details/PaperDetails.aspx?actiontype=2&id=42745&id2=5012",
-  },
-  {
-    name: "COMP719",
-    url: "https://arion.aut.ac.nz/ArionMain/CourseInfo/Information/Qualifications/Details/PaperDetails.aspx?actiontype=2&id=42768&id2=5012",
-  },
-  {
-    name: "ENSE701",
-    url: "https://arion.aut.ac.nz/ArionMain/CourseInfo/Information/Qualifications/Details/PaperDetails.aspx?actiontype=2&id=42935&id2=5012",
-  },
-  {
-    name: "COMP721",
-    url: "https://arion.aut.ac.nz/ArionMain/CourseInfo/Information/Qualifications/Details/PaperDetails.aspx?actiontype=2&id=42577&id2=5012",
-  },
-  {
-    name: "COMP702",
-    url: "https://arion.aut.ac.nz/ArionMain/CourseInfo/Information/Qualifications/Details/PaperDetails.aspx?actiontype=2&id=42754&id2=5012",
-  },
-  {
-    name: "COMP703",
-    url: "https://arion.aut.ac.nz/ArionMain/CourseInfo/Information/Qualifications/Details/PaperDetails.aspx?actiontype=2&id=42576&id2=5012",
-  },
+  // Add more courses as needed
 ];
 
 const Calendar = () => {
@@ -131,19 +87,11 @@ const Calendar = () => {
           <img src="profile-pic.png" alt="Profile" className="profile-pic" />
         </div>
       </header>
-      {/* Navigation Bar */}
-      <div className="top-nav">
-        <Link to="/Home">
-          <FaHome className="nav-icon" />
-        </Link>
-        <Link to="/community">
-          <FaCommentDots className="nav-icon" />
-        </Link>
-        <Link to="/calendar">
-          <FaCalendarAlt className="nav-icon" />
-        </Link>
-        <FaBars className="nav-icon" />
-      </div>
+      <nav className="top-nav">
+        <i className="nav-icon fa fa-home"></i>
+        <i className="nav-icon fa fa-calendar"></i>
+        <i className="nav-icon fa fa-comment-dots"></i>
+      </nav>
       <div className="class-schedule">
         <h2>Class Schedules</h2>
 
