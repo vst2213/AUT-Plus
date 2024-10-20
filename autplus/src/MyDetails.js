@@ -4,7 +4,7 @@ import "./MyDetails.css";
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 
 const MyDetails = () => {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   // State to manage user details
   const [title, setTitle] = useState("");
@@ -40,10 +40,6 @@ const MyDetails = () => {
       <div className="header">
         <div className="left-header">
           <img src="/pictures/aut.jpeg" alt="AUT Logo" className="logo" />
-        </div>
-        <div className="right-header">
-          {/* Optional Profile Picture */}
-          <img src="/pictures/profile-pic.jpeg" alt="Profile" className="profile-pic" />
         </div>
       </div>
 

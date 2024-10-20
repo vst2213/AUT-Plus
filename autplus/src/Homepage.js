@@ -36,11 +36,6 @@ const HomePage = () => {
               className="profile-pic clickable"
             />
           </Link>
-          <div className="dark-mode-toggle">
-            <button onClick={toggleDarkMode}>
-              {darkMode ? "Light Mode" : "Dark Mode"}
-            </button>
-          </div>
         </div>
       </header>
 
@@ -64,12 +59,20 @@ const HomePage = () => {
       <section className="section">
         <h2>What's On Next</h2>
         <div className="cards">
-          <Link to="/calendar" className="card event-card" aria-label="Event on September 17th">
+          <Link
+            to="/calendar"
+            className="card event-card"
+            aria-label="Event on September 17th"
+          >
             <span>September 17th: 8am-2pm</span>
             <p>COMP703/W201A - Research and Development Project Part 2</p>
             <span className="location">Offsite</span>
           </Link>
-          <Link to="/calendar" className="card event-card" aria-label="Event on September 20th">
+          <Link
+            to="/calendar"
+            className="card event-card"
+            aria-label="Event on September 20th"
+          >
             <span>September 20th: 8am-2pm</span>
             <p>COMP703/W201A - Research and Development Project Part 2</p>
             <span className="location">WA220</span>

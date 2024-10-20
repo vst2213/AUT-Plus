@@ -41,20 +41,28 @@ const AdminPage = () => {
     <div className="admin-wrapper">
       {/* Sidebar */}
       <div className={`sidebar ${isSidebarOpen ? "open" : "closed"}`}>
-        <img src="/pictures/aut.jpeg" alt="AUT Logo" className="sidebar-logo" />
+        <img src="/pictures/aut.jpeg" alt="AUT Logo" className="logo" />
         <button className="toggle-btn" onClick={toggleSidebar}>
           {isSidebarOpen ? "Close" : "☰"}
         </button>
         {isSidebarOpen && (
           <nav className="sidebar-buttons">
-            <button onClick={() => setActiveSection("dashboard")}>Dashboard</button>
-            <button onClick={() => setActiveSection("students")}>Students</button>
+            <button onClick={() => setActiveSection("dashboard")}>
+              Dashboard
+            </button>
+            <button onClick={() => setActiveSection("students")}>
+              Students
+            </button>
             <button onClick={() => setActiveSection("reports")}>Reports</button>
-            <button onClick={() => setActiveSection("feedback")}>Feedback</button>
+            <button onClick={() => setActiveSection("feedback")}>
+              Feedback
+            </button>
           </nav>
         )}
         {/* Logout Button at the bottom left */}
-        <button className="logout-btn" onClick={handleLogout}>Logout</button>
+        <button className="logout-btn" onClick={handleLogout}>
+          Logout
+        </button>
       </div>
 
       {/* Main content */}
@@ -67,7 +75,10 @@ const AdminPage = () => {
 const Dashboard = () => (
   <div>
     <h1 className="admin-title">Admin Dashboard</h1>
-    <p>Welcome to the admin dashboard. Here you can manage all aspects of the platform.</p>
+    <p>
+      Welcome to the admin dashboard. Here you can manage all aspects of the
+      platform.
+    </p>
   </div>
 );
 
