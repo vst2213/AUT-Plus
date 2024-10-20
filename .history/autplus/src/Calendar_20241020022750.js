@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom"; // Import Link for routing
-import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa"; // Import Font Awesome icons
 import "./Calendar.css";
 
 const courseOptions = [
@@ -131,19 +129,11 @@ const Calendar = () => {
           <img src="profile-pic.png" alt="Profile" className="profile-pic" />
         </div>
       </header>
-      {/* Navigation Bar */}
-      <div className="top-nav">
-        <Link to="/Home">
-          <FaHome className="nav-icon" />
-        </Link>
-        <Link to="/community">
-          <FaCommentDots className="nav-icon" />
-        </Link>
-        <Link to="/calendar">
-          <FaCalendarAlt className="nav-icon" />
-        </Link>
-        <FaBars className="nav-icon" />
-      </div>
+      <nav className="top-nav">
+        <i className="nav-icon fa fa-home"></i>
+        <i className="nav-icon fa fa-calendar"></i>
+        <i className="nav-icon fa fa-comment-dots"></i>
+      </nav>
       <div className="class-schedule">
         <h2>Class Schedules</h2>
 
