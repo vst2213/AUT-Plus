@@ -72,7 +72,8 @@ body, html {
 /* Buttons */
 .select-courses-btn,
 .submit-btn,
-.close-btn {
+.close-btn,
+.edit-btn {
   background-color: #4b0082; /* Match community button color */
   color: white;
   border: none;
@@ -84,7 +85,8 @@ body, html {
 
 .select-courses-btn:hover,
 .submit-btn:hover,
-.close-btn:hover {
+.close-btn:hover,
+.edit-btn:hover {
   background-color: #3c006e; /* Darker on hover */
 }
 
@@ -140,8 +142,7 @@ body, html {
 .loading-overlay {
   position: fixed;
   top: 50%;
-  left:
-  50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 8px;
@@ -180,27 +181,14 @@ body, html {
   align-items: center;
 }
 
+/* Edit Button */
+.edit-btn {
+  margin-top: 10px; /* Add some space above the edit button */
+}
+
 /* Profile Picture */
 .profile-pic {
   width: 40px; /* Adjust profile picture size */
   height: 40px;
   border-radius: 50%;
-}
-
-/* Dark mode toggle button */
-.dark-mode-toggle {
-  margin-right: 20px;
-}
-
-.dark-mode-toggle button {
-  background-color: #4b0082; /* Match community button color */
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 10px;
-  cursor: pointer;
-}
-
-.dark-mode-toggle button:hover {
-  background-color: #3c006e; /* Darker on hover */
 }

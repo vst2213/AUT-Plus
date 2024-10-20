@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom"; // Import Link for routing
-import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa"; // Import Font Awesome icons
+import { Link } from "react-router-dom";
+import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 import "./Calendar.css";
 
 const courseOptions = [
@@ -73,11 +73,15 @@ const Calendar = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [showCourseSelection, setShowCourseSelection] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
 
-  const toggleDarkMode = () => {
-    setDarkMode((prevMode) => !prevMode);
-  };
+  // Load courses from localStorage on component mount
+  useEffect(() => {
+    const savedCourses = localStorage.getItem("scrapedCourses");
+    if (savedCourses) {
+      setCourses(JSON.parse(savedCourses));
+    }
+  }, []);
 
   const handleCourseSelect = (url) => {
     setSelectedCourses((prevSelected) =>
@@ -103,6 +107,8 @@ const Calendar = () => {
         urls: selectedCourses,
       });
       setCourses(response.data);
+      localStorage.setItem("scrapedCourses", JSON.stringify(response.data));
+      setShowCourseSelection(false); // Close the modal after submission
     } catch (err) {
       setError("Failed to fetch course data");
       console.error(err);
@@ -113,25 +119,23 @@ const Calendar = () => {
 
   const handleCloseModal = () => {
     setShowCourseSelection(false);
-    setSelectedCourses([]); // Reset selection
+    setSelectedCourses([]);
+    setIsEditing(false);
+  };
+
+  const handleEditToggle = () => {
+    setIsEditing(!isEditing);
+    setSelectedCourses([]); // Clear selected courses to allow re-selection
+    setShowCourseSelection(true); // Show the course selection modal
   };
 
   return (
-    <div className={`calendar-container ${darkMode ? 'dark-mode' : ''}`}>
+    <div className="calendar-container">
       <header className="header">
         <div className="left-header">
-          <img src="aut-logo.png" alt="AUT Logo" className="logo" />
-        </div>
-        <div className="right-header">
-          <div className="dark-mode-toggle">
-            <button onClick={toggleDarkMode}>
-              Toggle Dark Mode
-            </button>
-          </div>
-          <img src="profile-pic.png" alt="Profile" className="profile-pic" />
+          <img src="/pictures/aut.jpeg" alt="AUT Logo" className="logo" />
         </div>
       </header>
-      {/* Navigation Bar */}
       <div className="top-nav">
         <Link to="/Home">
           <FaHome className="nav-icon" />
@@ -169,7 +173,9 @@ const Calendar = () => {
           <>
             <div className="overlay" onClick={handleCloseModal}></div>
             <div className="course-modal">
-              <h3>Select Up to 4 Courses:</h3>
+              <h3>
+                {isEditing ? "Edit Your Courses" : "Select Up to 4 Courses:"}
+              </h3>
               <div className="course-options">
                 {courseOptions.map((course) => (
                   <div
@@ -181,7 +187,9 @@ const Calendar = () => {
                   >
                     <h4>{course.name}</h4>
                     <p>
-                      {selectedCourses.includes(course.url) ? "Deselect" : "Select"}
+                      {selectedCourses.includes(course.url)
+                        ? "Deselect"
+                        : "Select"}
                     </p>
                   </div>
                 ))}
@@ -197,17 +205,22 @@ const Calendar = () => {
         )}
 
         {courses.length > 0 && (
-          <div className="scraped-results">
-            {courses.map((course, index) => (
-              <div key={index} className="course-card">
-                <h3>{`Course ${index + 1}`}</h3>
-                <p>Class: {course[0]?.className || "N/A"}</p>
-                <p>Day: {course[0]?.day || "N/A"}</p>
-                <p>Time: {course[0]?.time || "N/A"}</p>
-                <p>Room: {course[0]?.room || "N/A"}</p>
-              </div>
-            ))}
-          </div>
+          <>
+            <button className="edit-btn" onClick={handleEditToggle}>
+              {isEditing ? "Done" : "Edit"}
+            </button>
+            <div className="scraped-results">
+              {courses.map((course, index) => (
+                <div key={index} className="course-card">
+                  <h3>{`Course ${index + 1}`}</h3>
+                  <p>Class: {course[0]?.className || "N/A"}</p>
+                  <p>Day: {course[0]?.day || "N/A"}</p>
+                  <p>Time: {course[0]?.time || "N/A"}</p>
+                  <p>Room: {course[0]?.room || "N/A"}</p>
+                </div>
+              ))}
+            </div>
+          </>
         )}
       </div>
     </div>
