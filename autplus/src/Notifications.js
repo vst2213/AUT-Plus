@@ -1,9 +1,16 @@
 import React from "react";
 import "./Notifications.css"; // 스타일 파일 추가
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; // useNavigate 추가
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 
 const Notifications = ({ bookingDetails, notificationDetails }) => {
+  const navigate = useNavigate(); // 페이지 이동을 위한 useNavigate 사용
+
+  // Back 버튼 클릭 시 MorePage로 이동
+  const handleBackClick = () => {
+    navigate("/more");
+  };
+
   return (
     <div className="notifications-container">
       {/* Header */}
@@ -25,8 +32,15 @@ const Notifications = ({ bookingDetails, notificationDetails }) => {
         <Link to="/calendar">
           <FaCalendarAlt className="nav-icon" />
         </Link>
-        <FaBars className="nav-icon" />
+        <Link to="/more">
+          <FaBars className="nav-icon" />
+        </Link>
       </div>
+
+      {/* Back 버튼 */}
+      <button className="back-button" onClick={handleBackClick}>
+        Back
+      </button>
 
       <h2>Notifications</h2>
 
