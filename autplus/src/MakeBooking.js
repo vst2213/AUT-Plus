@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
+import { Link, useNavigate } from "react-router-dom"; // useNavigate import
 import "./MakeBooking.css";
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 
@@ -23,7 +23,7 @@ const timeSlots = [
 ];
 
 const MakeBooking = ({ setBookingDetails }) => {
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate(); // useNavigate 초기화
   const [selectedRoom, setSelectedRoom] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
   const [confirmation, setConfirmation] = useState("");
@@ -36,7 +36,7 @@ const MakeBooking = ({ setBookingDetails }) => {
       setBookingDetails({ room: selectedRoom, time: selectedTime });
       setShowReminderPrompt(true);
 
-      // Navigate to Notifications page after setting booking details
+      // Booking 완료 후 Notifications 페이지로 이동
       navigate("/notifications");
     } else {
       setConfirmation("Select Room and Time");
@@ -57,8 +57,13 @@ const MakeBooking = ({ setBookingDetails }) => {
     setShowReminderPrompt(false);
   };
 
+  const handleBackClick = () => {
+    navigate("/more"); // Back 버튼 클릭 시 MorePage로 이동
+  };
+
   return (
     <div className="booking-container">
+      {/* Header */}
       <div className="header">
         <div className="left-header">
           <img src="/pictures/aut.jpeg" alt="AUT Logo" className="logo" />
@@ -66,8 +71,9 @@ const MakeBooking = ({ setBookingDetails }) => {
         <div className="right-header"></div>
       </div>
 
+      {/* Navigation Bar */}
       <div className="top-nav">
-        <Link to="/Home">
+        <Link to="/home">
           <FaHome className="nav-icon" />
         </Link>
         <Link to="/community">
@@ -76,7 +82,9 @@ const MakeBooking = ({ setBookingDetails }) => {
         <Link to="/calendar">
           <FaCalendarAlt className="nav-icon" />
         </Link>
-        <FaBars className="nav-icon" />
+        <Link to="/more">
+          <FaBars className="nav-icon" />
+        </Link>
       </div>
 
       <h2>Make a Booking</h2>
@@ -122,11 +130,11 @@ const MakeBooking = ({ setBookingDetails }) => {
         )}
       </div>
 
-      {/* Back button to return to MorePage.js */}
+      {/* Back 버튼 */}
       <div className="back-button-container">
-        <Link to="/more">
-          <button className="back-button">Back</button>
-        </Link>
+        <button className="back-button" onClick={handleBackClick}>
+          Back
+        </button>
       </div>
     </div>
   );

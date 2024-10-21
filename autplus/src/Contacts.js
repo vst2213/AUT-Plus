@@ -1,13 +1,15 @@
 import React from "react";
 import "./Contacts.css"; // 스타일 파일을 추가하세요
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 
 const Contacts = () => {
+  const navigate = useNavigate(); // 페이지 이동을 위한 useNavigate 훅 사용
+
   const classes = [
     {
       name: "COMP602",
-      lecturer: "Matthew kuo",
+      lecturer: "Matthew Kuo",
       email: "matthew.kuo@autuni.ac.nz",
     },
     { name: "COMP602", lecturer: "Jane Jung", email: "ssr1891@autuni.ac.nz" },
@@ -20,6 +22,11 @@ const Contacts = () => {
 
   const handleContact = (email) => {
     window.location.href = `mailto:${email}`; // 이메일 클라이언트 열기
+  };
+
+  // Back 버튼 클릭 시 MorePage로 이동
+  const handleBackClick = () => {
+    navigate("/more");
   };
 
   return (
@@ -43,8 +50,15 @@ const Contacts = () => {
         <Link to="/calendar">
           <FaCalendarAlt className="nav-icon" />
         </Link>
-        <FaBars className="nav-icon" />
+        <Link to="/more">
+          <FaBars className="nav-icon" />
+        </Link>
       </div>
+
+      {/* Back 버튼 추가 */}
+      <button className="back-button" onClick={handleBackClick}>
+        Back
+      </button>
 
       <h2>Contacts</h2>
       <div className="contacts-list">
