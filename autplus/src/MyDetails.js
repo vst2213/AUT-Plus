@@ -6,10 +6,20 @@ import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 const MyDetails = () => {
   const navigate = useNavigate();
 
-  // State to manage user details
+  // State to manage input values
+  const [titleInput, setTitleInput] = useState("");
+  const [firstNameInput, setFirstNameInput] = useState("");
+  const [lastNameInput, setLastNameInput] = useState("");
+
+  // State to manage display values
   const [title, setTitle] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+
+  // State to toggle edit mode
+  const [isTitleEditing, setIsTitleEditing] = useState(true);
+  const [isFirstNameEditing, setIsFirstNameEditing] = useState(true);
+  const [isLastNameEditing, setIsLastNameEditing] = useState(true);
 
   // Load saved details from localStorage when component mounts
   useEffect(() => {
@@ -21,13 +31,29 @@ const MyDetails = () => {
     setLastName(savedLastName);
   }, []);
 
-  // Save details to localStorage
-  const handleSave = () => {
-    localStorage.setItem("title", title);
-    localStorage.setItem("firstName", firstName);
-    localStorage.setItem("lastName", lastName);
-    alert("Details saved successfully!");
+  // Handlers to submit and toggle editing for Title
+  const handleTitleSubmit = () => {
+    setTitle(titleInput);
+    localStorage.setItem("title", titleInput); // Save to localStorage
+    setIsTitleEditing(false); // Hide input field and show edit button
   };
+  const handleTitleEdit = () => setIsTitleEditing(true); // Show input field again
+
+  // Handlers for First Name
+  const handleFirstNameSubmit = () => {
+    setFirstName(firstNameInput);
+    localStorage.setItem("firstName", firstNameInput); // Save to localStorage
+    setIsFirstNameEditing(false);
+  };
+  const handleFirstNameEdit = () => setIsFirstNameEditing(true);
+
+  // Handlers for Last Name
+  const handleLastNameSubmit = () => {
+    setLastName(lastNameInput);
+    localStorage.setItem("lastName", lastNameInput); // Save to localStorage
+    setIsLastNameEditing(false);
+  };
+  const handleLastNameEdit = () => setIsLastNameEditing(true);
 
   // Navigate back to the MorePage
   const handleBackClick = () => {
@@ -64,41 +90,79 @@ const MyDetails = () => {
 
       {/* User Details Form */}
       <h2>My Details</h2>
+
       <div className="details-form">
-        <label htmlFor="title">Title:</label>
-        <input
-          id="title"
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Enter your title"
-        />
+        {/* Title Section */}
+        <div className="input-row">
+          <label>Title: </label>
+          <span className="output-text">{title}</span>
+          {!isTitleEditing && (
+            <button className="edit-button" onClick={handleTitleEdit}>
+              Edit
+            </button>
+          )}
+        </div>
+        {isTitleEditing && (
+          <div className="input-group">
+            <input
+              type="text"
+              placeholder="Enter your title"
+              value={titleInput}
+              onChange={(e) => setTitleInput(e.target.value)}
+            />
+            <button onClick={handleTitleSubmit}>Submit</button>
+          </div>
+        )}
 
-        <label htmlFor="firstName">First Name:</label>
-        <input
-          id="firstName"
-          type="text"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-          placeholder="Enter your first name"
-        />
+        {/* First Name Section */}
+        <div className="input-row">
+          <label>First Name: </label>
+          <span className="output-text">{firstName}</span>
+          {!isFirstNameEditing && (
+            <button className="edit-button" onClick={handleFirstNameEdit}>
+              Edit
+            </button>
+          )}
+        </div>
+        {isFirstNameEditing && (
+          <div className="input-group">
+            <input
+              type="text"
+              placeholder="Enter your first name"
+              value={firstNameInput}
+              onChange={(e) => setFirstNameInput(e.target.value)}
+            />
+            <button onClick={handleFirstNameSubmit}>Submit</button>
+          </div>
+        )}
 
-        <label htmlFor="lastName">Last Name:</label>
-        <input
-          id="lastName"
-          type="text"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-          placeholder="Enter your last name"
-        />
+        {/* Last Name Section */}
+        <div className="input-row">
+          <label>Last Name: </label>
+          <span className="output-text">{lastName}</span>
+          {!isLastNameEditing && (
+            <button className="edit-button" onClick={handleLastNameEdit}>
+              Edit
+            </button>
+          )}
+        </div>
+        {isLastNameEditing && (
+          <div className="input-group">
+            <input
+              type="text"
+              placeholder="Enter your last name"
+              value={lastNameInput}
+              onChange={(e) => setLastNameInput(e.target.value)}
+            />
+            <button onClick={handleLastNameSubmit}>Submit</button>
+          </div>
+        )}
 
-        <label>Points:</label>
-        <span>100</span>
-
-        {/* Save Button */}
-        <button className="save-button" onClick={handleSave}>
-          Save
-        </button>
+        {/* Points Section */}
+        <div className="input-row">
+          <label>Points: </label>
+          <span>100</span>
+        </div>
       </div>
     </div>
   );
