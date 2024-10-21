@@ -146,7 +146,12 @@ const Calendar = () => {
         <Link to="/calendar">
           <FaCalendarAlt className="nav-icon" />
         </Link>
-        <FaBars className="nav-icon" />
+
+        <Link to="/more" aria-label="More">
+          <FaBars className="nav-icon" />
+        </Link>
+
+
       </div>
       <div className="class-schedule">
         <h2>Class Schedules</h2>
