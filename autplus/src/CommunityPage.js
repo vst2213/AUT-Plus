@@ -206,11 +206,6 @@ const CommunityPage = () => {
           </div>
         ))}
       </div>
-
-      {/* Points Display */}
-      <div className="points-display">
-        <h3>Total Points: {points}</h3>
-      </div>
     </div>
   );
 };

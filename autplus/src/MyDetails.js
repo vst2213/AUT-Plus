@@ -17,6 +17,11 @@ const MyDetails = () => {
   const [lastName, setLastName] = useState("");
   const [points, setPoints] = useState(0); // 포인트 상태
 
+  // Edit 모드 상태 관리
+  const [isTitleEditing, setIsTitleEditing] = useState(false);
+  const [isFirstNameEditing, setIsFirstNameEditing] = useState(false);
+  const [isLastNameEditing, setIsLastNameEditing] = useState(false);
+
   // 초기 로딩 시 로컬 스토리지에서 정보와 포인트 가져오기
   useEffect(() => {
     const savedTitle = localStorage.getItem("title") || "";
@@ -27,42 +32,42 @@ const MyDetails = () => {
     setTitle(savedTitle);
     setFirstName(savedFirstName);
     setLastName(savedLastName);
-    setPoints(savedPoints); // 포인트 상태 업데이트
+    setPoints(savedPoints);
   }, []);
 
-  // 제목 업데이트 핸들러
+  // 제목 제출 핸들러
   const handleTitleSubmit = () => {
     setTitle(titleInput);
     localStorage.setItem("title", titleInput);
+    setIsTitleEditing(false); // Edit 모드 종료
   };
 
-  // 이름 업데이트 핸들러
+  // 이름 제출 핸들러
   const handleFirstNameSubmit = () => {
     setFirstName(firstNameInput);
     localStorage.setItem("firstName", firstNameInput);
+    setIsFirstNameEditing(false); // Edit 모드 종료
   };
 
-  // 성 업데이트 핸들러
+  // 성 제출 핸들러
   const handleLastNameSubmit = () => {
     setLastName(lastNameInput);
     localStorage.setItem("lastName", lastNameInput);
+    setIsLastNameEditing(false); // Edit 모드 종료
   };
 
-  // More 페이지로 이동
   const handleBackClick = () => {
     navigate("/more");
   };
 
   return (
     <div className="details-container">
-      {/* 헤더 */}
       <div className="header">
         <div className="left-header">
           <img src="/pictures/aut.jpeg" alt="AUT Logo" className="logo" />
         </div>
       </div>
 
-      {/* 네비게이션 바 */}
       <div className="top-nav">
         <Link to="/home">
           <FaHome className="nav-icon" />
@@ -83,70 +88,76 @@ const MyDetails = () => {
       <h2>My Details</h2>
 
       <div className="details-form">
-        {/* 제목 섹션 */}
+        {/* Title Section */}
         <div className="input-row">
           <label>Title: </label>
           <span className="output-text">{title}</span>
           <button
             className="edit-button"
-            onClick={() => setTitleInput(title)}
+            onClick={() => setIsTitleEditing(true)}
           >
             Edit
           </button>
         </div>
-        <div className="input-group">
-          <input
-            type="text"
-            placeholder="Enter your title"
-            value={titleInput}
-            onChange={(e) => setTitleInput(e.target.value)}
-          />
-          <button onClick={handleTitleSubmit}>Submit</button>
-        </div>
+        {isTitleEditing && (
+          <div className="input-group">
+            <input
+              type="text"
+              placeholder="Enter your title"
+              value={titleInput}
+              onChange={(e) => setTitleInput(e.target.value)}
+            />
+            <button onClick={handleTitleSubmit}>Submit</button>
+          </div>
+        )}
 
-        {/* 이름 섹션 */}
+        {/* First Name Section */}
         <div className="input-row">
           <label>First Name: </label>
           <span className="output-text">{firstName}</span>
           <button
             className="edit-button"
-            onClick={() => setFirstNameInput(firstName)}
+            onClick={() => setIsFirstNameEditing(true)}
           >
             Edit
           </button>
         </div>
-        <div className="input-group">
-          <input
-            type="text"
-            placeholder="Enter your first name"
-            value={firstNameInput}
-            onChange={(e) => setFirstNameInput(e.target.value)}
-          />
-          <button onClick={handleFirstNameSubmit}>Submit</button>
-        </div>
+        {isFirstNameEditing && (
+          <div className="input-group">
+            <input
+              type="text"
+              placeholder="Enter your first name"
+              value={firstNameInput}
+              onChange={(e) => setFirstNameInput(e.target.value)}
+            />
+            <button onClick={handleFirstNameSubmit}>Submit</button>
+          </div>
+        )}
 
-        {/* 성 섹션 */}
+        {/* Last Name Section */}
         <div className="input-row">
           <label>Last Name: </label>
           <span className="output-text">{lastName}</span>
           <button
             className="edit-button"
-            onClick={() => setLastNameInput(lastName)}
+            onClick={() => setIsLastNameEditing(true)}
           >
             Edit
           </button>
         </div>
-        <div className="input-group">
-          <input
-            type="text"
-            placeholder="Enter your last name"
-            value={lastNameInput}
-            onChange={(e) => setLastNameInput(e.target.value)}
-          />
-          <button onClick={handleLastNameSubmit}>Submit</button>
-        </div>
+        {isLastNameEditing && (
+          <div className="input-group">
+            <input
+              type="text"
+              placeholder="Enter your last name"
+              value={lastNameInput}
+              onChange={(e) => setLastNameInput(e.target.value)}
+            />
+            <button onClick={handleLastNameSubmit}>Submit</button>
+          </div>
+        )}
 
-        {/* 포인트 표시 */}
+        {/* Points Display */}
         <div className="input-row">
           <label>Total Points: </label>
           <span>{points}</span>
