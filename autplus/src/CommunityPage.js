@@ -5,15 +5,16 @@ import "./CommunityPage.css";
 import { useReports } from "./ReportContext"; // Report context import
 
 const CommunityPage = () => {
-  const { addReport, reports } = useReports();
+  const { addReport } = useReports();
   const [post, setPost] = useState("");
   const [userName, setUserName] = useState("");
+  const [points, setPoints] = useState(0); // 포인트 상태 관리
   const [darkMode, setDarkMode] = useState(false);
   const [isReported, setIsReported] = useState(false);
   const [replyInputs, setReplyInputs] = useState({});
   const [posts, setPosts] = useState([]);
 
-  // MyDetails에서 사용자 이름 가져오기 및 게시물 로드
+  // 초기 로딩 시 사용자 정보와 게시물 및 포인트 불러오기
   useEffect(() => {
     const savedFirstName = localStorage.getItem("firstName") || "";
     const savedLastName = localStorage.getItem("lastName") || "";
@@ -24,16 +25,18 @@ const CommunityPage = () => {
 
     const savedPosts = JSON.parse(localStorage.getItem("communityPosts")) || [];
     setPosts(savedPosts);
-  }, []);
 
-  const toggleDarkMode = () => {
-    const newMode = !darkMode;
-    setDarkMode(newMode);
-    localStorage.setItem("darkMode", newMode);
-  };
+    const savedPoints = parseInt(localStorage.getItem("points")) || 0;
+    setPoints(savedPoints);
+  }, []);
 
   const savePostsToLocalStorage = (newPosts) => {
     localStorage.setItem("communityPosts", JSON.stringify(newPosts));
+  };
+
+  const savePointsToLocalStorage = (newPoints) => {
+    localStorage.setItem("points", newPoints);
+    setPoints(newPoints);
   };
 
   const handlePostSubmit = (e) => {
@@ -60,7 +63,7 @@ const CommunityPage = () => {
     setReplyInputs((prev) => ({ ...prev, [postId]: value }));
   };
 
-  const handleReplySubmit = (postId) => {
+  const handleReplySubmit = (postId, postUser) => {
     const replyContent = replyInputs[postId]?.trim();
     if (!replyContent) return;
 
@@ -73,6 +76,12 @@ const CommunityPage = () => {
     setPosts(updatedPosts);
     savePostsToLocalStorage(updatedPosts);
     setReplyInputs((prev) => ({ ...prev, [postId]: "" }));
+
+    if (postUser !== userName) {
+      const newPoints = points + 10;
+      savePointsToLocalStorage(newPoints);
+      alert(`You earned 10 points! Total points: ${newPoints}`);
+    }
   };
 
   const handleDeletePost = (postId) => {
@@ -92,12 +101,14 @@ const CommunityPage = () => {
 
   return (
     <div className={`community-container ${darkMode ? "dark-mode" : ""}`}>
+      {/* Header */}
       <div className="header">
         <div className="left-header">
           <img src="/pictures/aut.jpeg" alt="AUT Logo" className="logo" />
         </div>
       </div>
 
+      {/* Top Navigation */}
       <div className="top-nav">
         <Link to="/home">
           <FaHome className="nav-icon" />
@@ -113,6 +124,7 @@ const CommunityPage = () => {
         </Link>
       </div>
 
+      {/* Actions */}
       <div className="actions">
         <Link to="/home">
           <button className="round-button AUT">AUT</button>
@@ -122,6 +134,7 @@ const CommunityPage = () => {
         </Link>
       </div>
 
+      {/* Post Form */}
       <form className="post-form" onSubmit={handlePostSubmit}>
         <input
           type="text"
@@ -135,6 +148,7 @@ const CommunityPage = () => {
         </button>
       </form>
 
+      {/* Posts Section */}
       <div className="posts-section">
         <h2>Community Posts</h2>
         {posts.map((p) => (
@@ -144,6 +158,7 @@ const CommunityPage = () => {
             </div>
             <p>{p.content}</p>
 
+            {/* Replies Section */}
             <div className="replies-section">
               <h4>Replies:</h4>
               {p.replies.length > 0 ? (
@@ -166,13 +181,13 @@ const CommunityPage = () => {
               />
               <button
                 className="reply-submit"
-                onClick={() => handleReplySubmit(p.id)}
+                onClick={() => handleReplySubmit(p.id, p.user)}
               >
                 Reply
               </button>
             </div>
 
-            {/* 본인 게시물일 때만 삭제 버튼 표시 */}
+            {/* Delete and Report Buttons */}
             {p.user === userName && (
               <button
                 className="delete-button"
@@ -181,7 +196,6 @@ const CommunityPage = () => {
                 Delete
               </button>
             )}
-
             <button
               className="report-button"
               onClick={() => handleReport(p.user, p.content)}
@@ -191,6 +205,11 @@ const CommunityPage = () => {
             </button>
           </div>
         ))}
+      </div>
+
+      {/* Points Display */}
+      <div className="points-display">
+        <h3>Total Points: {points}</h3>
       </div>
     </div>
   );

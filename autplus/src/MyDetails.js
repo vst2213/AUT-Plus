@@ -6,72 +6,65 @@ import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 const MyDetails = () => {
   const navigate = useNavigate();
 
-  // State to manage input values
+  // Input 상태 관리
   const [titleInput, setTitleInput] = useState("");
   const [firstNameInput, setFirstNameInput] = useState("");
   const [lastNameInput, setLastNameInput] = useState("");
 
-  // State to manage display values
+  // 디스플레이 상태 관리
   const [title, setTitle] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [points, setPoints] = useState(0); // 포인트 상태
 
-  // State to toggle edit mode
-  const [isTitleEditing, setIsTitleEditing] = useState(true);
-  const [isFirstNameEditing, setIsFirstNameEditing] = useState(true);
-  const [isLastNameEditing, setIsLastNameEditing] = useState(true);
-
-  // Load saved details from localStorage when component mounts
+  // 초기 로딩 시 로컬 스토리지에서 정보와 포인트 가져오기
   useEffect(() => {
     const savedTitle = localStorage.getItem("title") || "";
     const savedFirstName = localStorage.getItem("firstName") || "";
     const savedLastName = localStorage.getItem("lastName") || "";
+    const savedPoints = parseInt(localStorage.getItem("points")) || 0;
+
     setTitle(savedTitle);
     setFirstName(savedFirstName);
     setLastName(savedLastName);
+    setPoints(savedPoints); // 포인트 상태 업데이트
   }, []);
 
-  // Handlers to submit and toggle editing for Title
+  // 제목 업데이트 핸들러
   const handleTitleSubmit = () => {
     setTitle(titleInput);
-    localStorage.setItem("title", titleInput); // Save to localStorage
-    setIsTitleEditing(false); // Hide input field and show edit button
+    localStorage.setItem("title", titleInput);
   };
-  const handleTitleEdit = () => setIsTitleEditing(true); // Show input field again
 
-  // Handlers for First Name
+  // 이름 업데이트 핸들러
   const handleFirstNameSubmit = () => {
     setFirstName(firstNameInput);
-    localStorage.setItem("firstName", firstNameInput); // Save to localStorage
-    setIsFirstNameEditing(false);
+    localStorage.setItem("firstName", firstNameInput);
   };
-  const handleFirstNameEdit = () => setIsFirstNameEditing(true);
 
-  // Handlers for Last Name
+  // 성 업데이트 핸들러
   const handleLastNameSubmit = () => {
     setLastName(lastNameInput);
-    localStorage.setItem("lastName", lastNameInput); // Save to localStorage
-    setIsLastNameEditing(false);
+    localStorage.setItem("lastName", lastNameInput);
   };
-  const handleLastNameEdit = () => setIsLastNameEditing(true);
 
-  // Navigate back to the MorePage
+  // More 페이지로 이동
   const handleBackClick = () => {
     navigate("/more");
   };
 
   return (
     <div className="details-container">
-      {/* Header */}
+      {/* 헤더 */}
       <div className="header">
         <div className="left-header">
           <img src="/pictures/aut.jpeg" alt="AUT Logo" className="logo" />
         </div>
       </div>
 
-      {/* Top Navigation Bar */}
+      {/* 네비게이션 바 */}
       <div className="top-nav">
-        <Link to="/Home">
+        <Link to="/home">
           <FaHome className="nav-icon" />
         </Link>
         <Link to="/community">
@@ -83,85 +76,80 @@ const MyDetails = () => {
         <FaBars className="nav-icon" />
       </div>
 
-      {/* Back Button */}
       <button className="back-button" onClick={handleBackClick}>
         Back
       </button>
 
-      {/* User Details Form */}
       <h2>My Details</h2>
 
       <div className="details-form">
-        {/* Title Section */}
+        {/* 제목 섹션 */}
         <div className="input-row">
           <label>Title: </label>
           <span className="output-text">{title}</span>
-          {!isTitleEditing && (
-            <button className="edit-button" onClick={handleTitleEdit}>
-              Edit
-            </button>
-          )}
+          <button
+            className="edit-button"
+            onClick={() => setTitleInput(title)}
+          >
+            Edit
+          </button>
         </div>
-        {isTitleEditing && (
-          <div className="input-group">
-            <input
-              type="text"
-              placeholder="Enter your title"
-              value={titleInput}
-              onChange={(e) => setTitleInput(e.target.value)}
-            />
-            <button onClick={handleTitleSubmit}>Submit</button>
-          </div>
-        )}
+        <div className="input-group">
+          <input
+            type="text"
+            placeholder="Enter your title"
+            value={titleInput}
+            onChange={(e) => setTitleInput(e.target.value)}
+          />
+          <button onClick={handleTitleSubmit}>Submit</button>
+        </div>
 
-        {/* First Name Section */}
+        {/* 이름 섹션 */}
         <div className="input-row">
           <label>First Name: </label>
           <span className="output-text">{firstName}</span>
-          {!isFirstNameEditing && (
-            <button className="edit-button" onClick={handleFirstNameEdit}>
-              Edit
-            </button>
-          )}
+          <button
+            className="edit-button"
+            onClick={() => setFirstNameInput(firstName)}
+          >
+            Edit
+          </button>
         </div>
-        {isFirstNameEditing && (
-          <div className="input-group">
-            <input
-              type="text"
-              placeholder="Enter your first name"
-              value={firstNameInput}
-              onChange={(e) => setFirstNameInput(e.target.value)}
-            />
-            <button onClick={handleFirstNameSubmit}>Submit</button>
-          </div>
-        )}
+        <div className="input-group">
+          <input
+            type="text"
+            placeholder="Enter your first name"
+            value={firstNameInput}
+            onChange={(e) => setFirstNameInput(e.target.value)}
+          />
+          <button onClick={handleFirstNameSubmit}>Submit</button>
+        </div>
 
-        {/* Last Name Section */}
+        {/* 성 섹션 */}
         <div className="input-row">
           <label>Last Name: </label>
           <span className="output-text">{lastName}</span>
-          {!isLastNameEditing && (
-            <button className="edit-button" onClick={handleLastNameEdit}>
-              Edit
-            </button>
-          )}
+          <button
+            className="edit-button"
+            onClick={() => setLastNameInput(lastName)}
+          >
+            Edit
+          </button>
         </div>
-        {isLastNameEditing && (
-          <div className="input-group">
-            <input
-              type="text"
-              placeholder="Enter your last name"
-              value={lastNameInput}
-              onChange={(e) => setLastNameInput(e.target.value)}
-            />
-            <button onClick={handleLastNameSubmit}>Submit</button>
-          </div>
-        )}
+        <div className="input-group">
+          <input
+            type="text"
+            placeholder="Enter your last name"
+            value={lastNameInput}
+            onChange={(e) => setLastNameInput(e.target.value)}
+          />
+          <button onClick={handleLastNameSubmit}>Submit</button>
+        </div>
 
-        {/* Points Section */}
+        {/* 포인트 표시 */}
         <div className="input-row">
-          <label>Points: </label>
-          <span>100</span>
+          <label>Total Points: </label>
+          <span>{points}</span>
         </div>
       </div>
     </div>
