@@ -1,71 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
+import { FaHome, FaCommentDots, FaCalendarAlt, FaBars, FaCog } from "react-icons/fa"; // Import settings icon
 import "./Calendar.css";
-
-const courseOptions = [
-  {
-    name: "COMP507",
-    url: "https://arion.aut.ac.nz/ArionMain/CourseInfo/Information/Qualifications/Details/PaperDetails.aspx?actiontype=2&id=42220&id2=5012",
-  },
-  {
-    name: "DIGD507",
-    url: "https://arion.aut.ac.nz/ArionMain/CourseInfo/Information/Qualifications/Details/PaperDetails.aspx?actiontype=2&id=41815&id2=5012",
-  },
-  {
-    name: "MATH503",
-    url: "https://arion.aut.ac.nz/ArionMain/CourseInfo/Information/Qualifications/Details/PaperDetails.aspx?actiontype=2&id=42198&id2=5012",
-  },
-  {
-    name: "COMP504",
-    url: "https://arion.aut.ac.nz/ArionMain/CourseInfo/Information/Qualifications/Details/PaperDetails.aspx?actiontype=2&id=42741&id2=5012",
-  },
-  {
-    name: "COMP503",
-    url: "https://arion.aut.ac.nz/ArionMain/CourseInfo/Information/Qualifications/Details/PaperDetails.aspx?actiontype=2&id=43600&id2=5012",
-  },
-  {
-    name: "COMP500",
-    url: "https://arion.aut.ac.nz/ArionMain/CourseInfo/Information/Qualifications/Details/PaperDetails.aspx?actiontype=2&id=42737&id2=5012",
-  },
-  {
-    name: "COMP610",
-    url: "https://arion.aut.ac.nz/ArionMain/CourseInfo/Information/Qualifications/Details/PaperDetails.aspx?actiontype=2&id=42749&id2=5012",
-  },
-  {
-    name: "COMP604",
-    url: "https://arion.aut.ac.nz/ArionMain/CourseInfo/Information/Qualifications/Details/PaperDetails.aspx?actiontype=2&id=42573&id2=5012",
-  },
-  {
-    name: "COMP602",
-    url: "https://arion.aut.ac.nz/ArionMain/CourseInfo/Information/Qualifications/Details/PaperDetails.aspx?actiontype=2&id=42744&id2=5012",
-  },
-  {
-    name: "COMP603",
-    url: "https://arion.aut.ac.nz/ArionMain/CourseInfo/Information/Qualifications/Details/PaperDetails.aspx?actiontype=2&id=42745&id2=5012",
-  },
-  {
-    name: "COMP719",
-    url: "https://arion.aut.ac.nz/ArionMain/CourseInfo/Information/Qualifications/Details/PaperDetails.aspx?actiontype=2&id=42768&id2=5012",
-  },
-  {
-    name: "ENSE701",
-    url: "https://arion.aut.ac.nz/ArionMain/CourseInfo/Information/Qualifications/Details/PaperDetails.aspx?actiontype=2&id=42935&id2=5012",
-  },
-  {
-    name: "COMP721",
-    url: "https://arion.aut.ac.nz/ArionMain/CourseInfo/Information/Qualifications/Details/PaperDetails.aspx?actiontype=2&id=42577&id2=5012",
-  },
-  {
-    name: "COMP702",
-    url: "https://arion.aut.ac.nz/ArionMain/CourseInfo/Information/Qualifications/Details/PaperDetails.aspx?actiontype=2&id=42754&id2=5012",
-  },
-  {
-    name: "COMP703",
-    url: "https://arion.aut.ac.nz/ArionMain/CourseInfo/Information/Qualifications/Details/PaperDetails.aspx?actiontype=2&id=42576&id2=5012",
-  },
-];
 
 const Calendar = () => {
   const [courses, setCourses] = useState([]);
@@ -108,7 +45,7 @@ const Calendar = () => {
       });
       setCourses(response.data);
       localStorage.setItem("scrapedCourses", JSON.stringify(response.data));
-      setShowCourseSelection(false); // Close the modal after submission
+      setShowCourseSelection(false);
     } catch (err) {
       setError("Failed to fetch course data");
       console.error(err);
@@ -125,8 +62,8 @@ const Calendar = () => {
 
   const handleEditToggle = () => {
     setIsEditing(!isEditing);
-    setSelectedCourses([]); // Clear selected courses to allow re-selection
-    setShowCourseSelection(true); // Show the course selection modal
+    setSelectedCourses([]);
+    setShowCourseSelection(true);
   };
 
   return (
@@ -136,18 +73,23 @@ const Calendar = () => {
           <img src="/pictures/aut.jpeg" alt="AUT Logo" className="logo" />
         </div>
       </header>
-      <div className="top-nav">
-        <Link to="/Home">
+
+      {/* Updated Navigation Bar with Settings Link */}
+      <nav className="top-nav">
+        <Link to="/home" aria-label="Home">
           <FaHome className="nav-icon" />
         </Link>
-        <Link to="/community">
+        <Link to="/community" aria-label="Community">
           <FaCommentDots className="nav-icon" />
         </Link>
-        <Link to="/calendar">
+        <Link to="/calendar" aria-label="Calendar">
           <FaCalendarAlt className="nav-icon" />
         </Link>
-        <FaBars className="nav-icon" />
-      </div>
+        <Link to="/more" aria-label="Settings">
+          <FaCog className="nav-icon" />
+        </Link>
+      </nav>
+
       <div className="class-schedule">
         <h2>Class Schedules</h2>
 
