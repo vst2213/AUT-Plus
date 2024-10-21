@@ -14,7 +14,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #4b0082; /* AUT purple color */
+    background-color: #4b0082;
     color: white;
 }
 
@@ -23,18 +23,12 @@
     width: auto;
 }
 
-.right-header .profile-pic {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-}
-
 /* Top navigation bar */
 .top-nav {
     display: flex;
     justify-content: space-around;
     padding: 15px 0;
-    background-color: #4b0082; /* AUT purple color */
+    background-color: #4b0082;
 }
 
 .nav-icon {
@@ -51,13 +45,13 @@
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    background-color: #4b0082; /* AUT purple color */
+    background-color: #4b0082;
     color: white;
     transition: background-color 0.3s;
 }
 
 .back-button:hover {
-    background-color: #3c006e; /* Slightly darker purple on hover */
+    background-color: #3c006e;
 }
 
 /* Details form styling */
@@ -65,21 +59,47 @@
     padding: 20px;
 }
 
-.details-form label {
-    display: block;
-    margin: 10px 0 5px;
+.input-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    justify-content: center;
 }
 
-.details-form input {
-    width: 100%;
+.input-row label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.output-text {
+    font-size: 16px;
+    color: #333;
+    margin-right: 10px;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    justify-content: center;
+}
+
+.input-group input {
     padding: 10px;
-    margin-bottom: 20px;
     border-radius: 5px;
     border: 1px solid #ccc;
 }
 
-.details-form span {
-    display: block;
-    font-size: 16px;
-    margin-top: 10px;
+.edit-button {
+    background-color: #4b0082;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.edit-button:hover {
+    background-color: #3c006e;
 }
