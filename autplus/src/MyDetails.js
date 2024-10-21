@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import "./MyDetails.css";
-import { Link } from "react-router-dom";
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 
 const MyDetails = () => {
@@ -22,13 +21,20 @@ const MyDetails = () => {
   const [isFirstNameEditing, setIsFirstNameEditing] = useState(true);
   const [isLastNameEditing, setIsLastNameEditing] = useState(true);
 
-  const handleBackClick = () => {
-    navigate("/more");
-  };
+  // Load saved details from localStorage when component mounts
+  useEffect(() => {
+    const savedTitle = localStorage.getItem("title") || "";
+    const savedFirstName = localStorage.getItem("firstName") || "";
+    const savedLastName = localStorage.getItem("lastName") || "";
+    setTitle(savedTitle);
+    setFirstName(savedFirstName);
+    setLastName(savedLastName);
+  }, []);
 
   // Handlers to submit and toggle editing for Title
   const handleTitleSubmit = () => {
     setTitle(titleInput);
+    localStorage.setItem("title", titleInput); // Save to localStorage
     setIsTitleEditing(false); // Hide input field and show edit button
   };
   const handleTitleEdit = () => setIsTitleEditing(true); // Show input field again
@@ -36,6 +42,7 @@ const MyDetails = () => {
   // Handlers for First Name
   const handleFirstNameSubmit = () => {
     setFirstName(firstNameInput);
+    localStorage.setItem("firstName", firstNameInput); // Save to localStorage
     setIsFirstNameEditing(false);
   };
   const handleFirstNameEdit = () => setIsFirstNameEditing(true);
@@ -43,9 +50,15 @@ const MyDetails = () => {
   // Handlers for Last Name
   const handleLastNameSubmit = () => {
     setLastName(lastNameInput);
+    localStorage.setItem("lastName", lastNameInput); // Save to localStorage
     setIsLastNameEditing(false);
   };
   const handleLastNameEdit = () => setIsLastNameEditing(true);
+
+  // Navigate back to the MorePage
+  const handleBackClick = () => {
+    navigate("/more");
+  };
 
   return (
     <div className="details-container">
@@ -75,6 +88,7 @@ const MyDetails = () => {
         Back
       </button>
 
+      {/* User Details Form */}
       <h2>My Details</h2>
 
       <div className="details-form">

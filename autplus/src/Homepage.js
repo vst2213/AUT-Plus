@@ -24,70 +24,71 @@ const HomePage = () => {
   return (
     <div className={`home-container ${darkMode ? "dark-mode" : ""}`}>
       {/* Header */}
-      <div className="header">
+      <header className="header">
         <div className="left-header">
           <img src="/pictures/aut.jpeg" alt="AUT Logo" className="logo" />
         </div>
         <div className="right-header">
-          {/* Make Profile Picture Clickable */}
           <Link to="/ProfilePage">
             <img
-              src={profileImage} // Always start with default until changed
+              src={profileImage}
               alt="Profile"
-              className="profile-pic clickable" // Added class to make it clear the image is clickable
+              className="profile-pic clickable"
             />
           </Link>
-          {/* Dark Mode Toggle Button */}
-          <div className="dark-mode-toggle">
-            <button onClick={toggleDarkMode}>
-              {darkMode ? "Light Mode" : "Dark Mode"}
-            </button>
-          </div>
         </div>
-      </div>
+      </header>
 
-      {/* Navigation Bar as Top Headers */}
-      <div className="top-nav">
-        <Link to="/home">
+      {/* Navigation Bar */}
+      <nav className="top-nav">
+        <Link to="/home" aria-label="Home">
           <FaHome className="nav-icon" />
         </Link>
-        <Link to="/community">
+        <Link to="/community" aria-label="Community">
           <FaCommentDots className="nav-icon" />
         </Link>
-        <Link to="/calendar">
+        <Link to="/calendar" aria-label="Calendar">
           <FaCalendarAlt className="nav-icon" />
         </Link>
-        <Link to="/more">
+        <Link to="/more" aria-label="More">
           <FaBars className="nav-icon" />
         </Link>
-      </div>
+      </nav>
 
       {/* What's On Next Section */}
-      <div className="section">
+      <section className="section">
         <h2>What's On Next</h2>
         <div className="cards">
-          <div className="card event-card">
+          <Link
+            to="/calendar"
+            className="card event-card"
+            aria-label="Event on September 17th"
+          >
             <span>September 17th: 8am-2pm</span>
             <p>COMP703/W201A - Research and Development Project Part 2</p>
             <span className="location">Offsite</span>
-          </div>
-          <div className="card event-card">
+          </Link>
+          <Link
+            to="/calendar"
+            className="card event-card"
+            aria-label="Event on September 20th"
+          >
             <span>September 20th: 8am-2pm</span>
             <p>COMP703/W201A - Research and Development Project Part 2</p>
             <span className="location">WA220</span>
-          </div>
+          </Link>
         </div>
-      </div>
+      </section>
 
       {/* News Section */}
-      <div className="section news-section">
+      <section className="section news-section">
         <h2>News</h2>
         <div className="news-card">
           <h3>Academic Integrity Important Notice</h3>
           <p>YouTutor Alert: Important notice for students</p>
           <small>3 days ago</small>
         </div>
-      </div>
+      </section>
     </div>
   );
 };

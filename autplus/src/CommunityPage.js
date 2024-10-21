@@ -51,14 +51,7 @@ const CommunityPage = () => {
         <div className="left-header">
           <img src="/pictures/aut.jpeg" alt="AUT Logo" className="logo" />
         </div>
-        <div className="right-header">
-          {/* Dark Mode Toggle Button */}
-          <div className="dark-mode-toggle">
-            <button onClick={toggleDarkMode}>
-              {darkMode ? "Light Mode" : "Dark Mode"}
-            </button>
-          </div>
-        </div>
+        <div className="right-header">{/* Dark Mode Toggle Button */}</div>
       </div>
 
       {/* Navigation Bar */}
@@ -105,7 +98,7 @@ const CommunityPage = () => {
         {/* Post from Alice */}
         <div className="post">
           <div className="post-header">
-            <strong>Alice</strong>
+            <strong>Alice </strong>
             <small>2 hours ago</small>
           </div>
           <p>Hello, where can I join clubs?</p>
@@ -123,7 +116,7 @@ const CommunityPage = () => {
         {/* Post from Bob */}
         <div className="post">
           <div className="post-header">
-            <strong>Bob</strong>
+            <strong>Bob </strong>
             <small>1 hour ago</small>
           </div>
           <p>Welcome Alice! You can find clubs within the "Clubs" button.</p>

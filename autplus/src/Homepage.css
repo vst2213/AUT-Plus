@@ -57,21 +57,7 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.dark-mode-toggle button {
-  padding: 8px 12px;
-  font-size: 14px;
-  background: linear-gradient(45deg, #4b0082, #6a0dad);
-  color: white;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
-}
 
-.dark-mode-toggle button:hover {
-  background: linear-gradient(45deg, #3c006e, #4a004a);
-  transform: scale(1.05);
-}
 
 /* Navigation Bar */
 .top-nav {

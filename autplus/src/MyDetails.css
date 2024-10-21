@@ -103,3 +103,20 @@
 .edit-button:hover {
     background-color: #3c006e;
 }
+
+/* Save button styling */
+.save-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    background-color: #4b0082; /* AUT purple color */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.save-button:hover {
+    background-color: #3c006e; /* Darker purple on hover */
+}
