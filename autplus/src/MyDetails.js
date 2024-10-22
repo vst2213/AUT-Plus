@@ -6,76 +6,74 @@ import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 const MyDetails = () => {
   const navigate = useNavigate();
 
-  // State to manage input values
+  // Input 상태 관리
   const [titleInput, setTitleInput] = useState("");
   const [firstNameInput, setFirstNameInput] = useState("");
   const [lastNameInput, setLastNameInput] = useState("");
 
-  // State to manage display values
+  // 디스플레이 상태 관리
   const [title, setTitle] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [points, setPoints] = useState(0); // 포인트 상태
 
-  // State to toggle edit mode
-  const [isTitleEditing, setIsTitleEditing] = useState(true);
-  const [isFirstNameEditing, setIsFirstNameEditing] = useState(true);
-  const [isLastNameEditing, setIsLastNameEditing] = useState(true);
+  // Edit 모드 상태 관리
+  const [isTitleEditing, setIsTitleEditing] = useState(false);
+  const [isFirstNameEditing, setIsFirstNameEditing] = useState(false);
+  const [isLastNameEditing, setIsLastNameEditing] = useState(false);
 
-  // Load saved details from localStorage when component mounts
+  // 초기 로딩 시 로컬 스토리지에서 정보와 포인트 가져오기
   useEffect(() => {
     const savedTitle = localStorage.getItem("title") || "";
     const savedFirstName = localStorage.getItem("firstName") || "";
     const savedLastName = localStorage.getItem("lastName") || "";
+    const savedPoints = parseInt(localStorage.getItem("points")) || 0;
+
     setTitle(savedTitle);
     setFirstName(savedFirstName);
     setLastName(savedLastName);
+    setPoints(savedPoints);
 
     // Check for dark mode in localStorage and apply it
     const savedMode = localStorage.getItem("darkMode") === "true";
     document.body.className = savedMode ? "dark" : "light";
   }, []);
 
-  // Handlers to submit and toggle editing for Title
+  // 제목 제출 핸들러
   const handleTitleSubmit = () => {
     setTitle(titleInput);
-    localStorage.setItem("title", titleInput); // Save to localStorage
-    setIsTitleEditing(false); // Hide input field and show edit button
+    localStorage.setItem("title", titleInput);
+    setIsTitleEditing(false); // Edit 모드 종료
   };
-  const handleTitleEdit = () => setIsTitleEditing(true); // Show input field again
 
-  // Handlers for First Name
+  // 이름 제출 핸들러
   const handleFirstNameSubmit = () => {
     setFirstName(firstNameInput);
-    localStorage.setItem("firstName", firstNameInput); // Save to localStorage
-    setIsFirstNameEditing(false);
+    localStorage.setItem("firstName", firstNameInput);
+    setIsFirstNameEditing(false); // Edit 모드 종료
   };
-  const handleFirstNameEdit = () => setIsFirstNameEditing(true);
 
-  // Handlers for Last Name
+  // 성 제출 핸들러
   const handleLastNameSubmit = () => {
     setLastName(lastNameInput);
-    localStorage.setItem("lastName", lastNameInput); // Save to localStorage
-    setIsLastNameEditing(false);
+    localStorage.setItem("lastName", lastNameInput);
+    setIsLastNameEditing(false); // Edit 모드 종료
   };
-  const handleLastNameEdit = () => setIsLastNameEditing(true);
 
-  // Navigate back to the MorePage
   const handleBackClick = () => {
     navigate("/more");
   };
 
   return (
     <div className="details-container">
-      {/* Header */}
       <div className="header">
         <div className="left-header">
           <img src="/pictures/aut.jpeg" alt="AUT Logo" className="logo" />
         </div>
       </div>
 
-      {/* Top Navigation Bar */}
       <div className="top-nav">
-        <Link to="/Home">
+        <Link to="/home">
           <FaHome className="nav-icon" />
         </Link>
         <Link to="/community">
@@ -87,12 +85,10 @@ const MyDetails = () => {
         <FaBars className="nav-icon" />
       </div>
 
-      {/* Back Button */}
       <button className="back-button" onClick={handleBackClick}>
         Back
       </button>
 
-      {/* User Details Form */}
       <h2>My Details</h2>
 
       <div className="details-form">
@@ -100,11 +96,12 @@ const MyDetails = () => {
         <div className="input-row">
           <label>Title: </label>
           <span className="output-text">{title}</span>
-          {!isTitleEditing && (
-            <button className="edit-button" onClick={handleTitleEdit}>
-              Edit
-            </button>
-          )}
+          <button
+            className="edit-button"
+            onClick={() => setIsTitleEditing(true)}
+          >
+            Edit
+          </button>
         </div>
         {isTitleEditing && (
           <div className="input-group">
@@ -122,11 +119,12 @@ const MyDetails = () => {
         <div className="input-row">
           <label>First Name: </label>
           <span className="output-text">{firstName}</span>
-          {!isFirstNameEditing && (
-            <button className="edit-button" onClick={handleFirstNameEdit}>
-              Edit
-            </button>
-          )}
+          <button
+            className="edit-button"
+            onClick={() => setIsFirstNameEditing(true)}
+          >
+            Edit
+          </button>
         </div>
         {isFirstNameEditing && (
           <div className="input-group">
@@ -144,11 +142,12 @@ const MyDetails = () => {
         <div className="input-row">
           <label>Last Name: </label>
           <span className="output-text">{lastName}</span>
-          {!isLastNameEditing && (
-            <button className="edit-button" onClick={handleLastNameEdit}>
-              Edit
-            </button>
-          )}
+          <button
+            className="edit-button"
+            onClick={() => setIsLastNameEditing(true)}
+          >
+            Edit
+          </button>
         </div>
         {isLastNameEditing && (
           <div className="input-group">
@@ -163,9 +162,8 @@ const MyDetails = () => {
         )}
 
         {/* Points Section */}
-        <div className="input-row">
-          <label>Points: </label>
-          <span>100</span>
+        <div className="points-section">
+          <h3>Points: {points}</h3>
         </div>
       </div>
     </div>

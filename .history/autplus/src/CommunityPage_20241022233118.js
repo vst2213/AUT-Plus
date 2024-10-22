@@ -154,7 +154,7 @@ const CommunityPage = () => {
         {posts.map((p) => (
           <div key={p.id} className="post">
             <div className="post-header">
-              <strong>{p.user}</strong> <small>2 hours ago</small>
+              <strong>{p.user}</strong> <small></small>
             </div>
             <p>{p.content}</p>
 
