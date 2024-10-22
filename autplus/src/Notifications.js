@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import "./Notifications.css"; // 스타일 파일 추가
-import { Link, useNavigate } from "react-router-dom"; // useNavigate 추가
+import "./Notifications.css"; 
+import { Link, useNavigate } from "react-router-dom"; 
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 
 const Notifications = ({ bookingDetails, notificationDetails }) => {
-  const navigate = useNavigate(); // 페이지 이동을 위한 useNavigate 사용
+  const navigate = useNavigate(); 
 
   // Check for dark mode preference on component mount
   useEffect(() => {
@@ -12,7 +12,7 @@ const Notifications = ({ bookingDetails, notificationDetails }) => {
     document.body.className = savedMode ? "dark" : "light";
   }, []);
 
-  // Back 버튼 클릭 시 MorePage로 이동
+ 
   const handleBackClick = () => {
     navigate("/more");
   };

@@ -23,7 +23,7 @@ const timeSlots = [
 ];
 
 const MakeBooking = ({ setBookingDetails }) => {
-  const navigate = useNavigate(); // useNavigate 초기화
+  const navigate = useNavigate(); 
   const [selectedRoom, setSelectedRoom] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
   const [confirmation, setConfirmation] = useState("");
@@ -64,7 +64,7 @@ const MakeBooking = ({ setBookingDetails }) => {
   };
 
   const handleBackClick = () => {
-    navigate("/more"); // Back 버튼 클릭 시 MorePage로 이동
+    navigate("/more"); 
   };
 
   return (
@@ -136,7 +136,7 @@ const MakeBooking = ({ setBookingDetails }) => {
         )}
       </div>
 
-      {/* Back 버튼 */}
+      {/* Back */}
       <div className="back-button-container">
         <button className="back-button" onClick={handleBackClick}>
           Back

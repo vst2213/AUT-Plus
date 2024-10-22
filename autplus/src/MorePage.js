@@ -9,14 +9,14 @@ const MorePage = () => {
   const navigate = useNavigate();
   const [darkMode, setDarkMode] = useState(false);
 
-  // 로컬 스토리지에서 다크모드 상태 불러오기
+  
   useEffect(() => {
     const savedMode = localStorage.getItem("darkMode") === "true";
     setDarkMode(savedMode);
     document.body.className = savedMode ? "dark" : "light";
   }, []);
 
-  // 다크모드 토글 핸들러
+  
   const toggleDarkMode = () => {
     setDarkMode((prevMode) => {
       const newMode = !prevMode;
