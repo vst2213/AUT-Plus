@@ -5,7 +5,8 @@
     min-height: 100vh;
     width: 100vw;
     font-family: Arial, sans-serif;
-    background-color: #f3f3f3;
+    background-color: var(--background-color); /* Use variable */
+    color: var(--text-color); /* Use variable */
 }
 
 /* Header styling */
@@ -45,8 +46,8 @@
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    background-color: #4b0082;
-    color: white;
+    background-color: var(--button-bg-color); /* Use variable */
+    color: var(--button-text-color); /* Use variable */
     transition: background-color 0.3s;
 }
 
@@ -73,7 +74,7 @@
 
 .output-text {
     font-size: 16px;
-    color: #333;
+    color: var(--text-color); /* Use variable */
     margin-right: 10px;
 }
 
@@ -90,9 +91,10 @@
     border: 1px solid #ccc;
 }
 
-.edit-button {
-    background-color: #4b0082;
-    color: white;
+/* Button styling */
+.edit-button, .save-button {
+    background-color: var(--button-bg-color); /* Use variable */
+    color: var(--button-text-color); /* Use variable */
     border: none;
     border-radius: 5px;
     padding: 5px 10px;
@@ -100,23 +102,6 @@
     transition: background-color 0.3s;
 }
 
-.edit-button:hover {
+.edit-button:hover, .save-button:hover {
     background-color: #3c006e;
-}
-
-/* Save button styling */
-.save-button {
-    width: 100%;
-    padding: 12px;
-    font-size: 18px;
-    border: none;
-    border-radius: 8px;
-    background-color: #4b0082; /* AUT purple color */
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.save-button:hover {
-    background-color: #3c006e; /* Darker purple on hover */
 }

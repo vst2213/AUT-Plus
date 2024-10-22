@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFeedback } from "./FeedbackContext"; // Import the feedback context
 import "./SubmitFeedback.css"; // Ensure you import the CSS
@@ -8,6 +8,12 @@ const SubmitFeedback = () => {
   const [description, setDescription] = useState("");
   const navigate = useNavigate(); // Initialize the useNavigate hook
   const { addFeedback } = useFeedback(); // Use the feedback context
+
+  // Apply dark mode if set in localStorage
+  useEffect(() => {
+    const savedMode = localStorage.getItem("darkMode") === "true";
+    document.body.className = savedMode ? "dark" : "light";
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();

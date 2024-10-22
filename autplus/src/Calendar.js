@@ -75,6 +75,12 @@ const Calendar = () => {
   const [showCourseSelection, setShowCourseSelection] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
+  // Apply dark mode if set in localStorage
+  useEffect(() => {
+    const savedMode = localStorage.getItem("darkMode") === "true";
+    document.body.className = savedMode ? "dark" : "light";
+  }, []);
+
   // Load courses from localStorage on component mount
   useEffect(() => {
     const savedCourses = localStorage.getItem("scrapedCourses");

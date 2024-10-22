@@ -29,6 +29,10 @@ const MyDetails = () => {
     setTitle(savedTitle);
     setFirstName(savedFirstName);
     setLastName(savedLastName);
+
+    // Check for dark mode in localStorage and apply it
+    const savedMode = localStorage.getItem("darkMode") === "true";
+    document.body.className = savedMode ? "dark" : "light";
   }, []);
 
   // Handlers to submit and toggle editing for Title

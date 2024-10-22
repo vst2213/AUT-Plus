@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Notifications.css"; // 스타일 파일 추가
 import { Link } from "react-router-dom";
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 
 const Notifications = ({ bookingDetails, notificationDetails }) => {
+  // Check for dark mode preference on component mount
+  useEffect(() => {
+    const savedMode = localStorage.getItem("darkMode") === "true";
+    document.body.className = savedMode ? "dark" : "light";
+  }, []);
+
   return (
     <div className="notifications-container">
       {/* Header */}

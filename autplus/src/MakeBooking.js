@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
 import "./MakeBooking.css";
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
@@ -28,6 +28,12 @@ const MakeBooking = ({ setBookingDetails }) => {
   const [selectedTime, setSelectedTime] = useState("");
   const [confirmation, setConfirmation] = useState("");
   const [showReminderPrompt, setShowReminderPrompt] = useState(false);
+
+  // Apply dark mode if set in localStorage
+  useEffect(() => {
+    const savedMode = localStorage.getItem("darkMode") === "true";
+    document.body.className = savedMode ? "dark" : "light";
+  }, []);
 
   const handleBooking = () => {
     if (selectedRoom && selectedTime) {
