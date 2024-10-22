@@ -14,9 +14,13 @@ Please then open a new terminal and change the directory using: “cd autplus”
 Please then type and install the following packages: 
 
 “npm install node.js” 
+
 “npm install react” 
+
 “npm install firebase” 
-“npm install proxy.js” 
+
+“npm install proxy.js”
+
 “npm install server.js” 
 
 Once these have been installed, please right-click the server.js file (located in the SRC files near the bottom) and select “Open in Integrated Terminal”. 
