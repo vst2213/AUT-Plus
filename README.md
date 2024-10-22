@@ -2,7 +2,7 @@ AUTPlus
 
 Github URL: https://github.com/vst2213/AUT-Plus 
 
-Branch to be used: Release 
+Branch to be used: Release (https://github.com/vst2213/AUT-Plus/tree/Release)
 
  
 Instructions to operate: 
