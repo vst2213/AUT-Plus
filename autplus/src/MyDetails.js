@@ -33,6 +33,10 @@ const MyDetails = () => {
     setFirstName(savedFirstName);
     setLastName(savedLastName);
     setPoints(savedPoints);
+
+    // Check for dark mode in localStorage and apply it
+    const savedMode = localStorage.getItem("darkMode") === "true";
+    document.body.className = savedMode ? "dark" : "light";
   }, []);
 
   // 제목 제출 핸들러
@@ -157,10 +161,9 @@ const MyDetails = () => {
           </div>
         )}
 
-        {/* Points Display */}
-        <div className="input-row">
-          <label>Total Points: </label>
-          <span>{points}</span>
+        {/* Points Section */}
+        <div className="points-section">
+          <h3>Points: {points}</h3>
         </div>
       </div>
     </div>

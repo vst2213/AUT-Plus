@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFeedback } from "./FeedbackContext"; // Feedback context 가져오기
 import "./SubmitFeedback.css"; // 스타일 파일 불러오기
@@ -8,6 +8,12 @@ const SubmitFeedback = () => {
   const [description, setDescription] = useState("");
   const navigate = useNavigate(); // useNavigate 초기화
   const { addFeedback } = useFeedback(); // 피드백 컨텍스트 사용
+
+  // Apply dark mode if set in localStorage
+  useEffect(() => {
+    const savedMode = localStorage.getItem("darkMode") === "true";
+    document.body.className = savedMode ? "dark" : "light";
+  }, []);
 
   // 피드백 제출 처리 함수
   const handleSubmit = (e) => {

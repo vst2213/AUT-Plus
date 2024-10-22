@@ -5,7 +5,8 @@
     min-height: 100vh; /* Full height of the viewport */
     width: 100vw; /* Full width of the viewport */
     font-family: Arial, sans-serif;
-    background-color: #f3f3f3; /* Set a background color */
+    background-color: var(--background-color); /* Use CSS variable */
+    color: var(--text-color); /* Use CSS variable */
 }
 
 /* Header styling */
@@ -52,6 +53,7 @@
 .booking-form label {
     display: block;
     margin: 10px 0 5px;
+    color: var(--text-color); /* Use CSS variable */
 }
 
 .booking-form select {
@@ -60,20 +62,24 @@
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    background-color: var(--background-color); /* Use CSS variable */
+    color: var(--text-color); /* Use CSS variable */
 }
 
 .booking-form button {
     padding: 10px 15px;
     margin-right: 10px;
-    background-color: #4b0082; /* AUT purple color */
-    color: white;
+    background-color: var(--button-bg-color); /* Use CSS variable */
+    color: var(--button-text-color); /* Use CSS variable */
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .booking-form button:hover {
-    background-color: #6a0dad; /* Lighter purple on hover */
+    background-color: var(--button-text-color); /* Swap colors on hover */
+    color: var(--button-bg-color); /* Swap text on hover */
 }
 
 /* Back button styling */
@@ -89,13 +95,14 @@
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    background-color: #4b0082; /* AUT purple color */
-    color: white;
-    transition: background-color 0.3s;
+    background-color: var(--button-bg-color); /* Use CSS variable */
+    color: var(--button-text-color); /* Use CSS variable */
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .back-button:hover {
-    background-color: #3c006e; /* Darker purple on hover */
+    background-color: var(--button-text-color); /* Swap colors on hover */
+    color: var(--button-bg-color); /* Swap text on hover */
 }
 
 /* Ensure the app stretches to fill the entire screen */

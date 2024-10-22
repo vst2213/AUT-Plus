@@ -5,7 +5,8 @@
     min-height: 100vh;
     width: 100vw;
     font-family: Arial, sans-serif;
-    background-color: #f3f3f3;
+    background-color: var(--background-color); /* Use CSS variable */
+    color: var(--text-color); /* Use CSS variable */
 }
 
 /* Header styling */
@@ -54,25 +55,26 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 0;
-    border-bottom: 1px solid #ccc; /* 구분선 추가 */
+    border-bottom: 1px solid var(--button-border-color); /* Use CSS variable */
 }
 
 .contact-item span {
     font-size: 16px;
-    color: #333; /* 텍스트 색상 */
+    color: var(--text-color); /* Use CSS variable */
 }
 
 /* Button styling */
 .contact-item button {
-    background-color: #4b0082; /* 버튼 배경색 */
-    color: white; /* 버튼 텍스트 색상 */
+    background-color: var(--button-bg-color); /* Use CSS variable */
+    color: var(--button-text-color); /* Use CSS variable */
     border: none;
     border-radius: 5px;
     padding: 8px 12px;
     cursor: pointer;
-    transition: background-color 0.3s; /* 호버 효과 추가 */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
 .contact-item button:hover {
-    background-color: #5a0099; /* 호버 시 배경색 변화 */
+    background-color: var(--button-text-color); /* Swap on hover */
+    color: var(--button-bg-color); /* Swap text and background on hover */
 }

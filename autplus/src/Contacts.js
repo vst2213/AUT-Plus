@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Contacts.css"; // 스타일 파일을 추가하세요
 import { Link, useNavigate } from "react-router-dom";
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
@@ -19,6 +19,12 @@ const Contacts = () => {
       email: "vst2213@autuni.ac.nz",
     },
   ];
+
+  // Check and apply dark mode from localStorage
+  useEffect(() => {
+    const savedMode = localStorage.getItem("darkMode") === "true";
+    document.body.className = savedMode ? "dark" : "light";
+  }, []);
 
   const handleContact = (email) => {
     window.location.href = `mailto:${email}`; // 이메일 클라이언트 열기

@@ -5,7 +5,8 @@
     min-height: 100vh; /* Full height of the viewport */
     width: 100vw; /* Full width of the viewport */
     font-family: Arial, sans-serif;
-    background-color: #f3f3f3; /* Set a background color */
+    background-color: var(--background-color); /* Use CSS variable */
+    color: var(--text-color); /* Use CSS variable */
 }
 
 /* Header styling */
@@ -52,7 +53,8 @@ h2 {
 /* Notification list styling */
 .notifications-list {
     padding: 20px;
-    background-color: white; /* Background for notifications */
+    background-color: var(--background-color); /* Use CSS variable */
+    color: var(--text-color); /* Use CSS variable */
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
 }

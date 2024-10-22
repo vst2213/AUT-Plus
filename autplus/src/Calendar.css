@@ -1,3 +1,4 @@
+/* Reset and general styling for body and html */
 body, html {
   margin: 0;
   padding: 0;
@@ -6,18 +7,15 @@ body, html {
   font-family: Arial, sans-serif;
 }
 
+/* Calendar container styling */
 .calendar-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* Full height of the viewport */
   width: 100vw; /* Full width of the viewport */
   box-sizing: border-box; /* Include padding/border in width/height */
-}
-
-/* Dark mode styling for the calendar container */
-.dark-mode .calendar-container {
-  background-color: #121212; /* Dark background color */
-  color: #e0e0e0; /* Light text color */
+  background-color: var(--background-color); /* Use CSS variable */
+  color: var(--text-color); /* Use CSS variable */
 }
 
 /* Header styling */
@@ -26,14 +24,9 @@ body, html {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #4b0082; /* Match community header color */
+  background-color: #4b0082; /* AUT purple color */
   color: white;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Dark mode header styling */
-.dark-mode .header {
-  background-color: #3c006e; /* Darker purple for dark mode */
 }
 
 .logo {
@@ -45,7 +38,7 @@ body, html {
   display: flex;
   justify-content: space-around;
   padding: 15px 0;
-  background-color: #4b0082; /* Match community navigation */
+  background-color: #4b0082; /* AUT purple color */
 }
 
 .nav-icon {
@@ -54,12 +47,7 @@ body, html {
   cursor: pointer;
 }
 
-/* Dark mode navigation bar */
-.dark-mode .top-nav {
-  background-color: #3c006e; /* Darker for dark mode */
-}
-
-/* Class Schedule */
+/* Class schedule section */
 .class-schedule {
   margin-top: 20px;
   width: 100%;
@@ -67,6 +55,8 @@ body, html {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: var(--background-color); /* Use CSS variable */
+  color: var(--text-color); /* Use CSS variable */
 }
 
 /* Buttons */
@@ -74,8 +64,8 @@ body, html {
 .submit-btn,
 .close-btn,
 .edit-btn {
-  background-color: #4b0082; /* Match community button color */
-  color: white;
+  background-color: var(--button-bg-color); /* Use CSS variable */
+  color: var(--button-text-color); /* Use CSS variable */
   border: none;
   border-radius: 4px;
   padding: 10px 20px;
@@ -87,7 +77,8 @@ body, html {
 .submit-btn:hover,
 .close-btn:hover,
 .edit-btn:hover {
-  background-color: #3c006e; /* Darker on hover */
+  background-color: var(--button-text-color); /* Swap on hover */
+  color: var(--button-bg-color); /* Swap text on hover */
 }
 
 /* Modal */
@@ -96,7 +87,7 @@ body, html {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
+  background-color: var(--background-color); /* Use CSS variable */
   border-radius: 8px;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
   z-index: 1000;
@@ -126,15 +117,16 @@ body, html {
 
 /* Course Cards */
 .course-card {
-  background-color: #e2e6ea;
+  background-color: var(--background-color); /* Use CSS variable */
   padding: 10px;
   border-radius: 5px;
+  border: 1px solid var(--button-border-color); /* Use CSS variable */
   cursor: pointer;
   text-align: center;
 }
 
 .course-card.selected {
-  background-color: #4b0082; /* Match community selected color */
+  background-color: #4b0082; /* Match selected color */
   color: white;
 }
 
