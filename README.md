@@ -36,11 +36,13 @@ Once you are in the appropriate directory, please type “npm start” to run th
 This will take a moment to initialize the application. When it has completed this process, it will automatically open a new tab in your browser. You will need to create an account using the “Register” button or alternatively use the account provided below: 
 
 Email: admin@gmail.com 
+
 Password: Admin1 
 
 If you wish to login to the admin page, here is the following login information: 
 
 Username: Admin 
+
 Password: admin 
 
  
