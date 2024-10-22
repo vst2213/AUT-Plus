@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  signInWithEmailAndPassword,
-  sendPasswordResetEmail,
-} from "firebase/auth";
+import { signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "./firebase";
+import "./Login.css"; // Ensure to include the updated CSS file
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -19,11 +17,7 @@ function Login() {
     setSuccess("");
 
     try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
       console.log("User logged in:", userCredential.user);
       setSuccess("Login successful!");
 
@@ -53,17 +47,18 @@ function Login() {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      {success && <p style={{ color: "green" }}>{success}</p>}
-      <form onSubmit={handleSubmit}>
+    <div className="login-container">
+      <h2 className="login-title">Login</h2>
+      {error && <p className="error-message">{error}</p>}
+      {success && <p className="success-message">{success}</p>}
+      <form className="login-form" onSubmit={handleSubmit}>
         <input
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
+          className="input-field"
         />
         <input
           type="password"
@@ -71,17 +66,18 @@ function Login() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+          className="input-field"
         />
-        <button type="submit">Login</button>
+        <button type="submit" className="login-button">Login</button>
       </form>
-      <p>
+      <p className="forgot-password">
         Forgot your password?{" "}
         <button onClick={handleForgotPassword} className="forgot-password-link">
           Reset Password
         </button>
       </p>
-      <p>
-        Don't have an account? <Link to="/signup">Register</Link>
+      <p className="signup-prompt">
+        Don't have an account? <Link to="/signup" className="signup-link">Register</Link>
       </p>
       <button onClick={handleAdminLogin} className="admin-login-button">
         Admin Login

@@ -2,45 +2,100 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaHome, FaCommentDots, FaCalendarAlt, FaBars } from "react-icons/fa";
 import "./CommunityPage.css";
-import { useReports } from "./ReportContext"; // Import the context
+import { useReports } from "./ReportContext"; // Report context import
 
 const CommunityPage = () => {
+  const { addReport } = useReports();
   const [post, setPost] = useState("");
+  const [userName, setUserName] = useState("");
+  const [points, setPoints] = useState(0); // 포인트 상태 관리
   const [darkMode, setDarkMode] = useState(false);
   const [isReported, setIsReported] = useState(false);
-  const { addReport, reports } = useReports(); // Get addReport and reports from context
+  const [replyInputs, setReplyInputs] = useState({});
+  const [posts, setPosts] = useState([]);
 
-  // Load dark mode state from localStorage when the component mounts
+  // 초기 로딩 시 사용자 정보와 게시물 및 포인트 불러오기
   useEffect(() => {
+    const savedFirstName = localStorage.getItem("firstName") || "";
+    const savedLastName = localStorage.getItem("lastName") || "";
+    setUserName(`${savedFirstName} ${savedLastName}`.trim());
+
     const savedDarkMode = localStorage.getItem("darkMode") === "true";
     setDarkMode(savedDarkMode);
+
+    const savedPosts = JSON.parse(localStorage.getItem("communityPosts")) || [];
+    setPosts(savedPosts);
+
+    const savedPoints = parseInt(localStorage.getItem("points")) || 0;
+    setPoints(savedPoints);
   }, []);
 
-  // Save dark mode state to localStorage when it changes
-  const toggleDarkMode = () => {
-    const newDarkModeState = !darkMode;
-    setDarkMode(newDarkModeState);
-    localStorage.setItem("darkMode", newDarkModeState);
+  const savePostsToLocalStorage = (newPosts) => {
+    localStorage.setItem("communityPosts", JSON.stringify(newPosts));
   };
 
-  const handlePostChange = (e) => {
-    setPost(e.target.value);
+  const savePointsToLocalStorage = (newPoints) => {
+    localStorage.setItem("points", newPoints);
+    setPoints(newPoints);
   };
 
   const handlePostSubmit = (e) => {
     e.preventDefault();
-    console.log("Post submitted:", post);
-    setPost(""); // Clear the input after submission
+    if (!post.trim()) {
+      alert("Please write something to post.");
+      return;
+    }
+
+    const newPost = {
+      id: posts.length + 1,
+      user: userName,
+      content: post.trim(),
+      replies: [],
+    };
+
+    const updatedPosts = [...posts, newPost];
+    setPosts(updatedPosts);
+    savePostsToLocalStorage(updatedPosts);
+    setPost("");
   };
 
-  // Handle reporting a user
-  const handleReport = (user, comment) => {
-    addReport(user, comment); // Pass both user and comment
-    console.log("Current reports:", reports); // Debug log to show current reports
+  const handleReplyChange = (postId, value) => {
+    setReplyInputs((prev) => ({ ...prev, [postId]: value }));
+  };
+
+  const handleReplySubmit = (postId, postUser) => {
+    const replyContent = replyInputs[postId]?.trim();
+    if (!replyContent) return;
+
+    const updatedPosts = posts.map((p) =>
+      p.id === postId
+        ? { ...p, replies: [...p.replies, { user: userName, content: replyContent }] }
+        : p
+    );
+
+    setPosts(updatedPosts);
+    savePostsToLocalStorage(updatedPosts);
+    setReplyInputs((prev) => ({ ...prev, [postId]: "" }));
+
+    if (postUser !== userName) {
+      const newPoints = points + 10;
+      savePointsToLocalStorage(newPoints);
+      alert(`You earned 10 points! Total points: ${newPoints}`);
+    }
+  };
+
+  const handleDeletePost = (postId) => {
+    const updatedPosts = posts.filter((p) => p.id !== postId);
+    setPosts(updatedPosts);
+    savePostsToLocalStorage(updatedPosts);
+  };
+
+  const handleReport = (user, content) => {
+    addReport(user, content);
     setIsReported(true);
     setTimeout(() => {
-      alert(`${user} has been reported for unwanted behavior.`);
-      setIsReported(false); // Reset the state for further reports
+      alert(`${user} has been reported.`);
+      setIsReported(false);
     }, 500);
   };
 
@@ -51,10 +106,9 @@ const CommunityPage = () => {
         <div className="left-header">
           <img src="/pictures/aut.jpeg" alt="AUT Logo" className="logo" />
         </div>
-        <div className="right-header">{/* Dark Mode Toggle Button */}</div>
       </div>
 
-      {/* Navigation Bar */}
+      {/* Top Navigation */}
       <div className="top-nav">
         <Link to="/home">
           <FaHome className="nav-icon" />
@@ -70,69 +124,87 @@ const CommunityPage = () => {
         </Link>
       </div>
 
-      {/* Community Actions */}
+      {/* Actions */}
       <div className="actions">
-        <button className="round-button AUT">AUT</button>
+        <Link to="/home">
+          <button className="round-button AUT">AUT</button>
+        </Link>
         <Link to="/clubs">
           <button className="round-button clubs">Clubs</button>
         </Link>
       </div>
 
+      {/* Post Form */}
       <form className="post-form" onSubmit={handlePostSubmit}>
         <input
           type="text"
           className="post-input"
-          placeholder="What's on your mind?"
+          placeholder={`What's on your mind, ${userName}?`}
           value={post}
-          onChange={handlePostChange}
+          onChange={(e) => setPost(e.target.value)}
         />
         <button type="submit" className="post-submit">
           Post
         </button>
       </form>
 
-      {/* Community Posts Section with Report Buttons */}
-      <div className="section posts-section">
+      {/* Posts Section */}
+      <div className="posts-section">
         <h2>Community Posts</h2>
+        {posts.map((p) => (
+          <div key={p.id} className="post">
+            <div className="post-header">
+              <strong>{p.user}</strong> <small>2 hours ago</small>
+            </div>
+            <p>{p.content}</p>
 
-        {/* Post from Alice */}
-        <div className="post">
-          <div className="post-header">
-            <strong>Alice </strong>
-            <small>2 hours ago</small>
-          </div>
-          <p>Hello, where can I join clubs?</p>
-          <button
-            className="report-button"
-            onClick={() =>
-              handleReport("Alice", "Hello, where can I join clubs?")
-            }
-            disabled={isReported}
-          >
-            {isReported ? "Reported" : "Report"}
-          </button>
-        </div>
+            {/* Replies Section */}
+            <div className="replies-section">
+              <h4>Replies:</h4>
+              {p.replies.length > 0 ? (
+                p.replies.map((reply, index) => (
+                  <p key={index} className="reply">
+                    <strong>{reply.user}: </strong>
+                    {reply.content}
+                  </p>
+                ))
+              ) : (
+                <p>No replies yet.</p>
+              )}
 
-        {/* Post from Bob */}
-        <div className="post">
-          <div className="post-header">
-            <strong>Bob </strong>
-            <small>1 hour ago</small>
+              <input
+                type="text"
+                className="reply-input"
+                placeholder={`Reply as ${userName}`}
+                value={replyInputs[p.id] || ""}
+                onChange={(e) => handleReplyChange(p.id, e.target.value)}
+              />
+              <button
+                className="reply-submit"
+                onClick={() => handleReplySubmit(p.id, p.user)}
+              >
+                Reply
+              </button>
+            </div>
+
+            {/* Delete and Report Buttons */}
+            {p.user === userName && (
+              <button
+                className="delete-button"
+                onClick={() => handleDeletePost(p.id)}
+              >
+                Delete
+              </button>
+            )}
+            <button
+              className="report-button"
+              onClick={() => handleReport(p.user, p.content)}
+              disabled={isReported}
+            >
+              {isReported ? "Reported" : "Report"}
+            </button>
           </div>
-          <p>Welcome Alice! You can find clubs within the "Clubs" button.</p>
-          <button
-            className="report-button"
-            onClick={() =>
-              handleReport(
-                "Bob",
-                "Welcome Alice! You can find clubs within the 'Clubs' button."
-              )
-            }
-            disabled={isReported}
-          >
-            {isReported ? "Reported" : "Report"}
-          </button>
-        </div>
+        ))}
       </div>
     </div>
   );
