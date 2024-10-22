@@ -25,7 +25,7 @@ Please then type and install the following packages:
 
 Once these have been installed, please right-click the server.js file (located in the SRC files near the bottom) and select “Open in Integrated Terminal”. 
 
-Once opened, you will need to type in the terminal the following: “node server.js”. It will display “Server running on port xxxx” if it has successfully worked. 
+Once opened, you will need to type in the terminal the following: “node server.js”. It will display “Server running on port xxxx” if it has successfully worked. If this step does not work, the port may be taken, if so please change line number 7 of server.js port from "5000" to "5001" and attempt to run it again.
 
 Once server.js is running, please also do the same for proxy.js. You will need to right-click the proxy.js file (located outside the SRC files at the bottom) and select “Open in Integrated Terminal”. 
 
