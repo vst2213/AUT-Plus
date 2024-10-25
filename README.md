@@ -16,6 +16,8 @@ Please then open a new terminal and change the directory using: “cd autplus”
 Please then type and install the following packages
 (Please be aware that installing these packages may take a while):
 
+"npm install express"
+
 “npm install node.js” 
 
 “npm install react” 
