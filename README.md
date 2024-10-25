@@ -9,6 +9,8 @@ Instructions to operate:
 
 Release will need to be opened using Visual Studio Code 
 
+You may need to install Git, this can be found here: https://git-scm.com/downloads/win
+
 Please then open a new terminal and change the directory using: “cd autplus” 
 
 Please then type and install the following packages
